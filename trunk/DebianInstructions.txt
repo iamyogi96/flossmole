@@ -1,0 +1,16 @@
+To do the Debian Run:
+
+Notes: 
+-The python mySQLdb module must be installed on the system you are running these scripts on.
+-The database connection information should be stored in a file called "dbInfo.txt". On separate lines it should have in this order: host, port, username, password, schema.
+
+1. Run debian_MakeJobs.py by running "python debian_MakeJobs.py" from the commandline.  There are two arguments you may use:  
+
+-d <datasource Id> -> where <datasource id> is the datasource id for this run.  If omitted this will default to 0.
+-g <subgroup> -> where <subgroup> is one of "all", "stable", "testing", or "unstable".  If omitted this will default to "all".
+
+Wait for this process to complete before moving on.
+
+2. Run debian_RetreiveHTML.py by running "python debian_RetreiveHTML.py" from the commandline. You may want to run this using nohup in the background since it will take awhile.  You can also run multiple copies of this script.  Wait for this process to complete before moving on.
+
+3. Run debian_ParseCopyrights.py, debian_ParseDescriptions.py, and debian_ParseDevelopers.py by running "python debian_ParseCopyrights.py", "python debian_ParseDescriptions.py", and "python debian_ParseDevelopers.py" respectively from the commandline.  Again you may want to run these three scripts using nohup in the background since they take awhile.  All three of these scripts can be run at the same time and multiple copies of each may be run simultaneously.
