@@ -20,7 +20,7 @@ All original data is copyright of its owners.
   * [http://www.swik.net Swik] - a wiki for open source projects. Uses FLOSSmole data to seed the list of projects.
   * [http://www.krugle.com Krugle] - Krugle is a source code search engine. They use FLOSSmole data to seed their project repository.
   * [http://sourcekibitzer.org SourceKibitzer] - SourceKibitzer is a software engineering analytics database for java code development. They use FLOSSmole data and contribute their metrics back to FLOSSmole on a monthly basis.
-  * [http://frdcsa.onshore.net/frdcsa/internal/cso/index.html CSO] - (defunct?) used FLOSSmole data to seed an open source ontology.
+  * [http://frdcsa.onshore.net/frdcsa/internal/cso/index.html CSO] - used FLOSSmole data to seed an open source ontology.
 
 ==Research papers==
 Here are some research papers that talk about FLOSSmole or which have used FLOSSmole data. If you have a paper or project that uses FLOSSmole data, please let the community know (email is fine) and we'll add your project here.
