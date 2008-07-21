@@ -11,5 +11,5 @@ We have data in our database about:
   * [DataDescrRF Rubyforge]
   * [DataDescrOW Objectweb]
   * [DataDescrFSF Free Software Foundation]
-  * [DataDescrSK Source Kibitzer]
-  * [DataDescrDEB Debian]
+  * Source Kibitzer
+  * Debian
