@@ -12,7 +12,8 @@ _Some of the data elements we have available for you to download are:_
 
   * Developers (name, username, etc)
   * Developers on each project (username, role on project, whether they are an admin or not
-  * Project description (textual)   * Project environment(s)
+  * Project description (textual)   
+  * Project environment(s)
   * Project names (long name and short 'unixname')
   * Project activity percentile
   * Total number of developers displayed on page
