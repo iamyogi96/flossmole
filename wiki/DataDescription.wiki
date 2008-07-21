@@ -1,4 +1,4 @@
-#About the FLOSSmole data: how we gather the data, how we store it, what kind of data we have.
+#summary About the FLOSSmole data: how we gather the data, how we store it, what kind of data we have.
 
 = Introduction =
 
@@ -6,10 +6,10 @@ FLOSSmole provides data from various free, libre, and open source projects. We c
 
 We have data in our database about: 
 
-* Sourceforge
-* Freshmeat
-* Rubyforge
-* Objectweb
-* Free Software Foundation
-* Source Kibitzer
-* Debian
+  * [DataDescrSF Sourceforge]
+  * [DataDescrFM Freshmeat]
+  * [DataDescrRF Rubyforge]
+  * [DataDescrOW Objectweb]
+  * [DataDescrFSF Free Software Foundation]
+  * [DataDescrSK Source Kibitzer]
+  * [DataDescrDEB Debian]
