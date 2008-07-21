@@ -1,0 +1,20 @@
+#summary About FLOSSmole Free Software Foundation directory data
+
+=Free Software Foundation=
+Every month we collect the data from the [http://fsf.org Free Software Foundation's directory] of open source projects.
+
+We collect each project's home page on the directory, and load that into the database. We then parse through those html pages and extract interesting data elements. After parsing, we save each piece of data in our database also.
+
+_Some of the data elements we collect include:_
+
+  * Developers on each project (includes maintainers, developers, and contributors)
+  * Project registration date
+  * Project description (textual)
+  * Project interface(s)
+  * Project language(s) (programming language)
+  * Project license(s)
+  * Project names and a unique number
+  * Project URLs (both FSF URL and 'real' URL)
+
+_Frequently Asked Questions_
+  # *What is the difference between this FSF directory and Savannah?* [http://savannah.gnu.org Savannah] is a code repository for free software, and includes development tools and all the things you might find in a code forge. Conversely, the FSF directory is just that, a directory of projects. You can find more information about Savannah at their web site. We'd love to collect their data here, and you may see the Savannah as one of our forges in the future! [community Let us know] if you want to contribute by collecting Savannah data.
