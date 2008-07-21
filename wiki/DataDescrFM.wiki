@@ -16,6 +16,4 @@ After the interesting variables are parsed out of the pages and stored in the da
 
 _Frequently asked questions_
 
-  # How come you don't provide the trove categories in the file downloads?
-
-We'd really like to make some sense of the trove categories, actually. Ideally, we'd like to relate each numeric trove category to a textual description of that trove category, and create a "key" table for this information. Then we'd feel more comfortable releasing the trove categories for each project. [community Let us know] if you'd like to work on this.
+  # *How come you don't provide the trove categories in the file downloads?* We'd really like to make some sense of the trove categories, actually. Ideally, we'd like to relate each numeric trove category to a textual description of that trove category, and create a "key" table for this information. Then we'd feel more comfortable releasing the trove categories for each project. [community Let us know] if you'd like to work on this.
