@@ -1,0 +1,61 @@
+#summary About FLOSSmole Sourceforge Datasets
+
+= Sourceforge =
+As of this writing, we collect and parse the following information about Sourceforge projects:
+
+Project Items (we collect, store, and parse the SF home page for each project)
+
+    * Project names (long name and short unique 'unixname')
+    * Project descriptions
+    * Project URLs (URL on Sourceforge and 'real'/external URL if available)
+    * Project registration date
+    * Project intended audience(s)
+    * Project license(s)
+    * Project programming language(s)
+    * Project database environment(s)
+    * Project operating system(s)
+    * Project donor(s)
+    * Project status (alpha, beta, mature, etc)
+    * Project topic(s)
+    * Project user interface(s)
+    * Bugs, number: open/total
+    * Support Requests, number: open/total
+    * Patches, number: open/total
+    * Rejected Patches, number: open/total
+    * Smiley Themes, number: open/total
+    * Translations, number: open/total
+    * Themes, number: open/total
+    * Feature Requests, number: open/total
+    * Plugins, number: open/total
+    * Public Forums, number: open/total
+    * Mailing Lists, number: total
+    * CVS Repositories, number: commits/reads
+    * SVN Repositories, number: commits/reads
+
+Developer items (we collect, store, and parse the SF developers page for each project)
+
+Note about developer items: we only have information on Sourceforge users (developers) associated with a project. If someone is a signed up as a Sourceforge user, but is not associated with any project, then we will not know about that person. Similarly, if a person is on a SF project in one month (say April), and then leaves the project the next scrape (say June) and does not join another project, that person will no longer appear in our data files for June even though they were in our data files for April.
+
+    * Project developers (username, real name, Sourceforge email address)
+    * Developer role(s) on project, including whether an administrator or not
+
+
+Statistics items (we collect, store, and parse the SF 60-day statistics page for each project)
+
+    * Project downloads (sum of project downloads over 60-day window)
+    * Project ranks (project rank averaged over 60-day window)
+    * Project tracker sums (sums of tracker opens and closes over 60-day window)
+
+
+Frequently asked questions
+1. Why do you only spider every 2 months?
+The Sourceforge data sets are very large. It also takes a bit of time to perform this data collection phase. Two months seems like a good compromise between too often and too rarely. (Plus, we can synch the 60-day statistics view with our scrape.)
+
+2. How do you get the initial list of projects?
+This is a trade secret. :) Actually, I just list the project directories on the shell server.
+
+3. How come I get banned from Sourceforge when I try to do this scraping myself?
+You've mostly likely been banned because you've violated some of the rules on the SF routers designed to stop denial of service (DOS) attacks. If SF detects that you're hitting its site too much, it will ban your IP address. We learned this the hard way too, early on. The better solution is to work with the a data set that's already been collected, such as the FLOSSmole data. (If we don't have the data you need, [community let us know] and we might be able to give you some pointers about where to get it.) If you find that you absolutely must scrape SF site, follow [http://alexandria.wiki.sourceforge.net/Crawler+Policy+and+Open+Source+Research+Policy the SF instructions for researchers].
+
+4. Where can I get XYZ piece of data that you don't have?
+The first thing to do is [community let us know] which piece of data you need, because sometimes we have the data in the database, but we didn't know anyone wanted it. If you indicate that you need a piece of data, we'll certainly do our best to get it for you. In a few cases, users of our data have needed to supplement our data with stuff we didn't have. We recommend trying the [http://www.nd.edu/%7Eoss/Data/data.html Notre Dame SourceForge Research Data Archive].
