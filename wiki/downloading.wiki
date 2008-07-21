@@ -1,0 +1,33 @@
+#summary How to get FLOSSmole data for your own use
+
+=Getting the Data=
+
+Currently we have 3 ways to get the data:
+
+   1. You can download the data in sql format (Mysql)
+   2. You can grab the raw data files (delimited files)
+   3. You can use the query tool (canned queries)
+
+
+==SQL Format (Data Marts)==
+
+We now provide you the data as "data marts", ready for you to insert into your own Mysql database (or other DBMS, provided you might have to do a little tweaking). We rolled out this feature in May of 2007 in response to users who were having trouble with the flat files.
+
+The data marts are provided as SQL create and insert statements. You should be able to point them at an existing Mysql installation and let them run. Each file download is for a single datasource_id. If you need multiple datasource_ids, just download the correct data marts and run the inserts for both datasources.
+
+The data marts are available in the datamarts package in our file downloads section on Sourceforge. Check the release notes to see what exact table data comes in each file within that package.
+
+==Delimited flat files==
+
+We also provide delimited flat files with just the bare-bones data in them. This data is ideal for loading into Excel or for manipulating with your favorite stats package.
+
+The flat files are divided into packages by the forge, and by the datasource_id (i.e. the "run number"):
+Sourceforge general project info package
+Sourceforge project data package
+Sourceforge developer data package
+Freshmeat package
+Rubyforge package
+ObjectWeb package
+Free Software Foundation Directory package
+Debian package
+SourceKibitzer package
