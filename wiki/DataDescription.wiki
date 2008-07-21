@@ -1,0 +1,15 @@
+#About the FLOSSmole data: how we gather the data, how we store it, what kind of data we have.
+
+= Introduction =
+
+FLOSSmole provides data from various free, libre, and open source projects. We collect data and take donations from: forges/repositories (such as Sourceforge), directories (such as Freshmeat), and stand-alone projects.
+
+We have data in our database about: 
+
+* Sourceforge
+* Freshmeat
+* Rubyforge
+* Objectweb
+* Free Software Foundation
+* Source Kibitzer
+* Debian
