@@ -1,0 +1,24 @@
+#summary About the FLOSSmole Rubyforge data
+
+=Rubyforge=
+Every month we collect the Rubyforge list of projects and the project's main html page on Rubyforge. We insert this data into the database, then parse out various interesting data elements and store those in the database also.
+
+_Some of the data we collect_
+  * Developer names, emails, and whether they are an admin or not.
+  * Developers on this project
+  * Project descriptions
+  * Project environments
+  * Project names (long and short 'unixnames')
+  * Total number of developers for the project
+  * Project registration date
+  * Project URL
+  * Project intended audience(s)
+  * Project license(s)
+  * Project natural language(s)
+  * Project operating system(s)
+  * Project programming language(s)
+  * Project status (alpha, beta, etc)
+  * Project topic(s)
+
+_Frequently Asked Questions_
+  # *Why do you not have the per-project statistics for Rubyforge that you have for Sourceforge?* Sourceforge runs its statistics on a per-project basis, but Rubyforge only runs some aggregate stats, which you can check out on [http://rubyforge.org/top/ their stats page].
