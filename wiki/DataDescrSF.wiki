@@ -50,9 +50,6 @@ _Statistics items (we collect, store, and parse the SF 60-day statistics page fo
 _Frequently asked questions_
 
   # *Why do you only spider every 2 months?* The Sourceforge data sets are very large. It also takes a bit of time to perform this data collection phase. Two months seems like a good compromise between too often and too rarely. (Plus, we can synch the 60-day statistics view with our scrape.)
-
   # *How do you get the initial list of projects?* This is a trade secret. :) Actually, I just list the project directories on the shell server.
-
   # *How come I get banned from Sourceforge when I try to do this scraping myself?* You've mostly likely been banned because you've violated some of the rules on the SF routers designed to stop denial of service (DOS) attacks. If SF detects that you're hitting its site too much, it will ban your IP address. We learned this the hard way too, early on. The better solution is to work with the a data set that's already been collected, such as the FLOSSmole data. (If we don't have the data you need, [community let us know] and we might be able to give you some pointers about where to get it.) If you find that you absolutely must scrape SF site, follow [http://alexandria.wiki.sourceforge.net/Crawler+Policy+and+Open+Source+Research+Policy the SF instructions for researchers].
-
   # *Where can I get XYZ piece of data that you don't have?* The first thing to do is [community let us know] which piece of data you need, because sometimes we have the data in the database, but we didn't know anyone wanted it. If you indicate that you need a piece of data, we'll certainly do our best to get it for you. In a few cases, users of our data have needed to supplement our data with stuff we didn't have. We recommend trying the [http://www.nd.edu/%7Eoss/Data/data.html Notre Dame SourceForge Research Data Archive].
