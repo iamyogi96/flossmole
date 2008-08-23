@@ -14,6 +14,13 @@ Howison, J., Conklin, M., & Crowston, K. (2006). FLOSSmole: A collaborative repo
 
 All original data is copyright of its owners.
 
+== Conditions of Use ==
+1. If you use the data, please cite the source as shown above.
+
+2. Please be ethical in your use of this data. You may wish to consult the publication "Ethical decision-making and Internet research: Recommendations from the AOIR ethics working committee" (available online from http://www.aoir.org/reports/ethics.pdf).
+
+3. Please be aware that your use of this data for research may require approval by your company's or institution's IRB (Institutional Review Board).
+
 == Related projects (external links) ==
   * [http://www.nd.edu/%7Eoss/Data/data.html Sourceforge.net Research Data Archive] (Notre Dame) - Sourceforge data for academic and scholarly researchers
   * [http://flossmetrics.org/ FLOSSmetrics] - collection of deep data about a growing number of FLOSS projects
