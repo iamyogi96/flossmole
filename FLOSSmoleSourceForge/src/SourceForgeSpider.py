@@ -51,9 +51,10 @@ Otherwise use 'F'.""")
     SourceForgeIndex.run(utils,datasource_id)
     SourceForgeDevelopment.run(utils,datasource_id)
     SourceForgeDevelopers.run(utils,datasource_id)
+    SourceForgeResumes.run(utils,datasource_id)
     SourceForge60day.run(utils,datasource_id)
     SourceForgeYear.run(utils,datasource_id)
-    SourceForgeResumes.run(utils,datasource_id)
+    
     
     
 main(sys.argv)

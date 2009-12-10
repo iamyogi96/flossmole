@@ -62,7 +62,8 @@ def run(utils,datasource_id):
                     if(re.search("Connection to statistics server timed out",year)==None):
                         update="UPDATE project_indexes SET all_time_stats_html=%s WHERE datasource_id=%s AND proj_unixname=%s"
                         utils.db_insert(update,year,datasource_id,unixname)
-                        utils.change_status('gather_resumes',datasource_id,unixname)
+                        #changed gather_resumes
+                        utils.change_status('completed',datasource_id,unixname)
                         job=utils.get_job(datasource_id,'gather_year')
                         if(utils.error):
                             sys.exit()
@@ -79,7 +80,7 @@ def run(utils,datasource_id):
                 #if yearstats insertion fails posts error, gets job, and checks for errors
                 else:
                     print("yearstats page does not exist.")
-                    utils.change_status('gather_resumes',datasource_id,unixname)
+                    utils.change_status('completed',datasource_id,unixname)
                     job=utils.get_job(datasource_id,'gather_year')
                     if(utils.error):
                         sys.exit()

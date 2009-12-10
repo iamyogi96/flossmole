@@ -10,6 +10,10 @@ import sys
 import SourceForge60day
 import SourceForgeYear
 
+
+#!!!!WARNING!!!!! Running this error fix will only collect 60day stats and year stats that have timed out.
+# To complete the process for these projects please rerun the SourceForgeSpider for the datasource_id.
+
 def main(argv):
     
     try:

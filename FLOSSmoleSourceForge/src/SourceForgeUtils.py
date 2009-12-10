@@ -7,6 +7,7 @@ This module includes the necessary utilities for the source forge spider.
 import MySQLdb
 import traceback
 import urllib2
+import socket
 
 class SourceForgeUtils:
     #this gathers the initial connection to the database
@@ -74,12 +75,12 @@ class SourceForgeUtils:
     #this method allows for status changes
     def change_status(self,status,datasource_id,unixname):
         update='''UPDATE sf_jobs 
-        SET status=%s, last_modified=NOW() 
+        SET status=%s, last_modified=NOW(), modified_by=%s
         WHERE datasource_id=%s 
         AND unixname=%s
         '''
         try:
-            self.cursor.execute(update,(status,datasource_id,unixname))
+            self.cursor.execute(update,(status,socket.gethostname(),datasource_id,unixname))
         except:
             print('!!!!WARNING!!!! Status '+status+' did not update correctly for '+unixname+' with id '+datasource_id+'.')
             print(traceback.format_exc())
@@ -88,11 +89,11 @@ class SourceForgeUtils:
     #this method allows for error posting 
     def post_error(self,message,datasource_id,unixname):
         update='''UPDATE sf_jobs 
-        SET error_msg=%s, status='error', last_modified=NOW()
+        SET error_msg=%s, status='error', last_modified=NOW(), modified_by=%s
         WHERE datasource_id=%s
         AND unixname=%s'''
         try:
-            self.cursor.execute(update,(message,datasource_id,unixname))
+            self.cursor.execute(update,(message,socket.gethostname(),datasource_id,unixname))
         except:
             print('!!!!WARNING!!!! Error '+message+'could not be posted for'+unixname+' at '+datasource_id+'.')
             self.error=True

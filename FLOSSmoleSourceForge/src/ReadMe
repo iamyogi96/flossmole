@@ -6,6 +6,7 @@ All runs are passed with two arguments, as follows:
 1. Run SourceForgeJobs.py given two arguments. SourceForgeJobs.py [datasource_id] [Test Mode]
 2. Run SourceForgeSpider.py given two arguments. SourceForgespider.py [datsource_id] [Test Mode]
 3. Run SourceForgeErrorFix.py given two arguments. SourceForgeErrorFix.py [datasource_id] [Test Mode]
+    (Error fix will regather any statistic pages that failed to collect due to time out.)
 
 SourceForge Jobs.py-creates jobs to be run from a pre-processed projects list
 SourceForgeSpider.py-spiders pages based on pre-processed jobs list

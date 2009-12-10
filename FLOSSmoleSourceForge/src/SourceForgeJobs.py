@@ -14,6 +14,7 @@ Otherwise use 'F'.
 import sys
 from SourceForgeUtils import SourceForgeUtils
 import traceback
+import socket
 
 #adds the jobs to the sf_jobs table in the selected database
 def main(argv):
@@ -48,9 +49,9 @@ def main(argv):
                     project=project[0]
                     print("Creating job for "+project)
                     try:
-                        insert='''INSERT INTO sf_jobs (unixname,datasource_id,status,last_modified)
-                        VALUES(%s,%s,'gather_index',NOW())'''
-                        utils.db_insert(insert,project,datasource_id)
+                        insert='''INSERT INTO sf_jobs (unixname,datasource_id,status,last_modified,modified_by)
+                        VALUES(%s,%s,'gather_index',NOW(),%s)'''
+                        utils.db_insert(insert,project,datasource_id,socket.gethostname())
                     except:
                         print('!!!!WARNING!!!! Job creation failed for '+project+'.')
                         print(traceback.format_exc())
@@ -77,9 +78,9 @@ def main(argv):
                 for project in projects_list[0:10]:
                     print("Creating job for "+project)
                     try:
-                        insert='''INSERT INTO sf_jobs (unixname,datasource_id,status,last_modified)
-                        VALUES(%s,%s,'gather_index',NOW())'''
-                        utils.db_insert(insert,project,datasource_id)
+                        insert='''INSERT INTO sf_jobs (unixname,datasource_id,status,last_modified,modified_by)
+                        VALUES(%s,%s,'gather_index',NOW(),%s)'''
+                        utils.db_insert(insert,project,datasource_id,socket.gethostname())
                     except:
                         print('!!!!WARNING!!!! Job creation failed for '+project+'.')
                         print(traceback.format_exc())
