@@ -71,7 +71,34 @@ class SourceForgeUtils:
         except:
             print ("Finding job failed.")
             self.cursor.execute(unlock)     
+    
+    '''
+    This method provides the ability to get a job from the mailing job database.
+    '''
+    def get_mailing_job(self, datasource_id, status):
+        lock = '''LOCK TABLE sf_mailing_jobs READ, sf_mailing_jobs AS t WRITE'''
+        select = '''SELECT unixname
+            FROM sf_mailing_jobs AS t
+            WHERE status = %s
+            AND datasource_id = %s
+            LIMIT 1'''
+        update='''UPDATE sf_mailing_jobs AS t SET status='In_Progress', last_modified=NOW()
+        WHERE datasource_id=%s
+        AND unixname=%s
+        '''
+        unlock = '''UNLOCK TABLES'''
+        try:
+            self.cursor.execute(lock)
+            self.cursor.execute(select, (status,datasource_id))
+            result = self.cursor.fetchone()
+            self.cursor.execute(update,(datasource_id, result[0]))
+            self.cursor.execute(unlock)
+            return result
+        except:
+            print ("Finding job failed.")
+            self.cursor.execute(unlock)     
             
+    
     #this method allows for status changes
     def change_status(self,status,datasource_id,unixname):
         update='''UPDATE sf_jobs 
@@ -86,9 +113,36 @@ class SourceForgeUtils:
             print(traceback.format_exc())
             self.error=True
     
+    #this method allows for status changes
+    def change_mailing_status(self,status,datasource_id,unixname):
+        update='''UPDATE sf_mailing_jobs 
+        SET status=%s, last_modified=NOW(), modified_by=%s
+        WHERE datasource_id=%s 
+        AND unixname=%s
+        '''
+        try:
+            self.cursor.execute(update,(status,socket.gethostname(),datasource_id,unixname))
+        except:
+            print('!!!!WARNING!!!! Status '+status+' did not update correctly for '+unixname+' with id '+datasource_id+'.')
+            print(traceback.format_exc())
+            self.error=True
+    
+    
     #this method allows for error posting 
     def post_error(self,message,datasource_id,unixname):
         update='''UPDATE sf_jobs 
+        SET error_msg=%s, status='error', last_modified=NOW(), modified_by=%s
+        WHERE datasource_id=%s
+        AND unixname=%s'''
+        try:
+            self.cursor.execute(update,(message,socket.gethostname(),datasource_id,unixname))
+        except:
+            print('!!!!WARNING!!!! Error '+message+'could not be posted for'+unixname+' at '+datasource_id+'.')
+            self.error=True
+        
+    #this method allows for error posting 
+    def post_mailing_error(self,message,datasource_id,unixname):
+        update='''UPDATE sf_mailing_jobs 
         SET error_msg=%s, status='error', last_modified=NOW(), modified_by=%s
         WHERE datasource_id=%s
         AND unixname=%s'''
@@ -137,6 +191,26 @@ class SourceForgeUtils:
             return memberlist
         except:
             print("!!!!WARNING!!!! Collecting memberlist page failed.")
+            print(traceback.format_exc())
+            
+    def get_mailing(self,datasource_id,unixname):
+        try:
+            select='''SELECT mailinglist_html FROM mailing_indexes WHERE datasource_id=%s AND proj_unixname=%s'''
+            self.cursor.execute(select,(datasource_id,unixname))
+            mailing=self.cursor.fetchone()
+            return mailing
+        except:
+            print("!!!!WARNING!!!! Collecting mailing page failed.")
+            print(traceback.format_exc())
+            
+    def get_mailing_specific(self,datasource_id,unixname):
+        try:
+            select='''SELECT list_name, mailinglist_html FROM mailinglist_indexes WHERE datasource_id=%s AND proj_unixname=%s'''
+            self.cursor.execute(select,(datasource_id,unixname))
+            mailinglists=self.cursor.fetchall()
+            return mailinglists
+        except:
+            print("!!!!WARNING!!!! Collecting mailinglist page failed.")
             print(traceback.format_exc())
     
     

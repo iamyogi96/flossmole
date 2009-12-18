@@ -69,7 +69,7 @@ def run(utils,datasource_id):
                             sys.exit()
                     else:
                         print("!!!!WARNING!!!! yearstats page timed out.")
-                        utils.change_status('gather_resumes',datasource_id,unixname)
+                        utils.change_status('completed',datasource_id,unixname)
                         insert='''INSERT INTO sf_jobs (unixname,datasource_id,status,last_modified)
                         VALUES(%s,%s,%s,NOW())'''
                         utils.db_insert(insert,unixname,datasource_id,'error_year')
