@@ -37,7 +37,7 @@ def main(argv):
             print("TEST MODE ACTIVATED")
             utils=SourceForgeUtils('dbInfoTest.txt')
         except:
-            print("Please create the dbInfo.txt and the dbInfoText.txt files. See ReadMe for formatting.")
+            print("Please create the dbInfo.txt and the dbInfoTest.txt files. See ReadMe for formatting.")
             sys.exit()
         #gathering project unixnames and adding jobs to database
         try:

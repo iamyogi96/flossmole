@@ -20,6 +20,10 @@ import SourceForge60day
 import SourceForgeYear
 import SourceForgeDevelopers
 import SourceForgeResumes
+import SourceForgeMailingLists
+import SourceForgeMailingListsSpecific
+import SourceForgeMailingPagesMonthly
+import SourceForgeDonors
 
 #this method runs all necessary method for spidering sourceforge.net
 def main(argv):
@@ -44,7 +48,7 @@ Otherwise use 'F'.""")
         else:
             utils=SourceForgeUtils('dbInfo.txt')
     except:
-        print("Please create the dbInfo.txt and the dbInfoText.txt files. See ReadMe for formatting.")
+        print("Please create the dbInfo.txt and the dbInfoTest.txt files. See ReadMe for formatting.")
         sys.exit()
     
     #runs the spidering
@@ -52,6 +56,10 @@ Otherwise use 'F'.""")
     SourceForgeDevelopment.run(utils,datasource_id)
     SourceForgeDevelopers.run(utils,datasource_id)
     SourceForgeResumes.run(utils,datasource_id)
+    SourceForgeDonors.run(utils,datasource_id)
+    SourceForgeMailingLists.run(utils,datasource_id,False)
+    SourceForgeMailingListsSpecific.run(utils,datasource_id,False)
+    SourceForgeMailingPagesMonthly.run(utils,datasource_id)
     SourceForge60day.run(utils,datasource_id)
     SourceForgeYear.run(utils,datasource_id)
     

@@ -103,7 +103,7 @@ def run(utils,datasource_id):
                                 sys.exit()
                     
                     #change completed
-                    utils.change_status('gather_60day',datasource_id,unixname)
+                    utils.change_status('gather_donors',datasource_id,unixname)
                     job=utils.get_job(datasource_id,'gather_resumes')
                     if(utils.error):
                         sys.exit()  

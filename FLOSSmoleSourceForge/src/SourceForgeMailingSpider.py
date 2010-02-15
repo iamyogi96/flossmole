@@ -45,8 +45,8 @@ Otherwise use 'F'.""")
         sys.exit()
     
     #runs the spidering
-    SourceForgeMailingLists.run(utils,datasource_id)
-    SourceForgeMailingListsSpecific.run(utils,datasource_id)
+    SourceForgeMailingLists.run(utils,datasource_id,True)
+    SourceForgeMailingListsSpecific.run(utils,datasource_id,True)
     SourceForgeMailingPages.run(utils,datasource_id)
     
 main(sys.argv)

@@ -26,7 +26,7 @@ def memberlistSpider(page):
 
 def run(utils,datasource_id):
     
-    #collects the memberlist pages for each job and adds them to sv_indexes
+    #collects the memberlist pages for each job and adds them to project_indexes
     print("\nGathering memberlist pages.")
     
     #runs jobs

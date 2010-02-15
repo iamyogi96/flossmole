@@ -15,6 +15,7 @@ class SourceForgeUtils:
         try:
             dbfile = open(file_name, 'r')
         except:
+            print(traceback.format_exc())
             raise Exception("Database file error: "+file_name)
         self.host = dbfile.readline().strip()
         self.port = int(dbfile.readline().strip())

@@ -75,7 +75,6 @@ def run(utils,datasource_id):
                     print("*!!Specific Mailing List Pages do not Exist!!.")
                     
             #Change status, get job, and check for errors        
-            print("******STATUS CHANGE: completed******")
             utils.change_mailing_status('completed',datasource_id,unixname)
             job=utils.get_mailing_job(datasource_id,'gathering_messages')
             if(utils.error):
@@ -84,7 +83,6 @@ def run(utils,datasource_id):
         #If specific mailing lists don't exist, change status, get job, and check for errors
         else:
             print("!!Specific Mailing Lists do not Exist!!")
-            print('******STATUS CHANGE: completed******')
             utils.change_mailing_status('completed',datasource_id,unixname)
             job=utils.get_mailing_job(datasource_id,'gathering_messages')
             if(utils.error):

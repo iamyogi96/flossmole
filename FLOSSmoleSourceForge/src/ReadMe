@@ -3,10 +3,15 @@ All runs are passed with two arguments, as follows:
     1st. [datasource_id]
     2nd. [T/F(Test Mode Selection-Must be "T" specifically if running test mode.)]
     
-Steps 1-3 are a run set to collect all pages (excluding mailing lists) for each project. These steps
-do not depend on any other steps.
-Steps 4 and 5 are a run set to collect all mailing list pages. These steps depend on steps 1-3, 
-but do not have to be run every time run set 1-3 is run.
+Steps 1-3 are a run set to collect all pages for each project. These steps
+do not depend on any other steps. The mailing lists are collected for the month.
+Steps 4 and 5 are a run set to collect all mailing list pages from the current month 
+back to the last stored mailing list page. These steps depend on steps 1-3,
+but do not have to be run every time set 1-3 is run. When running the complete mailing list set after 
+a normal run of steps 1-3 with this updated code, there will be insert warnings for the current month's mailing lists. 
+(Items already exist in database). This warnings can be avoided by commenting out the line
+SourceForgeMailingLists.run(utils,datasource_id)
+in SourceForgeSpider.py for steps 1-3 when intending to run steps 4-5, but it is not necessary.
 
 1. Run SourceForgeJobs.py given two arguments. SourceForgeJobs.py [datasource_id] [Test Mode]
 2. Run SourceForgeSpider.py given two arguments. SourceForgespider.py [datsource_id] [Test Mode]

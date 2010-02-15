@@ -16,10 +16,10 @@ BASE_SITE='sourceforge.net/'
 
 #This spider finds the link fot the stats pag eon the development page
 def statsSpider(page):
-    match=re.search('project/stats.+?&type=.+?"',page)
+    match=re.search('group_id=.+?"',page)
     if(match!=None):
         link=match.group(0)
-        return link[0:len(link)-1]
+        return link[9:len(link)-11]
     else:
         return None
 
@@ -44,20 +44,20 @@ def run(utils,datasource_id):
             dev_page=dev_page[0]
             if(dev_page):
                 print("Finding link.")
-                link=statsSpider(dev_page)
+                id=statsSpider(dev_page)
                 
                 #inserts 60day page into project_indexes
-                if(link):
+                if(id):
                     print("Inserting 60daystats page.")
-                    stats60=utils.get_page("http://"+BASE_SITE+link+"&mode=60day")
+                    stats60=utils.get_page("http://"+BASE_SITE+"project/stats/?group_id="+id+"&ugn="+unixname+"&type&mode=60day")
                 else:
-                    print("Link was not found.")
+                    print("No group id found.")
                     stats60=None
                     
                 if(stats60 and re.search('We apologize.  The page you were looking for cannot be found.',stats60)==None):
                     i=0
                     while(re.search("Connection to statistics server timed out",stats60)!=None and i<5):
-                        stats60=utils.get_page("http://"+BASE_SITE+link+"&mode=60day")
+                        stats60=utils.get_page("http://"+BASE_SITE+"project/stats/?group_id="+id+"&ugn="+unixname+"&type&mode=60day")
                         i+=1
                     if(re.search("Connection to statistics server timed out",stats60)==None):
                         update="UPDATE project_indexes SET statistics_html=%s WHERE datasource_id=%s AND proj_unixname=%s"

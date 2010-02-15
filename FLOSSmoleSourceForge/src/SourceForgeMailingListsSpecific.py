@@ -28,11 +28,14 @@ def mailinglists_spider(page):
         return None
 
 #This method runs the main spidering for the module
-def run(utils,datasource_id):
+def run(utils,datasource_id,complete):
     print('\nGathering specific mailinglist pages.')
     
     #Gather job and check for errors
-    job=utils.get_mailing_job(datasource_id,'gathering_mailinglistsspecific')
+    if(complete):
+        job=utils.get_mailing_job(datasource_id,'gathering_mailinglistsspecific')
+    else:
+        job=utils.get_job(datasource_id,'gather_mailinglistsspecific')
     if (utils.error):
         sys.exit()
     while(job!=None):
@@ -68,27 +71,36 @@ def run(utils,datasource_id):
                         print('Link '+link+ 'either led to a faulty page or did not exist.')
                         
                 #Change status, get job, and check for errors
-                print('****STATUS CHANGE: messages****')
-                utils.change_mailing_status('gathering_messages',datasource_id,unixname)
-                job=utils.get_mailing_job(datasource_id,'gathering_mailinglistsspecific')
+                if(complete):
+                    utils.change_mailing_status('gathering_messages',datasource_id,unixname)
+                    job=utils.get_mailing_job(datasource_id,'gathering_mailinglistsspecific')
+                else:
+                    utils.change_status('gather_messages',datasource_id,unixname)
+                    job=utils.get_job(datasource_id,'gather_mailinglistsspecific')
                 if(utils.error):
                     sys.exit()
             
             #Print warning if links do not exist
             else:
                 print("!!Specific Mailing Lists do not Exist!!.")
-                print('****STATUS CHANGE: messages****')
-                utils.change_mailing_status('gathering_messages',datasource_id,unixname)
-                job=utils.get_mailing_job(datasource_id,'gathering_mailinglistsspecific')
+                if(complete):
+                    utils.change_mailing_status('gathering_messages',datasource_id,unixname)
+                    job=utils.get_mailing_job(datasource_id,'gathering_mailinglistsspecific')
+                else:
+                    utils.change_status('gather_messages',datasource_id,unixname)
+                    job=utils.get_job(datasource_id,'gather_mailinglistsspecific')
                 if(utils.error):
                     sys.exit()
                     
         #if development page does not collect properly, post error and get new job.
         else:
             print("!!!!WARNING!!!! Mailinglist page did not collect correctly.")
-            print('****STATUS CHANGE: error****')
-            utils.post_mailing_error('gathering_mailinglistsspecific:\nMailinglist gathering yielded a null response.',datasource_id,unixname)
-            job=utils.get_mailing_job(datasource_id,'gathering_mailinglistsspecific')
+            if(complete):
+                utils.post_mailing_error('gathering_mailinglistsspecific:\nMailinglist gathering yielded a null response.',datasource_id,unixname)
+                job=utils.get_mailing_job(datasource_id,'gathering_mailinglistsspecific')
+            else:
+                utils.change_status('gather_messages',datasource_id,unixname)
+                job=utils.get_job(datasource_id,'gather_mailinglistsspecific')
             if(utils.error):
                 sys.exit()
         
