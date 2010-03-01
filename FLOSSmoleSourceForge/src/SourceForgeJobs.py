@@ -72,10 +72,10 @@ def main(argv):
         try:
             print("Gathering unixnames.")
             projects_list=utils.get_projects(datasource_id)
-            print (projects_list)
             try:
                 print("Creating Jobs")
-                for project in projects_list[0:10]:
+                for project in projects_list:
+                    project=project[0]
                     print("Creating job for "+project)
                     try:
                         insert='''INSERT INTO sf_jobs (unixname,datasource_id,status,last_modified,modified_by)
