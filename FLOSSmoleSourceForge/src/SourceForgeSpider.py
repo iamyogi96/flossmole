@@ -35,7 +35,7 @@ def main(argv):
     except:
         print("""RUN INSTRUCTIONS
 Run this module from command line with the following format:
-[Interpreter] SourceForgeJobs.py [datasource_id] [Test T/F]
+[Interpreter] SourceForgeSpider.py [datasource_id] [Test T/F]
 Test is a string variable. Be sure to use a capital 'T' to denote test mode. 
 Otherwise use 'F'.""")
         sys.exit()
