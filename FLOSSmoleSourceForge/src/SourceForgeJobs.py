@@ -39,58 +39,42 @@ def main(argv):
         except:
             print("Please create the dbInfo.txt and the dbInfoTest.txt files. See ReadMe for formatting.")
             sys.exit()
-        #gathering project unixnames and adding jobs to database
-        try:
-            print("Gathering unixnames.")
-            projects_list=utils.get_projects(datasource_id)
-            try:
-                print("Creating Jobs")
-                for project in projects_list[0:50]:
-                    project=project[0]
-                    print("Creating job for "+project)
-                    try:
-                        insert='''INSERT INTO sf_jobs (unixname,datasource_id,status,last_modified,modified_by)
-                        VALUES(%s,%s,'gather_index',NOW(),%s)'''
-                        utils.db_insert(insert,project,datasource_id,socket.gethostname())
-                    except:
-                        print('!!!!WARNING!!!! Job creation failed for '+project+'.')
-                        print(traceback.format_exc())
-            except:
-                print('!!!!WARNING!!!! Jobs did not create succesfully')
-                print(traceback.format_exc())
-        except:
-            print('!!!!WARNING!!!! Projects unixnames not collected properly.')
-            print(traceback.format_exc())
-    
     else:
         try:
             utils=SourceForgeUtils('dbInfo.txt')
         except:
             print("Please create the dbInfo.txt and the dbInfoText.txt files. See ReadMe for formatting.")
-            sys.exit()
-        #gathering project unixnames and adding jobs to database
+            sys.exit()   
+        
+    #gathering project unixnames
+    try:
+        print("Gathering unixnames.")
+        projects_list=utils.get_projects(datasource_id)
+        
+        #checks test mode for project amount to be collected
+        if(test=='T'):
+            end=50
+        else:
+            end=len(projects_list)
+        
+        #adds jobs to database
         try:
-            print("Gathering unixnames.")
-            projects_list=utils.get_projects(datasource_id)
-            try:
-                print("Creating Jobs")
-                for project in projects_list:
-                    project=project[0]
-                    print("Creating job for "+project)
-                    try:
-                        insert='''INSERT INTO sf_jobs (unixname,datasource_id,status,last_modified,modified_by)
-                        VALUES(%s,%s,'gather_index',NOW(),%s)'''
-                        utils.db_insert(insert,project,datasource_id,socket.gethostname())
-                    except:
-                        print('!!!!WARNING!!!! Job creation failed for '+project+'.')
-                        print(traceback.format_exc())
-            except:
-                print('!!!!WARNING!!!! Jobs did not create succesfully')
-                print(traceback.format_exc())
+            print("Creating Jobs")
+            for project in projects_list[0:end]:
+                project=project[0]
+                print("Creating job for "+project)
+                try:
+                    insert='''INSERT INTO sf_jobs (unixname,datasource_id,status,last_modified,modified_by)
+                    VALUES(%s,%s,'gather_index',NOW(),%s)'''
+                    utils.db_insert(insert,project,datasource_id,socket.gethostname())
+                except:
+                    print('!!!!WARNING!!!! Job creation failed for '+project+'.')
+                    print(traceback.format_exc())
         except:
-            print('!!!!WARNING!!!! Projects unixnames not collected properly.')
+            print('!!!!WARNING!!!! Jobs did not create succesfully')
             print(traceback.format_exc())
-            
-
+    except:
+        print('!!!!WARNING!!!! Projects unixnames not collected properly.')
+        print(traceback.format_exc())
     
 main(sys.argv)
