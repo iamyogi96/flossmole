@@ -97,14 +97,12 @@ def run(utils,datasource_id):
                         #inserts messages into database
                         if(messages):
                             for link in messages:
-                                print link
                                 time.sleep(3)
                                 date=link[0]
                                 link=link[1]
                                 date=date.split("-")
                                 
                                 #checks for current month and year on message
-                                print(date[0]+":"+time.strftime("%Y")+"---"+date[1]+":"+time.strftime("%m"))
                                 if(date[0]==time.strftime("%Y") and date[1]==time.strftime("%m")):
                                     mId=messageIdSpider(link)
                                     dId=discussionIdSpider(link)
