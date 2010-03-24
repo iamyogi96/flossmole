@@ -77,7 +77,7 @@ def run(utils,datasource_id):
                             x+=1
                             
                         #changes status, gets new job, and checks for errors
-                        utils.change_status('gather_messages',datasource_id,unixname)
+                        utils.change_status('gather_messages','gather_discussions_specific',datasource_id,unixname)
                         job=utils.get_job(datasource_id,'gather_discussions_specific')
                         if (utils.error):
                             sys.exit()
@@ -93,7 +93,7 @@ def run(utils,datasource_id):
                 #if discussions holds no specific discussions, post warning and get new job
                 else:
                     print "\t!!Warning No specific discussions existed for "+unixname
-                    utils.change_status('gather_messages',datasource_id,unixname)
+                    utils.change_status('gather_messages','gather_discussions_specific',datasource_id,unixname)
                     job=utils.get_job(datasource_id,'gather_discussions_specific')
                     if(utils.error):
                         sys.exit() 
@@ -101,7 +101,7 @@ def run(utils,datasource_id):
             #if discussions page is not found, posts warning and gets new job
             else:
                 print "\t!!Warning Discussions page could not be collected or did not exist for "+unixname
-                utils.change_status('gather_messages',datasource_id,unixname)
+                utils.change_status('gather_messages','gather_discussions_specific',datasource_id,unixname)
                 job=utils.get_job(datasource_id,'gather_discussions_specific')
                 if(utils.error):
                     sys.exit()

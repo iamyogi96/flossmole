@@ -18,6 +18,7 @@ def messagesSpider(page):
         linksRaw=re.findall("<a href='viewMessage\.do.+?'>",page)
         for link in linksRaw:
             link=link[9:len(link)-2]
+            link=link.replace("&amp;","&")
             links.append(link)
         return links
     except:
@@ -26,7 +27,7 @@ def messagesSpider(page):
 #Spiders the id of the message from the given link
 def messageIdSpider(link):
     try:
-        id=re.search("dsMessageId=.+?$",link)
+        id=re.search("dsMessageId=.+",link)
         id=id.group(0)
         id=id[12:]
         return id
@@ -36,9 +37,9 @@ def messageIdSpider(link):
 #Spiders the id of the discussion from the given link 
 def discussionIdSpider(link):
     try:
-        id=re.search("dsForumId=.+?&amp",link)
+        id=re.search("dsForumId=.+?&",link)
         id=id.group(0)
-        id=id[10:len(id)-4]
+        id=id[10:len(id)-1]
         return id
     except:
         return None
@@ -94,7 +95,8 @@ def run(utils,datasource_id):
                                 time.sleep(3)
                                 mId=messageIdSpider(link)
                                 dId=discussionIdSpider(link)
-                                print "\t\t\tGathering page for message id "+mId+" at discussion id "+dId
+                                print "\t\t\tGathering page for message id "+mId+" at discussion id "+dId+" for project "+unixname
+                                print "\t\t\tUsing link "+link
                                 message=utils.get_page("http://"+unixname+".tigris.org/ds/"+link)
                                 print "\t\t\tInserting into database."
                                 insert="""INSERT INTO tg_messages_indexes (unixname,datasource_id,discussion_id,message_id,html,last_modified)
@@ -120,7 +122,7 @@ def run(utils,datasource_id):
                                 next=False;
                 
                 #changes status, gets new job, and checks for errors
-                utils.change_status('completed',datasource_id,unixname)
+                utils.change_status('completed','gather_messages',datasource_id,unixname)
                 job=utils.get_job(datasource_id,'gather_messages')
                 if (utils.error):
                     sys.exit()
@@ -128,7 +130,7 @@ def run(utils,datasource_id):
             #If specific message pages do not exist, print warning, change status, and get new job
             else:
                 print "!! Specific discussions pages do not exist."
-                utils.change_status('completed',datasource_id,unixname)
+                utils.change_status('completed','gather_messages',datasource_id,unixname)
                 job=utils.get_job(datasource_id,'gather_messages')
                 if (utils.error):
                     sys.exit()

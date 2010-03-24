@@ -37,7 +37,7 @@ def run(utils,datasource_id):
                 utils.db_insert(update,memberlist,datasource_id,unixname)
                 
                 #changes status, gets new job, and checks for errors
-                utils.change_status('gather_discussions',datasource_id,unixname)
+                utils.change_status('gather_discussions','gather_memberlist',datasource_id,unixname)
                 job=utils.get_job(datasource_id,'gather_memberlist')
                 if (utils.error):
                     sys.exit()

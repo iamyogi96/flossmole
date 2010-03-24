@@ -19,11 +19,11 @@ Two text files must be created in order to run both test mode and the non-test m
 
 dbInfo.txt & dbInfoTest.txt:
 
-databasename
+hostname
 port#
 username
 password
-tablename
+databasename
 
 
    

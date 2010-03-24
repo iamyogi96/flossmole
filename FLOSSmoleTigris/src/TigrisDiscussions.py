@@ -38,7 +38,7 @@ def run(utils,datasource_id):
                 utils.db_insert(update,discussions,datasource_id,unixname)
                 
                 #changes status, gets new job, and checks for errors
-                utils.change_status('gather_discussions_specific',datasource_id,unixname)
+                utils.change_status('gather_discussions_specific','gather_discussions',datasource_id,unixname)
                 job=utils.get_job(datasource_id,'gather_discussions')
                 if (utils.error):
                     sys.exit()
@@ -46,7 +46,7 @@ def run(utils,datasource_id):
             #if discussions page is not found, posts error and gets new job
             else:
                 print "!!!!WARNING!!!! Discussions Page either did not exist or failed to collect for "+unixname
-                utils.change_status('gather_discussions_specific',datasource_id,unixname)
+                utils.change_status('gather_discussions_specific','gather_discussions',datasource_id,unixname)
                 job=utils.get_job(datasource_id,'gather_discussions')
                 if(utils.error):
                     sys.exit()

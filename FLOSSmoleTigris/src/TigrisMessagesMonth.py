@@ -16,8 +16,13 @@ def messagesSpider(page):
 
     try:
         find=re.compile("<a href='(viewMessage\.do.+?)'>.+?(\d\d\d\d-\d\d-\d\d).+?</span>",re.DOTALL)
-        links=find.findall(page)
-        if(links):
+        linksNeedReplace=find.findall(page)
+        if(linksNeedReplace):
+            links=[]
+            for link in linksNeedReplace:
+                date=link[1]
+                linkReplaced=link[0].replace("&amp;","&")
+                links.append((date,linkReplaced))
             return links
         else:
             return None
@@ -27,7 +32,7 @@ def messagesSpider(page):
 #Spiders the id of the message from the given link
 def messageIdSpider(link):
     try:
-        id=re.search("dsMessageId=.+?$",link)
+        id=re.search("dsMessageId=.+",link)
         id=id.group(0)
         id=id[12:]
         return id
@@ -37,9 +42,9 @@ def messageIdSpider(link):
 #Spiders the id of the discussion from the given link 
 def discussionIdSpider(link):
     try:
-        id=re.search("dsForumId=.+?&amp",link)
+        id=re.search("dsForumId=.+?&",link)
         id=id.group(0)
-        id=id[10:len(id)-4]
+        id=id[10:len(id)-1]
         return id
     except:
         return None
@@ -92,16 +97,19 @@ def run(utils,datasource_id):
                         #inserts messages into database
                         if(messages):
                             for link in messages:
+                                print link
                                 time.sleep(3)
-                                date=link[1]
-                                link=link[0]
+                                date=link[0]
+                                link=link[1]
                                 date=date.split("-")
                                 
                                 #checks for current month and year on message
+                                print(date[0]+":"+time.strftime("%Y")+"---"+date[1]+":"+time.strftime("%m"))
                                 if(date[0]==time.strftime("%Y") and date[1]==time.strftime("%m")):
                                     mId=messageIdSpider(link)
                                     dId=discussionIdSpider(link)
-                                    print "\t\t\tGathering page for message id "+mId+" at discussion id "+dId
+                                    print "\t\t\tGathering page for message id "+mId+" at discussion id "+dId+" for project "+unixname
+                                    print "\t\t\tUsing link "+link
                                     message=utils.get_page("http://"+unixname+".tigris.org/ds/"+link)
                                     print "\t\t\tInserting into database."
                                     insert="""INSERT INTO tg_messages_indexes (unixname,datasource_id,discussion_id,message_id,html,last_modified)
@@ -132,7 +140,7 @@ def run(utils,datasource_id):
                                 next=False;
                 
                 #changes status, gets new job, and checks for errors
-                utils.change_status('completed',datasource_id,unixname)
+                utils.change_status('completed','gather_messages',datasource_id,unixname)
                 job=utils.get_job(datasource_id,'gather_messages')
                 if (utils.error):
                     sys.exit()
@@ -140,7 +148,7 @@ def run(utils,datasource_id):
             #If specific message pages do not exist, print warning, change status, and get new job
             else:
                 print "!! Specific discussions pages do not exist."
-                utils.change_status('completed',datasource_id,unixname)
+                utils.change_status('completed','gather_messages',datasource_id,unixname)
                 job=utils.get_job(datasource_id,'gather_messages')
                 if (utils.error):
                     sys.exit()

@@ -12,16 +12,21 @@ import socket
 class TigrisUtils:
     #this gathers the initial connection to the database
     def __init__(self,file_name):
-        try:
-            dbfile = open(file_name, 'r')
-        except:
-            print(traceback.format_exc())
-            raise Exception("Database file error: "+file_name)
-        self.host = dbfile.readline().strip()
-        self.port = int(dbfile.readline().strip())
-        self.username = dbfile.readline().strip()
-        self.password = dbfile.readline().strip()
-        self.database = dbfile.readline().strip()
+       # try:
+        #    dbfile = open(file_name, 'r')
+        #except:
+         #   print(traceback.format_exc())
+          #  raise Exception("Database file error: "+file_name)
+        #self.host = dbfile.readline().strip()
+        #self.port = int(dbfile.readline().strip())
+        #self.username = dbfile.readline().strip()
+        #self.password = dbfile.readline().strip()
+        #self.database = dbfile.readline().strip()
+        self.host="grid0.cs.elon.edu"
+        self.port=8888
+        self.username="snorris4"
+        self.password="thejoker"
+        self.database="test"
         self.db=MySQLdb.connect(host=self.host, user=self.username, passwd=self.password, db=self.database)
         self.cursor = self.db.cursor()
         self.error=False
@@ -56,6 +61,7 @@ class TigrisUtils:
             FROM tg_jobs AS t
             WHERE status = %s
             AND datasource_id = %s
+            ORDER BY unixname
             LIMIT 1'''
         update='''UPDATE tg_jobs AS t SET status='In_Progress', last_modified=NOW()
         WHERE datasource_id=%s
@@ -74,14 +80,14 @@ class TigrisUtils:
             self.cursor.execute(unlock)     
    
     #this method allows for status changes
-    def change_status(self,status,datasource_id,unixname):
+    def change_status(self,status,previous,datasource_id,unixname):
         update='''UPDATE tg_jobs 
-        SET status=%s, last_modified=NOW(), modified_by=%s
+        SET status=%s, previous_stage=%s, last_modified=NOW(), modified_by=%s
         WHERE datasource_id=%s 
         AND unixname=%s
         '''
         try:
-            self.cursor.execute(update,(status,socket.gethostname(),datasource_id,unixname))
+            self.cursor.execute(update,(status,previous,socket.gethostname(),datasource_id,unixname))
         except:
             print('!!!!WARNING!!!! Status '+status+' did not update correctly for '+unixname+' with id '+datasource_id+'.')
             print(traceback.format_exc())
