@@ -40,7 +40,7 @@ def main(argv):
     job=utils.get_job(datasource_id,'error_60day')
     while(job!=None):
         unixname=job[0]
-        utils.change_status('gather_60day',datasource_id,unixname)
+        utils.change_status('gather_60day','error_60day',datasource_id,unixname)
         job=utils.get_job(datasource_id,'error_60day')
         if(utils.error):
             sys.exit()
@@ -50,12 +50,12 @@ def main(argv):
     job=utils.get_job(datasource_id,'error_year')
     while(job!=None):
         unixname=job[0]
-        utils.change_status('gather_60day',datasource_id,unixname)
-        job=utils.get_job(datasource_id,'error_60day')
+        utils.change_status('gather_year','error_year',datasource_id,unixname)
+        job=utils.get_job(datasource_id,'error_year')
         if(utils.error):
             sys.exit()
     
-    SourceForgeYear.run(datasource_id,'error_year')
+    SourceForgeYear.run(utils,datasource_id)
     
 main(sys.argv)
         

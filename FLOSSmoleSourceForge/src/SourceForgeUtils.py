@@ -55,7 +55,8 @@ class SourceForgeUtils:
         select = '''SELECT unixname
             FROM sf_jobs AS t
             WHERE status = %s
-            AND datasource_id = %s
+            AND datasource_id = %s 
+            ORDER BY unixname
             LIMIT 1'''
         update='''UPDATE sf_jobs AS t SET status='In_Progress', last_modified=NOW()
         WHERE datasource_id=%s
@@ -101,14 +102,14 @@ class SourceForgeUtils:
             
     
     #this method allows for status changes
-    def change_status(self,status,datasource_id,unixname):
+    def change_status(self,status,previous,datasource_id,unixname):
         update='''UPDATE sf_jobs 
-        SET status=%s, last_modified=NOW(), modified_by=%s
+        SET status=%s, last_modified=NOW(), previous_stage=%s, modified_by=%s
         WHERE datasource_id=%s 
         AND unixname=%s
         '''
         try:
-            self.cursor.execute(update,(status,socket.gethostname(),datasource_id,unixname))
+            self.cursor.execute(update,(status,previous,socket.gethostname(),datasource_id,unixname))
         except:
             print('!!!!WARNING!!!! Status '+status+' did not update correctly for '+unixname+' with id '+datasource_id+'.')
             print(traceback.format_exc())

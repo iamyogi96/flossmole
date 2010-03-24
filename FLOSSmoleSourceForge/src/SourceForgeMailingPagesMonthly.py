@@ -16,12 +16,15 @@ BASE_SITE='sourceforge.net/'
 
 def mailing_month(page,yearMonth):
     final_match=None
-    matches=re.findall('forum.php\?forum_name=.+?&amp;max_rows=.+?&amp;style=.+?&amp;viewmonth=.+?"',page)
+    matches=re.findall('(forum.php\?forum_name=.+?&amp;max_rows=.+?&amp;style=.+?&amp;viewmonth=.+?)">\((\d+?)\)</a>',page)
     if matches:
-        match=matches[0]
-        final_match=(match[0:match.find('max_rows')+10]+'3000'+
-                                 match[match.find('&amp;style='):match.find('&amp;style=')+12]+'flat'+
-                                 match[match.find('&amp;viewmonth='):match.find('&amp;viewmonth=')+16]+yearMonth)
+        matchSet=matches[0]
+        match=matchSet[0]
+        num=matchSet[1]
+        match=match.replace('&amp;','&')
+        final_match=(match[0:match.find('max_rows')+10]+num+
+                                 match[match.find('&style='):match.find('&style=')+7]+'flat'+
+                                 match[match.find('&viewmonth='):match.find('&viewmonth=')+12]+yearMonth)
     return final_match
 
 def run(utils,datasource_id):
@@ -56,6 +59,7 @@ def run(utils,datasource_id):
                     month=month_link[len(month_link)-2:]
                     time.sleep(3)
                     print('**Collecting for '+month+':'+year)
+                    print('**Using link: '+month_link)
                     page=utils.get_page('http://'+BASE_INDEX+month_link)
                     
                     #Insert each page into databse
@@ -75,7 +79,7 @@ def run(utils,datasource_id):
                     print("*!!Specific Mailing List Pages do not Exist!!.")
                     
             #Change status, get job, and check for errors        
-            utils.change_status('gather_60day',datasource_id,unixname)
+            utils.change_status('gather_60day','gather_messages',datasource_id,unixname)
             job=utils.get_job(datasource_id,'gather_messages')
             if(utils.error):
                 sys.exit()
@@ -83,7 +87,7 @@ def run(utils,datasource_id):
         #If specific mailing lists don't exist, change status, get job, and check for errors
         else:
             print("!!Specific Mailing Lists do not Exist!!")
-            utils.change_status('gather_60day',datasource_id,unixname)
+            utils.change_status('gather_60day','gather_messages',datasource_id,unixname)
             job=utils.get_job(datasource_id,'gather_messages')
             if(utils.error):
                 sys.exit()

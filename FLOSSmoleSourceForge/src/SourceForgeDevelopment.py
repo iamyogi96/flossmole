@@ -54,7 +54,7 @@ def run(utils,datasource_id):
                 if(development and re.search('We apologize.  The page you were looking for cannot be found.',development)==None):
                     update="UPDATE project_indexes SET development_html=%s WHERE datasource_id=%s AND proj_unixname=%s"
                     utils.db_insert(update,development,datasource_id,unixname)
-                    utils.change_status('gather_memberlist',datasource_id,unixname)
+                    utils.change_status('gather_memberlist','gather_development',datasource_id,unixname)
                     job=utils.get_job(datasource_id,'gather_development')
                     if(utils.error):
                         sys.exit()

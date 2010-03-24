@@ -62,13 +62,13 @@ def run(utils,datasource_id):
                     if(re.search("Connection to statistics server timed out",stats60)==None):
                         update="UPDATE project_indexes SET statistics_html=%s WHERE datasource_id=%s AND proj_unixname=%s"
                         utils.db_insert(update,stats60,datasource_id,unixname)
-                        utils.change_status('gather_year',datasource_id,unixname)
+                        utils.change_status('gather_year','gather_60day',datasource_id,unixname)
                         job=utils.get_job(datasource_id,'gather_60day')
                         if(utils.error):
                             sys.exit()
                     else:
                         print("!!!!WARNING!!!! 60daystats page timed out.")
-                        utils.change_status('gather_year',datasource_id,unixname)
+                        utils.change_status('gather_year','gather_60day',datasource_id,unixname)
                         utils.post_error('gather_60day:\n60daystats page timed out.',datasource_id,unixname)
                         insert='''INSERT INTO sf_jobs (unixname,datasource_id,status,last_modified)
                         VALUES(%s,%s,%s,NOW())'''
@@ -80,7 +80,7 @@ def run(utils,datasource_id):
                 #if 60day insertion fails posts error, gets job, and checks for errors
                 else:
                     print("60daystats page does not exist.")
-                    utils.change_status('gather_year',datasource_id,unixname)
+                    utils.change_status('gather_year','gather_60day',datasource_id,unixname)
                     job=utils.get_job(datasource_id,'gather_60day')
                     if(utils.error):
                         sys.exit()

@@ -24,6 +24,7 @@ import SourceForgeMailingLists
 import SourceForgeMailingListsSpecific
 import SourceForgeMailingPagesMonthly
 import SourceForgeDonors
+import SourceForgeMailingPages
 
 #this method runs all necessary method for spidering sourceforge.net
 def main(argv):
@@ -32,12 +33,14 @@ def main(argv):
     try:
         datasource_id=argv[1]
         test=argv[2]
+        mailing=argv[3]
     except:
         print("""RUN INSTRUCTIONS
 Run this module from command line with the following format:
-[Interpreter] SourceForgeSpider.py [datasource_id] [Test T/F]
+[Interpreter] SourceForgeSpider.py [datasource_id] [Test T/F] [Mailing Collection A/M]
 Test is a string variable. Be sure to use a capital 'T' to denote test mode. 
-Otherwise use 'F'.""")
+Otherwise use 'F'. Mailing Collection is a string variable. Be sure to use a capital 'A'
+to dentoe collection of all messages. Otherwise use 'M' to denote collection for just this month.""")
         sys.exit()
     
     #Checks for test mode
@@ -57,9 +60,12 @@ Otherwise use 'F'.""")
     SourceForgeDevelopers.run(utils,datasource_id)
     SourceForgeResumes.run(utils,datasource_id)
     SourceForgeDonors.run(utils,datasource_id)
-    SourceForgeMailingLists.run(utils,datasource_id,False)
-    SourceForgeMailingListsSpecific.run(utils,datasource_id,False)
-    SourceForgeMailingPagesMonthly.run(utils,datasource_id)
+    SourceForgeMailingLists.run(utils,datasource_id)
+    SourceForgeMailingListsSpecific.run(utils,datasource_id)
+    if(mailing=='A'):
+        SourceForgeMailingPages.run(utils,datasource_id)
+    else:
+        SourceForgeMailingPagesMonthly.run(utils,datasource_id)
     SourceForge60day.run(utils,datasource_id)
     SourceForgeYear.run(utils,datasource_id)
     

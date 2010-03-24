@@ -63,13 +63,13 @@ def run(utils,datasource_id):
                         update="UPDATE project_indexes SET all_time_stats_html=%s WHERE datasource_id=%s AND proj_unixname=%s"
                         utils.db_insert(update,year,datasource_id,unixname)
                         #changed gather_resumes
-                        utils.change_status('completed',datasource_id,unixname)
+                        utils.change_status('completed','gather_year',datasource_id,unixname)
                         job=utils.get_job(datasource_id,'gather_year')
                         if(utils.error):
                             sys.exit()
                     else:
                         print("!!!!WARNING!!!! yearstats page timed out.")
-                        utils.change_status('completed',datasource_id,unixname)
+                        utils.change_status('completed','gather_year',datasource_id,unixname)
                         insert='''INSERT INTO sf_jobs (unixname,datasource_id,status,last_modified)
                         VALUES(%s,%s,%s,NOW())'''
                         utils.db_insert(insert,unixname,datasource_id,'error_year')
@@ -80,7 +80,7 @@ def run(utils,datasource_id):
                 #if yearstats insertion fails posts error, gets job, and checks for errors
                 else:
                     print("yearstats page does not exist.")
-                    utils.change_status('completed',datasource_id,unixname)
+                    utils.change_status('completed','gather_year',datasource_id,unixname)
                     job=utils.get_job(datasource_id,'gather_year')
                     if(utils.error):
                         sys.exit()
