@@ -12,21 +12,16 @@ import socket
 class TigrisUtils:
     #this gathers the initial connection to the database
     def __init__(self,file_name):
-       # try:
-        #    dbfile = open(file_name, 'r')
-        #except:
-         #   print(traceback.format_exc())
-          #  raise Exception("Database file error: "+file_name)
-        #self.host = dbfile.readline().strip()
-        #self.port = int(dbfile.readline().strip())
-        #self.username = dbfile.readline().strip()
-        #self.password = dbfile.readline().strip()
-        #self.database = dbfile.readline().strip()
-        self.host="grid0.cs.elon.edu"
-        self.port=8888
-        self.username="snorris4"
-        self.password="thejoker"
-        self.database="test"
+        try:
+            dbfile = open(file_name, 'r')
+        except:
+            print(traceback.format_exc())
+            raise Exception("Database file error: "+file_name)
+        self.host = dbfile.readline().strip()
+        self.port = int(dbfile.readline().strip())
+        self.username = dbfile.readline().strip()
+        self.password = dbfile.readline().strip()
+        self.database = dbfile.readline().strip()
         self.db=MySQLdb.connect(host=self.host, user=self.username, passwd=self.password, db=self.database)
         self.cursor = self.db.cursor()
         self.error=False

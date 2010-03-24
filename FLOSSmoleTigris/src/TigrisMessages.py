@@ -91,7 +91,7 @@ def run(utils,datasource_id):
                         
                         #inserts messages into database
                         if(messages):
-                            for link in messages:
+                            for link in messages[0:1]:
                                 time.sleep(3)
                                 mId=messageIdSpider(link)
                                 dId=discussionIdSpider(link)
@@ -141,3 +141,6 @@ def run(utils,datasource_id):
             job=utils.get_job(datasource_id,'gather_messages')
             if(utils.error):
                 sys.exit()
+    
+        
+        
