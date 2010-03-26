@@ -91,7 +91,7 @@ def run(utils,datasource_id):
                         
                         #inserts messages into database
                         if(messages):
-                            for link in messages[0:1]:
+                            for link in messages:
                                 time.sleep(3)
                                 mId=messageIdSpider(link)
                                 dId=discussionIdSpider(link)
