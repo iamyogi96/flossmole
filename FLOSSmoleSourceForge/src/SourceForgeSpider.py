@@ -40,7 +40,7 @@ Run this module from command line with the following format:
 [Interpreter] SourceForgeSpider.py [datasource_id] [Test T/F] [Mailing Collection A/M]
 Test is a string variable. Be sure to use a capital 'T' to denote test mode. 
 Otherwise use 'F'. Mailing Collection is a string variable. Be sure to use a capital 'A'
-to dentoe collection of all messages. Otherwise use 'M' to denote collection for just this month.""")
+to denote collection of all messages. Otherwise use 'M' to denote collection for just this month.""")
         sys.exit()
     
     #Checks for test mode
