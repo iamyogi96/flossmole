@@ -24,10 +24,9 @@ def main(argv):
     except:
         print("""RUN INSTRUCTIONS
     Run this module from command line with the following format:
-    [Interpreter] TigrisSpider.py [datasource_id] [Test T/F] [Mailing M/A]
+    [Interpreter] TigrisCleanUp.py [datasource_id] [Test T/F]
     Test is a string variable. Be sure to use a capital 'T' to denote test mode. 
-    Otherwise use 'F'. Also, use a capital 'A' to indicate collect all mail, otherwise use 'M'
-    for only the month of the run to be collected.""")
+    Otherwise use 'F'.""")
         sys.exit()
     
     #Checks for test mode
