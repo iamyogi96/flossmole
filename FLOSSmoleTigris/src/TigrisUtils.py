@@ -58,7 +58,7 @@ class TigrisUtils:
             AND datasource_id = %s
             ORDER BY unixname
             LIMIT 1'''
-        update='''UPDATE tg_jobs AS t SET status='In_Progress', last_modified=NOW()
+        update='''UPDATE tg_jobs AS t SET status='In_Progress', previous_stage=%s, last_modified=NOW()
         WHERE datasource_id=%s
         AND unixname=%s
         '''
@@ -67,7 +67,7 @@ class TigrisUtils:
             self.cursor.execute(lock)
             self.cursor.execute(select, (status,datasource_id))
             result = self.cursor.fetchone()
-            self.cursor.execute(update,(datasource_id, result[0]))
+            self.cursor.execute(update,(status,datasource_id, result[0]))
             self.cursor.execute(unlock)
             return result
         except:
@@ -121,3 +121,76 @@ class TigrisUtils:
         except:
             print("!!!!WARNING!!!! Collecting specific discussions pages failed.")
             print(traceback.format_exc())
+            
+    '''
+    This method provides the ability to get a clean up job from the job database.
+    '''
+    def get_cleanup_job(self, datasource_id, previousStage):
+        lock = '''LOCK TABLE tg_jobs READ, tg_jobs AS t WRITE'''
+        select = '''SELECT unixname
+            FROM tg_jobs AS t
+            WHERE status = 'In_Progress'
+            AND datasource_id = %s
+            AND previous_stage = %s
+            ORDER BY unixname
+            LIMIT 1'''
+        update='''UPDATE tg_jobs AS t SET status='Clean_Up', last_modified=NOW()
+        WHERE datasource_id=%s
+        AND unixname=%s
+        '''
+        unlock = '''UNLOCK TABLES'''
+        try:
+            self.cursor.execute(lock)
+            self.cursor.execute(select, (datasource_id,previousStage))
+            result = self.cursor.fetchone()
+            self.cursor.execute(update,(datasource_id, result[0]))
+            self.cursor.execute(unlock)
+            return result
+        except:
+            print ("Finding job failed.")
+            self.cursor.execute(unlock)
+    
+    #This method allows for the deletion of a project from the tg_project_indexes
+    def delete_index(self,unixname,datasource_id):
+        try:
+            update="""DELETE FROM tg_project_indexes WHERE unixname=%s AND datasource_id=%s"""
+            self.cursor.execute(update,(unixname,datasource_id))
+        except:
+            print("!!!!WARNING!!!! Deletion of index failed.")
+            print (traceback.format_exc())
+            
+    #This method allows for the deletion of a memberlist page for a project from the tg_project_indexes
+    def delete_memberlist(self,unixname,datasource_id):
+        try:
+            update="""UPDATE tg_project_indexes SET memberlisthtml=NULL WHERE unixname=%s AND datasource_id=%s"""
+            self.cursor.execute(update,(unixname,datasource_id))
+        except:
+            print("!!!!WARNING!!!! Deletion of memberlist failed.")
+            print (traceback.format_exc())
+            
+    #This method allows for the deletion of a discussions page for a project from the tg_project_indexes
+    def delete_discussions(self,unixname,datasource_id):
+        try:
+            update="""UPDATE tg_project_indexes SET discussionshtml=NULL WHERE unixname=%s AND datasource_id=%s"""
+            self.cursor.execute(update,(unixname,datasource_id))
+        except:
+            print("!!!!WARNING!!!! Deletion of discussions failed.")
+            print (traceback.format_exc())
+            
+    #This method allows for the deletion of a discussions specific pages for a project from the tg_project_indexes
+    def delete_discussions_specific(self,unixname,datasource_id):
+        try:
+            update="""DELETE FROM tg_discussions_indexes WHERE unixname=%s AND datasource_id=%s"""
+            self.cursor.execute(update,(unixname,datasource_id))
+        except:
+            print("!!!!WARNING!!!! Deletion of discussions specific failed.")
+            print (traceback.format_exc())
+            
+    #This method allows for the deletion of a message pages for a project from the tg_project_indexes
+    def delete_messages(self,unixname,datasource_id):
+        try:
+            update="""DELETE FROM tg_messages_indexes WHERE unixname=%s AND datasource_id=%s"""
+            self.cursor.execute(update,(unixname,datasource_id))
+        except:
+            print("!!!!WARNING!!!! Deletion of discussions specific failed.")
+            print (traceback.format_exc())
