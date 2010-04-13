@@ -43,7 +43,6 @@ def run(utils,datasource_id):
             #if page does not collect properly, posts error, gets new job, and checks for errors
             else:
                 print("!!!!WARNING!!!! Index gathering failed for "+unixname)
-                print(unixname)
                 utils.post_error('gather_index: \nIndex either did not exist or led to faulty page.' ,datasource_id,unixname)
                 job=utils.get_job(datasource_id,'gather_index')
                 if(utils.error):
@@ -52,7 +51,7 @@ def run(utils,datasource_id):
         #if index process fails, posts error, gets new job, and checks for errors   
         except:
             print("!!!!WARNING!!! Index collection failed")
-            utils.post_error('gahter_index:\n'+traceback.format_exc(),datasource_id,unixname)
+            utils.post_error('gather_index:\n'+traceback.format_exc(),datasource_id,unixname)
             job=utils.get_job(datasource_id,'gather_index')
             if(utils.error):
                 sys.exit()
