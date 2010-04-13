@@ -1,5 +1,0 @@
-grid0.cs.elon.edu
-8888
-snorris4
-thejoker
-test
