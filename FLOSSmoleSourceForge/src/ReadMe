@@ -9,9 +9,11 @@ Spider runs are passed with three arguments, as follows:
     3rd. [M/A(Mailing Mode-Must be "A" specificially if collecting for all months and "M" for monthly collection.)]
 
 1. Run SourceForgeJobs.py given two arguments. SourceForgeJobs.py [datasource_id] [Test Mode]
-2. Run SourceForgeSpider.py given two arguments. SourceForgespider.py [datsource_id] [Test Mode][Mailing Mode]
+2. Run SourceForgeSpider.py given three arguments. SourceForgeSpider.py [datsource_id] [Test Mode][Mailing Mode]
 3. Run SourceForgeErrorFix.py given two arguments. SourceForgeErrorFix.py [datasource_id] [Test Mode]
     (Error fix will regather any statistic pages that failed to collect due to time out.)
+4. Run SourceForgeCleanUp.py given two arguments. SourceForgeJobs.py [datasource_id] [Test Mode]
+5. Rerun SourceForgeSpider.py given three arguments. SourceForgeSpider.py [datsource_id] [Test Mode][Mailing Mode]
 
 
 SourceForge Jobs.py-creates jobs to be run from a pre-processed projects list
