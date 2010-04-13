@@ -12,13 +12,14 @@ Spider runs are passed with three arguments, as follows:
 2. Run SourceForgeSpider.py given three arguments. SourceForgeSpider.py [datsource_id] [Test Mode][Mailing Mode]
 3. Run SourceForgeErrorFix.py given two arguments. SourceForgeErrorFix.py [datasource_id] [Test Mode]
     (Error fix will regather any statistic pages that failed to collect due to time out.)
-4. Run SourceForgeCleanUp.py given two arguments. SourceForgeJobs.py [datasource_id] [Test Mode]
+4. Run SourceForgeCleanUp.py given two arguments. SourceForgeCleanUp.py [datasource_id] [Test Mode]
 5. Rerun SourceForgeSpider.py given three arguments. SourceForgeSpider.py [datsource_id] [Test Mode][Mailing Mode]
 
 
 SourceForge Jobs.py-creates jobs to be run from a pre-processed projects list
 SourceForgeSpider.py-spiders pages based on pre-processed jobs list
 SourceForgeErrorFix.py-reruns necessary jobs due to timeout errors
+SourceForgeCleanUp.py-resets jobs stuck In_Progress due to machine error
 
 Two text files must be created in order to run both test mode and the non-test mode. The format is as follows
 
