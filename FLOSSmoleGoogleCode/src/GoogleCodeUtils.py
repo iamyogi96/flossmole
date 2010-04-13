@@ -146,4 +146,84 @@ class GoogleCodeUtils:
             print("!!!!WARNING!!!! Collecting issue ids failed.")
             print(traceback.format_exc())
     
+    '''
+    This method provides the ability to get a clean up job from the job database.
+    '''
+    def get_cleanup_job(self, datasource_id, previousStage):
+        lock = '''LOCK TABLE gc_jobs READ, gc_jobs AS t WRITE'''
+        select = '''SELECT unixname
+            FROM gc_jobs AS t
+            WHERE status = 'In_Progress'
+            AND datasource_id = %s
+            AND previous_stage = %s
+            ORDER BY unixname
+            LIMIT 1'''
+        update='''UPDATE gc_jobs AS t SET status='Clean_Up', last_modified=NOW()
+        WHERE datasource_id=%s
+        AND unixname=%s
+        '''
+        unlock = '''UNLOCK TABLES'''
+        try:
+            self.cursor.execute(lock)
+            self.cursor.execute(select, (datasource_id,previousStage))
+            result = self.cursor.fetchone()
+            self.cursor.execute(update,(datasource_id, result[0]))
+            self.cursor.execute(unlock)
+            return result
+        except:
+            print ("Finding job failed.")
+            self.cursor.execute(unlock)
+            
+    #This method allows for the deletion of a project from the gc_project_indexes
+    def delete_home(self,unixname,datasource_id):
+        try:
+            update="""DELETE FROM gc_project_indexes WHERE unixname=%s AND datasource_id=%s"""
+            self.cursor.execute(update,(unixname,datasource_id))
+        except:
+            print("!!!!WARNING!!!! Deletion of home failed.")
+            print (traceback.format_exc())
+            
+    #This method allows for the deletion of a updates page for a project from the gc_project_indexes
+    def delete_updates(self,unixname,datasource_id):
+        try:
+            update="""UPDATE gc_project_indexes SET updateshtml=NULL WHERE unixname=%s AND datasource_id=%s"""
+            self.cursor.execute(update,(unixname,datasource_id))
+        except:
+            print("!!!!WARNING!!!! Deletion of updates page failed.")
+            print (traceback.format_exc()) 
+            
+    #This method allows for the deletion of a people page for a project from the gc_project_indexes
+    def delete_people(self,unixname,datasource_id):
+        try:
+            update="""UPDATE gc_project_indexes SET peoplehtml=NULL WHERE unixname=%s AND datasource_id=%s"""
+            self.cursor.execute(update,(unixname,datasource_id))
+        except:
+            print("!!!!WARNING!!!! Deletion of people page failed.")
+            print (traceback.format_exc()) 
         
+    #This method allows for the deletion of a downloads page for a project from the gc_project_indexes
+    def delete_downloads(self,unixname,datasource_id):
+        try:
+            update="""UPDATE gc_project_indexes SET downloadshtml=NULL WHERE unixname=%s AND datasource_id=%s"""
+            self.cursor.execute(update,(unixname,datasource_id))
+        except:
+            print("!!!!WARNING!!!! Deletion of downloads page failed.")
+            print (traceback.format_exc())
+
+    #This method allows for the deletion of a issues page for a project from the gc_project_indexes
+    def delete_issues(self,unixname,datasource_id):
+        try:
+            update="""UPDATE gc_project_indexes SET issueshtml=NULL WHERE unixname=%s AND datasource_id=%s"""
+            self.cursor.execute(update,(unixname,datasource_id))
+        except:
+            print("!!!!WARNING!!!! Deletion of issues page failed.")
+            print (traceback.format_exc()) 
+            
+    #This method allows for the deletion of a wiki page for a project from the gc_project_indexes
+    def delete_wiki(self,unixname,datasource_id):
+        try:
+            update="""UPDATE gc_project_indexes SET wikihtml=NULL WHERE unixname=%s AND datasource_id=%s"""
+            self.cursor.execute(update,(unixname,datasource_id))
+        except:
+            print("!!!!WARNING!!!! Deletion of wiki page failed.")
+            print (traceback.format_exc())  
