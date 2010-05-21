@@ -8,7 +8,6 @@ This module parses the html documents found on savannah.
 
 import re
 from BeautifulSoup import BeautifulSoup
-
 #parses description from index pages
 def parse_index(html):
     p=re.compile('<div class="indexcenter\">.+<!-- end indexcenter -->',re.DOTALL)
