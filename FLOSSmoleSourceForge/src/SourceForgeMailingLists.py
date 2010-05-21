@@ -54,7 +54,7 @@ def run(utils, datasource_id):
                 
             #Insert mailing list page into database
             if(mailinglist and re.search('We apologize.  The page you were looking for cannot be found.',mailinglist)==None):
-                update='''INSERT INTO mailing_indexes (mailinglist_html,datasource_id,proj_unixname,date_collected)
+                update='''INSERT INTO sf_mailing_indexes (mailinglist_html,datasource_id,proj_unixname,date_collected)
                 VALUES(%s,%s,%s,NOW())'''
                 utils.db_insert(update,mailinglist,datasource_id,unixname)
                 utils.change_status('gather_mailinglistsspecific','gather_mailinglists',datasource_id,unixname)                    

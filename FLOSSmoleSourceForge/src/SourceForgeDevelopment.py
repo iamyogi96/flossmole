@@ -22,9 +22,15 @@ def developmentSpider(page):
     else:
         return None
 
-def run(utils,datasource_id):
+def run(utils,datasource_id,stage):
     #collects the development pages for each job and adds them to sv_indexes
     print("\nGathering development pages.")
+    if(stage==0):
+        stage='gather_memberlist'
+    elif(stage==1):
+        stage='gather_60day'
+    else:
+        stage='gather_mailinglists'
     
     #runs jobs
     job=utils.get_job(datasource_id,'gather_development')
@@ -52,9 +58,9 @@ def run(utils,datasource_id):
                     print("Link to development page not found.")
                     development=None
                 if(development and re.search('We apologize.  The page you were looking for cannot be found.',development)==None):
-                    update="UPDATE project_indexes SET development_html=%s WHERE datasource_id=%s AND proj_unixname=%s"
+                    update="UPDATE sf_project_indexes SET development_html=%s WHERE datasource_id=%s AND proj_unixname=%s"
                     utils.db_insert(update,development,datasource_id,unixname)
-                    utils.change_status('gather_memberlist','gather_development',datasource_id,unixname)
+                    utils.change_status(stage,'gather_development',datasource_id,unixname)
                     job=utils.get_job(datasource_id,'gather_development')
                     if(utils.error):
                         sys.exit()

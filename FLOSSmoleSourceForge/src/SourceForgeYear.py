@@ -60,7 +60,7 @@ def run(utils,datasource_id):
                         year=utils.get_page("http://"+BASE_SITE+"project/stats/?group_id="+id+"&ugn="+unixname+"&type&mode=alltime")
                         i+=1
                     if(re.search("Connection to statistics server timed out",year)==None):
-                        update="UPDATE project_indexes SET all_time_stats_html=%s WHERE datasource_id=%s AND proj_unixname=%s"
+                        update="UPDATE sf_project_indexes SET all_time_stats_html=%s WHERE datasource_id=%s AND proj_unixname=%s"
                         utils.db_insert(update,year,datasource_id,unixname)
                         #changed gather_resumes
                         utils.change_status('completed','gather_year',datasource_id,unixname)

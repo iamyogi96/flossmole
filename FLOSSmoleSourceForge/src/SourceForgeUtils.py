@@ -103,7 +103,7 @@ class SourceForgeUtils:
     #Gathers the projects list from projects_list
     def get_projects(self,datasource_id):
         try:
-            select="SELECT proj_unixname FROM projects WHERE datasource_id=%s"
+            select="SELECT proj_unixname FROM sf_projects WHERE datasource_id=%s"
             self.cursor.execute(select,(datasource_id))
             projects_list=self.cursor.fetchall()
             return projects_list
@@ -113,7 +113,7 @@ class SourceForgeUtils:
     #Gathers the index html from project_indexes
     def get_index(self,datasource_id,unixname):
         try:
-            select="SELECT indexhtml FROM project_indexes WHERE datasource_id=%s AND proj_unixname=%s LIMIT 1"
+            select="SELECT indexhtml FROM sf_project_indexes WHERE datasource_id=%s AND proj_unixname=%s LIMIT 1"
             self.cursor.execute(select,(datasource_id,unixname))
             index_page=self.cursor.fetchone()
             return index_page
@@ -123,7 +123,7 @@ class SourceForgeUtils:
             
     def get_development(self,datasource_id,unixname):
         try:
-            select='''SELECT development_html FROM project_indexes WHERE datasource_id=%s AND proj_unixname=%s LIMIT 1'''
+            select='''SELECT development_html FROM sf_project_indexes WHERE datasource_id=%s AND proj_unixname=%s LIMIT 1'''
             self.cursor.execute(select,(datasource_id,unixname))
             dev_page=self.cursor.fetchone()
             return dev_page
@@ -133,7 +133,7 @@ class SourceForgeUtils:
             
     def get_memberlist(self,datasource_id,unixname):
         try:
-            select='''SELECT developers_html FROM project_indexes WHERE datasource_id=%s AND proj_unixname=%s'''
+            select='''SELECT developers_html FROM sf_project_indexes WHERE datasource_id=%s AND proj_unixname=%s'''
             self.cursor.execute(select,(datasource_id,unixname))
             memberlist=self.cursor.fetchone()
             return memberlist
@@ -143,7 +143,7 @@ class SourceForgeUtils:
             
     def get_mailing(self,datasource_id,unixname):
         try:
-            select='''SELECT mailinglist_html FROM mailing_indexes WHERE datasource_id=%s AND proj_unixname=%s'''
+            select='''SELECT mailinglist_html FROM sf_mailing_indexes WHERE datasource_id=%s AND proj_unixname=%s'''
             self.cursor.execute(select,(datasource_id,unixname))
             mailing=self.cursor.fetchone()
             return mailing
@@ -153,7 +153,7 @@ class SourceForgeUtils:
             
     def get_mailing_specific(self,datasource_id,unixname):
         try:
-            select='''SELECT list_name, mailinglist_html FROM mailinglist_indexes WHERE datasource_id=%s AND proj_unixname=%s'''
+            select='''SELECT list_name, mailinglist_html FROM sf_mailinglist_indexes WHERE datasource_id=%s AND proj_unixname=%s'''
             self.cursor.execute(select,(datasource_id,unixname))
             mailinglists=self.cursor.fetchall()
             return mailinglists
@@ -189,82 +189,82 @@ class SourceForgeUtils:
             print ("Finding job failed.")
             self.cursor.execute(unlock)
     
-    #This method allows for the deletion of a project from the tg_project_indexes
+    #This method allows for the deletion of a project from the project_indexes
     def delete_index(self,unixname,datasource_id):
         try:
-            update="""DELETE FROM project_indexes WHERE proj_unixname=%s AND datasource_id=%s"""
+            update="""DELETE FROM sf_project_indexes WHERE proj_unixname=%s AND datasource_id=%s"""
             self.cursor.execute(update,(unixname,datasource_id))
         except:
             print("!!!!WARNING!!!! Deletion of index failed.")
             print (traceback.format_exc())
     
-    #This method allows for the deletion of a development page for a project from the tg_project_indexes
+    #This method allows for the deletion of a development page for a project from the project_indexes
     def delete_development(self,unixname,datasource_id):
         try:
-            update="""UPDATE project_indexes SET development_html=NULL WHERE proj_unixname=%s AND datasource_id=%s"""
+            update="""UPDATE sf_project_indexes SET development_html=NULL WHERE proj_unixname=%s AND datasource_id=%s"""
             self.cursor.execute(update,(unixname,datasource_id))
         except:
             print("!!!!WARNING!!!! Deletion of development page failed.")
             print (traceback.format_exc())
             
-    #This method allows for the deletion of a developers page for a project from the tg_project_indexes
+    #This method allows for the deletion of a developers page for a project from the project_indexes
     def delete_developers(self,unixname,datasource_id):
         try:
-            update="""UPDATE project_indexes SET developers_html=NULL WHERE proj_unixname=%s AND datasource_id=%s"""
+            update="""UPDATE sf_project_indexes SET developers_html=NULL WHERE proj_unixname=%s AND datasource_id=%s"""
             self.cursor.execute(update,(unixname,datasource_id))
         except:
             print("!!!!WARNING!!!! Deletion of developers page failed.")
             print (traceback.format_exc()) 
             
-    #This method allows for the deletion of a donors page for a project from the tg_project_indexes
+    #This method allows for the deletion of a donors page for a project from the project_indexes
     def delete_donors(self,unixname,datasource_id):
         try:
-            update="""UPDATE project_indexes SET donors_html=NULL WHERE proj_unixname=%s AND datasource_id=%s"""
+            update="""UPDATE sf_project_indexes SET donors_html=NULL WHERE proj_unixname=%s AND datasource_id=%s"""
             self.cursor.execute(update,(unixname,datasource_id))
         except:
             print("!!!!WARNING!!!! Deletion of donors page failed.")
             print (traceback.format_exc())   
             
-    #This method allows for the deletion of a mailing list pages for a project from the tg_project_indexes
+    #This method allows for the deletion of a mailing list pages for a project from the mailing_indexes
     def delete_mailinglists(self,unixname,datasource_id):
         try:
-            update="""DELETE FROM mailing_indexes WHERE proj_unixname=%s AND datasource_id=%s"""
+            update="""DELETE FROM sf_mailing_indexes WHERE proj_unixname=%s AND datasource_id=%s"""
             self.cursor.execute(update,(unixname,datasource_id))
         except:
             print("!!!!WARNING!!!! Deletion of mailing lists failed.")
             print (traceback.format_exc())
             
-    #This method allows for the deletion of a mailing list pages for a project from the tg_project_indexes
+    #This method allows for the deletion of a mailing list pages for a project from the mailinglist_indexes
     def delete_mailinglistsspecific(self,unixname,datasource_id):
         try:
-            update="""DELETE FROM mailinglist_indexes WHERE proj_unixname=%s AND datasource_id=%s"""
+            update="""DELETE FROM sf_mailinglist_indexes WHERE proj_unixname=%s AND datasource_id=%s"""
             self.cursor.execute(update,(unixname,datasource_id))
         except:
             print("!!!!WARNING!!!! Deletion of mailing lists failed.")
             print (traceback.format_exc()) 
             
-    #This method allows for the deletion of a mailing list pages for a project from the tg_project_indexes
+    #This method allows for the deletion of a mailing list pages for a project from the mailing_pages_indexes
     def delete_messages(self,unixname,datasource_id):
         try:
-            update="""DELETE FROM mailing_pages_indexes WHERE proj_unixname=%s AND datasource_id=%s"""
+            update="""DELETE FROM sf_mailing_pages_indexes WHERE proj_unixname=%s AND datasource_id=%s"""
             self.cursor.execute(update,(unixname,datasource_id))
         except:
             print("!!!!WARNING!!!! Deletion of messages failed.")
             print (traceback.format_exc())
             
-    #This method allows for the deletion of a 60day page for a project from the tg_project_indexes
+    #This method allows for the deletion of a 60day page for a project from the sf_project_indexes
     def delete_60day(self,unixname,datasource_id):
         try:
-            update="""UPDATE project_indexes SET statistics_html=NULL WHERE proj_unixname=%s AND datasource_id=%s"""
+            update="""UPDATE sf_project_indexes SET statistics_html=NULL WHERE proj_unixname=%s AND datasource_id=%s"""
             self.cursor.execute(update,(unixname,datasource_id))
         except:
             print("!!!!WARNING!!!! Deletion of 60day page failed.")
             print (traceback.format_exc()) 
     
-    #This method allows for the deletion of a 60day page for a project from the tg_project_indexes
+    #This method allows for the deletion of a 60day page for a project from the sf_project_indexes
     def delete_year(self,unixname,datasource_id):
         try:
-            update="""UPDATE project_indexes SET all_time_stats_html=NULL WHERE proj_unixname=%s AND datasource_id=%s"""
+            update="""UPDATE sf_project_indexes SET all_time_stats_html=NULL WHERE proj_unixname=%s AND datasource_id=%s"""
             self.cursor.execute(update,(unixname,datasource_id))
         except:
             print("!!!!WARNING!!!! Deletion of year page failed.")

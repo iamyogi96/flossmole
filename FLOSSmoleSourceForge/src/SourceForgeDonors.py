@@ -55,9 +55,9 @@ def run(utils,datasource_id):
                     donors=None
                 
                 if(donors and re.search('We apologize.  The page you were looking for cannot be found.',donors)==None):
-                    update="UPDATE project_indexes SET donors_html=%s WHERE datasource_id=%s AND proj_unixname=%s"
+                    update="UPDATE sf_project_indexes SET donors_html=%s WHERE datasource_id=%s AND proj_unixname=%s"
                     utils.db_insert(update,donors,datasource_id,unixname)
-                    utils.change_status('gather_mailinglists','gather_donors',datasource_id,unixname)
+                    utils.change_status('completed','gather_donors',datasource_id,unixname)
                     
                     #change gather_60day
                     job=utils.get_job(datasource_id,'gather_donors')
@@ -67,7 +67,7 @@ def run(utils,datasource_id):
                 #if donors insertion fails posts error, gets job, and checks for errors
                 else:
                     print("!! Donors page either does not exist or did not collect properly.")
-                    utils.change_status('gather_mailinglists','gather_donors',datasource_id,unixname)
+                    utils.change_status('completed','gather_donors',datasource_id,unixname)
                     job=utils.get_job(datasource_id,'gather_donors')
                     if(utils.error):
                         sys.exit()

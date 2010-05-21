@@ -6,15 +6,16 @@ Job runs are passed with two arguments, as follows:
 Spider runs are passed with three arguments, as follows:
     1st. [datasource_id]
     2nd. [T/F(Test Mode Selection-Must be "T" specifically if running test mode.)]
-    3rd. [M/A(Mailing Mode-Must be "A" specificially if collecting for all months and "M" for monthly collection.)]
+    3rd. [1/2/3/4/5 (Stage Selection-must be 1, 2, 3, 4 or 5 specifically.)
+    4th. [M/A(Mailing Mode-This is only required if Stage Selection is 5. Must be "A" specificially if collecting for all months and "M" for monthly collection.)]
 
 1. Run SourceForgeJobs.py given two arguments. SourceForgeJobs.py [datasource_id] [Test Mode]
-2. Run SourceForgeSpider.py given three arguments. SourceForgeSpider.py [datsource_id] [Test Mode][Mailing Mode]
+2. Run SourceForgeSpider.py given three arguments. SourceForgeSpider.py [datsource_id] [Test Mode][Stage][Mailing Mode]
 3. Run SourceForgeErrorFix.py given two arguments. SourceForgeErrorFix.py [datasource_id] [Test Mode]
-    (Error fix will regather any statistic pages that failed to collect due to time out.)
+    (Error fix will regather any statistic pages that failed to collect due to time out. This is only necessary to run if Stage Selection is 4.)
 4. Run SourceForgeCleanUp.py given two arguments. SourceForgeCleanUp.py [datasource_id] [Test Mode]
-5. Rerun SourceForgeSpider.py given three arguments. SourceForgeSpider.py [datsource_id] [Test Mode][Mailing Mode]
-
+5. Rerun SourceForgeSpider.py given three arguments. SourceForgeSpider.py [datsource_id] [Test Mode][Stage][Mailing Mode]
+    (To avoid further erros, rerun SourceForgeSpider with the same Stage Selection number as initially run.)
 
 SourceForge Jobs.py-creates jobs to be run from a pre-processed projects list
 SourceForgeSpider.py-spiders pages based on pre-processed jobs list

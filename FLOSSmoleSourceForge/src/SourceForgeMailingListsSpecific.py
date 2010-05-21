@@ -59,7 +59,7 @@ def run(utils,datasource_id):
                     
                     #Insert page into database
                     if(mailinglist and re.search('We apologize.  The page you were looking for cannot be found.',mailinglist)==None):
-                        update='''INSERT INTO mailinglist_indexes  (proj_unixname,mailinglist_html, datasource_id, list_name,date_collected)
+                        update='''INSERT INTO sf_mailinglist_indexes  (proj_unixname,mailinglist_html, datasource_id, list_name,date_collected)
                         VALUES(%s,%s,%s,%s,NOW())'''
                         utils.db_insert(update,unixname,mailinglist,datasource_id,name)
                     
@@ -76,7 +76,7 @@ def run(utils,datasource_id):
             #Print warning if links do not exist
             else:
                 print("!!Specific Mailing Lists do not Exist!!.")
-                utils.change_status('gather_messages','gather_mailinglistspecific',datasource_id,unixname)
+                utils.change_status('gather_messages','gather_mailinglistsspecific',datasource_id,unixname)
                 job=utils.get_job(datasource_id,'gather_mailinglistsspecific')
                 if(utils.error):
                     sys.exit()

@@ -56,7 +56,7 @@ def run(utils,datasource_id):
                     memberlist=None
                     
                 if(memberlist and re.search('We apologize.  The page you were looking for cannot be found.',memberlist)==None):
-                    update="UPDATE project_indexes SET developers_html=%s WHERE datasource_id=%s AND proj_unixname=%s"
+                    update="UPDATE sf_project_indexes SET developers_html=%s WHERE datasource_id=%s AND proj_unixname=%s"
                     utils.db_insert(update,memberlist,datasource_id,unixname)
                     utils.change_status('gather_resumes','gahter_memberlist',datasource_id,unixname)
                     #change gather_60day

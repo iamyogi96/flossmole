@@ -64,7 +64,7 @@ def run(utils,datasource_id):
                         
                         #Insert each page into databse
                         if(page and re.search('We apologize.  The page you were looking for cannot be found.',page)==None):
-                            insert='''INSERT INTO mailing_pages_indexes (proj_unixname,list_name,year,month,messages_html,datasource_id,date_collected)
+                            insert='''INSERT INTO sf_mailing_pages_indexes (proj_unixname,list_name,year,month,messages_html,datasource_id,date_collected)
                                             VALUES (%s,%s,%s,%s,%s,%s,NOW())'''
                             print('**Inserting into database')
                             utils.db_insert(insert,unixname,list,year,month,page,datasource_id)
@@ -79,7 +79,7 @@ def run(utils,datasource_id):
                     print("*!!Specific Mailing List Pages do not Exist!!.")
                     
             #Change status, get job, and check for errors        
-            utils.change_status('gather_60day','gather_messages',datasource_id,unixname)
+            utils.change_status('completed','gather_messages',datasource_id,unixname)
             job=utils.get_job(datasource_id,'gather_messages')
             if(utils.error):
                 sys.exit()
@@ -87,7 +87,7 @@ def run(utils,datasource_id):
         #If specific mailing lists don't exist, change status, get job, and check for errors
         else:
             print("!!Specific Mailing Lists do not Exist!!")
-            utils.change_status('gather_60day','gather_messages',datasource_id,unixname)
+            utils.change_status('completed','gather_messages',datasource_id,unixname)
             job=utils.get_job(datasource_id,'gather_messages')
             if(utils.error):
                 sys.exit()

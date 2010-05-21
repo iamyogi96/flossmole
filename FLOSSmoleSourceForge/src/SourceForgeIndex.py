@@ -14,10 +14,15 @@ import time
 BASE_INDEX='sourceforge.net/projects/'
 BASE_SITE='sourceforge.net/'
 
-def run(utils,datasource_id):
+def run(utils,datasource_id,stage):
     #Gathers index pages
     print("Gathering index pages")
-    
+    if(stage==0):
+        stage='completed'
+    elif(stage==1):
+        stage='gather_development'
+    else:
+        stage='gather_donors'
     #runs jobs
     job=utils.get_job(datasource_id,'gather_index')
     if(utils.error):
@@ -30,12 +35,12 @@ def run(utils,datasource_id):
             index=utils.get_page("http://"+BASE_INDEX+unixname)
             
             if(index and re.search('We apologize.  The page you were looking for cannot be found.',index)==None):
-                insert="""INSERT INTO project_indexes (proj_unixname,indexhtml,date_collected,datasource_id)
+                insert="""INSERT INTO sf_project_indexes (proj_unixname,indexhtml,date_collected,datasource_id)
                 VALUES(%s,%s,NOW(),%s)"""
                 utils.db_insert(insert,unixname,index,datasource_id)
                 
                 #changes status, gets new job, and checks for errors
-                utils.change_status('gather_development','gather_index',datasource_id,unixname)
+                utils.change_status(stage,'gather_index',datasource_id,unixname)
                 job=utils.get_job(datasource_id,'gather_index')
                 if (utils.error):
                     sys.exit()
