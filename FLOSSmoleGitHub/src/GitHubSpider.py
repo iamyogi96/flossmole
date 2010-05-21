@@ -13,11 +13,7 @@ Test mode is based on string comparison so make sure capitalization and spelling
 '''
 
 from GitHubutils import GitHubutils
-from HTMLParser import HTMLParser
-import httplib
-import re
 import time
-import MySQLdb
 import traceback
 import sys
 import GitHubParsers
@@ -32,8 +28,8 @@ def main(argv):
         datasource_id=argv[1]
         test=argv[2]
     except:
-       print("Format arguments thusly: [program] [datasource_id] [True/False(TestMode)]")
-       sys.exit()
+        print("Format arguments thusly: [program] [datasource_id] [True/False(TestMode)]")
+        sys.exit()
        
     try:
         #checks for test mode
@@ -74,7 +70,7 @@ def main(argv):
             
             #sleeps, checks for errors, and gets new job
             time.sleep(2)
-            utils.change_status('Parsing',datasource_id,project_name,developer_name)
+            utils.change_status('Parsing','XMLgathering',datasource_id,project_name,developer_name)
             job=utils.get_job(datasource_id,'XMLgathering')
             if(utils.error):
                 sys.exit()
@@ -126,7 +122,7 @@ def main(argv):
                             watchers,open_issues,datasource_id,job[0],job[1])  
             
             #changes status, checks for errors, and gets new job   
-            utils.change_status('Completed',datasource_id,job[0],job[1])
+            utils.change_status('Completed','Parsing',datasource_id,job[0],job[1])
             job=utils.get_job(datasource_id,'Parsing')
             if(utils.error):
                 sys.exit()  

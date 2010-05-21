@@ -76,18 +76,19 @@ class GitHubutils:
             return result
         except:
             print ("Finding job failed.")
-            self.cursor.execute(unlock)     
+            self.cursor.execute(unlock)  
+            return None   
             
     #this method allows for status changes
-    def change_status(self,status,datasource_id,project,developer):
+    def change_status(self,status,previous_stage,datasource_id,project,developer):
         update='''UPDATE gh_jobs 
-        SET status=%s, last_modified=NOW() 
+        SET status=%s, previous_stage=%s, last_modified=NOW() 
         WHERE datasource_id=%s 
         AND project_name=%s
         AND developer_name=%s
         '''
         try:
-            self.cursor.execute(update,(status,datasource_id,project,developer))
+            self.cursor.execute(update,(status,previous_stage,datasource_id,project,developer))
         except:
             print('!!!!WARNING!!!! Status '+status+' did not update correctly for '+project+' by '+developer+' with id '+datasource_id+'.')
             print(traceback.format_exc())
@@ -129,3 +130,44 @@ class GitHubutils:
             print('!!!!WARNING!!!! XML not found for '+project_name+' and '+developer_name+' at '+str(datasource_id))
             xml=None
         return xml
+    
+    '''
+    This method provides the ability to get a clean up job from the job database.
+    '''
+    def get_cleanup_job(self, datasource_id, previousStage):
+        lock = '''LOCK TABLE gh_jobs READ, gh_jobs AS t WRITE'''
+        select = '''SELECT project_name,developer_name
+            FROM gh_jobs AS t
+            WHERE status = 'In_Progress'
+            AND previous_stage=%s
+            AND datasource_id = %s
+            LIMIT 1'''
+        update='''UPDATE gh_jobs AS t SET status='Clean_Up', last_modified=NOW()
+        WHERE datasource_id=%s
+        AND project_name=%s
+        AND developer_name=%s
+        '''
+        unlock = '''UNLOCK TABLES'''
+        try:
+            self.cursor.execute(lock)
+            self.cursor.execute(select, (previousStage,datasource_id))
+            result = self.cursor.fetchone()
+            self.cursor.execute(update,(datasource_id, result[0],result[1]))
+            self.cursor.execute(unlock)
+            return result
+        except:
+            print ("Finding job failed.")
+            self.cursor.execute(unlock)
+            return None   
+            
+    '''
+    Deletes a project for cleanup
+    '''
+    def delete_project(self,datasource_id,project,developer):
+        try:
+            delete='''DELETE FROM gh_projects WHERE project_name=%s AND developer_name=%s AND datasource_id=%s'''
+            self.cursor.execute(delete,(project,developer,datasource_id))
+        except:
+            print("!!!!WARNING!!!! Deletion of project failed")
+            print(traceback.format_exc())
+        
