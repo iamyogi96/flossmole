@@ -32,9 +32,12 @@ def run(utils,datasource_id):
             #inserts index page and gets new job
             if(index):
                 print("Inserting Into Database")
-                insert="""INSERT INTO tg_project_indexes (unixname,indexhtml,last_modified,datasource_id)
+                insert1="""INSERT INTO tg_projects (unixname,datasource_id,last_modified,url)
                 VALUES(%s,%s,NOW(),%s)"""
-                utils.db_insert(insert,unixname,index,datasource_id)
+                utils.db_insert(insert1,unixname,datasource_id,"http://"+unixname+".tigris.org")
+                insert2="""INSERT INTO tg_project_indexes (unixname,indexhtml,last_modified,datasource_id)
+                VALUES(%s,%s,NOW(),%s)"""
+                utils.db_insert(insert2,unixname,index,datasource_id)
                 
                 #changes status, gets new job, and checks for errors
                 utils.change_status('gather_memberlist','gather_index',datasource_id,unixname)
