@@ -1,0 +1,112 @@
+#summary May 2010 Changelog
+
+= Introduction =
+
+This is a reverse-chronological log of things we've done on this project and why for the month of May 2010. Think of it as a journal of changes and features. An attempt at non-email-based institutional memory.
+
+= Details =
+== May 25, 2010 ==
+=== Publicity ===
+
+  * megan worked on presentations for OSS 2010 next week.
+
+=== Collectors ===
+
+  * Carter worked on Launchpad.
+  * Steven has submitted several code changes. Will run these new collectors as soon as I can get this Teragrid backup done.
+
+=== User administration ===
+
+  * Megan deleted jschatz user account (Happy Graduation and Congrats Jamie!)
+  * Megan added ckozak user account to flossmole.org drupal site
+  * Joel added ckozak user account to grid0 
+=== Teragrid backup ===
+
+  * megan ran the following database commands to get teragrid database to match grid0:
+{{{
+ALTER TABLE `ossmole_merged`.`fm_projects` ADD COLUMN `calc_dev_count` INT(11) NULL  AFTER `projectname_short_fixed` ;
+ALTER TABLE `ossmole_merged`.`fsf_developer_projects` ADD COLUMN `web_page` VARCHAR(255) NULL DEFAULT NULL  AFTER `email` ;
+ALTER TABLE `ossmole_merged`.`fsf_projects` ADD COLUMN `calc_dev_count` INT(11) NULL DEFAULT NULL  AFTER `datasource_id` , ADD COLUMN `user_level` VARCHAR(50) NULL DEFAULT NULL  AFTER `desc_long` ;
+CREATE TABLE IF NOT EXISTS `fsf_project_licenses` (
+  `proj_num` int(11) NOT NULL,
+  `license` varchar(50) NOT NULL,
+  `date_collected` datetime NOT NULL,
+  `datasource_id` int(11) NOT NULL,
+  PRIMARY KEY  (`proj_num`,`license`,`datasource_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `fsf_project_related` (
+  `proj_num` int(11) NOT NULL,
+  `related_project_name` varchar(50) NOT NULL,
+  `date_collected` datetime NOT NULL,
+  `datasource_id` int(11) NOT NULL,
+  PRIMARY KEY  (`proj_num`,`related_project_name`,`datasource_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `fsf_project_requirements` (
+  `proj_num` int(11) NOT NULL,
+  `requirement` varchar(50) NOT NULL,
+  `requirement_type` varchar(50) NOT NULL,
+  `date_collected` datetime NOT NULL,
+  `datasource_id` int(11) NOT NULL,
+  PRIMARY KEY  (`proj_num`,`requirement`,`datasource_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `gc_projects` (
+  `proj_name` varchar(100) NOT NULL,
+  `datasource_id` int(11) NOT NULL,
+  `last_updated` datetime NOT NULL,
+  PRIMARY KEY  (`proj_name`,`datasource_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='this holds basic info about google code projects';
+CREATE TABLE IF NOT EXISTS `gh_projects` (
+  `project_name` varchar(80) collate utf8_swedish_ci NOT NULL,
+  `developer_name` varchar(50) collate utf8_swedish_ci NOT NULL,
+  `datasource_id` int(11) NOT NULL,
+  `description` text collate utf8_swedish_ci,
+  `private` enum('true','false') collate utf8_swedish_ci default NULL,
+  `url` varchar(200) collate utf8_swedish_ci default NULL,
+  `forked` enum('true','false') collate utf8_swedish_ci default NULL,
+  `fork_number` int(11) default NULL,
+  `homepage` varchar(200) collate utf8_swedish_ci default NULL,
+  `watchers` int(11) default NULL,
+  `open_issues` int(11) default NULL,
+  `XML` text collate utf8_swedish_ci,
+  `last_modified` datetime NOT NULL,
+  PRIMARY KEY  (`project_name`,`developer_name`,`datasource_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci COMMENT='Github, from xml API';
+ALTER TABLE `ossmole_merged`.`developers` RENAME TO  `ossmole_merged`.`sf_developers` ;
+ALTER TABLE `ossmole_merged`.`sf_developers` ADD COLUMN `member_since` DATETIME NULL DEFAULT NULL  AFTER `email` , ADD COLUMN `user_id` INT(11) NULL DEFAULT NULL  AFTER `member_since` ;
+CREATE TABLE IF NOT EXISTS `sf_developer_indexes` (
+  `dev_loginname` varchar(100) NOT NULL,
+  `profile_html` mediumtext NOT NULL,
+  `skills_html` mediumtext,
+  `date_collected` datetime NOT NULL,
+  `datasource_id` int(11) NOT NULL,
+  PRIMARY KEY  (`dev_loginname`,`datasource_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+ALTER TABLE `ossmole_merged`.`developer_projects` RENAME TO  `ossmole_merged`.`sf_developer_projects` ;
+ALTER TABLE `ossmole_merged`.`projects` RENAME TO  `ossmole_merged`.`sf_projects` ;
+ALTER TABLE `ossmole_merged`.`project_alltime_statistics` RENAME TO  `ossmole_merged`.`sf_project_all_time_stats` ;
+ALTER TABLE `ossmole_merged`.`project_db_environment` RENAME TO  `ossmole_merged`.`sf_project_db_environment` ;
+ALTER TABLE `ossmole_merged`.`project_description` RENAME TO  `ossmole_merged`.`sf_project_description` ;
+ALTER TABLE `ossmole_merged`.`project_donors` RENAME TO  `ossmole_merged`.`sf_project_donors` ;
+ALTER TABLE `ossmole_merged`.`project_environment` RENAME TO  `ossmole_merged`.`sf_project_environment` ;
+ALTER TABLE `ossmole_merged`.`project_indexes` RENAME TO  `ossmole_merged`.`sf_project_indexes` ;
+ALTER TABLE `ossmole_merged`.`sf_project_indexes` ADD COLUMN `developers_html` MEDIUMTEXT NULL  AFTER `all_time_stats_html` , ADD COLUMN `development_html` MEDIUMTEXT NULL  AFTER `developers_html` ;
+
+ALTER TABLE `ossmole_merged`.`project_intended_audience` RENAME TO  `ossmole_merged`.`sf_project_intended_audience` ;
+ALTER TABLE `ossmole_merged`.`project_licenses` RENAME TO  `ossmole_merged`.`sf_project_licenses` ;
+ALTER TABLE `ossmole_merged`.`project_list` RENAME TO  `ossmole_merged`.`sf_project_list` ;
+ALTER TABLE `ossmole_merged`.`project_operating_system` RENAME TO  `ossmole_merged`.`sf_project_operating_system` ;
+ALTER TABLE `ossmole_merged`.`project_programming_language` RENAME TO  `ossmole_merged`.`sf_project_programming_language` ;
+ALTER TABLE `ossmole_merged`.`project_public_areas` RENAME TO  `ossmole_merged`.`sf_project_public_areas` ;
+ALTER TABLE `ossmole_merged`.`project_statistics` RENAME TO  `ossmole_merged`.`sf_project_statistics` ;
+ALTER TABLE `ossmole_merged`.`project_statistics_60` RENAME TO  `ossmole_merged`.`sf_project_statistics_60` ;
+ALTER TABLE `ossmole_merged`.`project_status` RENAME TO  `ossmole_merged`.`sf_project_status` ;
+ALTER TABLE `ossmole_merged`.`project_topic` RENAME TO  `ossmole_merged`.`sf_project_topic` ;
+ALTER TABLE `ossmole_merged`.`project_translations` RENAME TO  `ossmole_merged`.`sf_project_translations` ;
+ALTER TABLE `ossmole_merged`.`project_user_interface` RENAME TO  `ossmole_merged`.`sf_project_user_interface` ;
+}}}
+
+==May 24, 2010 ==
+  * megan met with funk and joel regarding the grid0 situation. Grid0 is getting old. What to do.
+
+== May 21, 2010 ==
+  * megan contacted sdsc about doing a backup. The servers are no longer the same names as what they were last time we did a backup so I was unable to connect.
