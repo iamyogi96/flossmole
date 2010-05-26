@@ -89,6 +89,14 @@ CREATE TABLE IF NOT EXISTS `sf_developer_indexes` (
   PRIMARY KEY  (`dev_loginname`,`datasource_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 ALTER TABLE `ossmole_merged`.`developer_projects` RENAME TO  `ossmole_merged`.`sf_developer_projects` ;
+CREATE TABLE IF NOT EXISTS `sf_developer_skills` (
+  `dev_loginname` varchar(100) NOT NULL,
+  `skill_desc` varchar(100) NOT NULL,
+  `date_collected` datetime NOT NULL,
+  `datasource_id` int(11) NOT NULL,
+  PRIMARY KEY  (`dev_loginname`,`skill_desc`,`datasource_id`),
+  KEY `datasource_id_index13` (`datasource_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 ALTER TABLE `ossmole_merged`.`projects` RENAME TO  `ossmole_merged`.`sf_projects` ;
 ALTER TABLE `ossmole_merged`.`project_alltime_statistics` RENAME TO  `ossmole_merged`.`sf_project_all_time_stats` ;
 ALTER TABLE `ossmole_merged`.`project_db_environment` RENAME TO  `ossmole_merged`.`sf_project_db_environment` ;
