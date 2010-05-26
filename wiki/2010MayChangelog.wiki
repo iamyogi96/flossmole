@@ -103,7 +103,16 @@ ALTER TABLE `ossmole_merged`.`project_statistics` RENAME TO  `ossmole_merged`.`s
 ALTER TABLE `ossmole_merged`.`project_statistics_60` RENAME TO  `ossmole_merged`.`sf_project_statistics_60` ;
 ALTER TABLE `ossmole_merged`.`project_status` RENAME TO  `ossmole_merged`.`sf_project_status` ;
 ALTER TABLE `ossmole_merged`.`project_topic` RENAME TO  `ossmole_merged`.`sf_project_topic` ;
-ALTER TABLE `ossmole_merged`.`project_translations` RENAME TO  `ossmole_merged`.`sf_project_translations` ;
+CREATE TABLE IF NOT EXISTS `sf_project_translations` (
+  `proj_unixname` varchar(100) NOT NULL default '',
+  `code` varchar(100) NOT NULL default '',
+  `description` varchar(100) NOT NULL default '',
+  `date_collected` datetime NOT NULL default '0000-00-00 00:00:00',
+  `datasource_id` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`code`,`proj_unixname`,`datasource_id`),
+  KEY `datasource_id_index42` (`datasource_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 ALTER TABLE `ossmole_merged`.`project_user_interface` RENAME TO  `ossmole_merged`.`sf_project_user_interface` ;
 }}}
 
