@@ -5,13 +5,25 @@
 This is a reverse-chronological log of things we've done on this project for the month of May 2010. Think of it as a journal of changes and features. An attempt at non-email-based institutional memory.
 
 = Details =
-== May 26, 2010 ==
+
+== May 27, 2010 ==
 === Teragrid backup ===
-  * megan continued working on the teragrid backup (finished changes to database setup started yesterday - those took a long time b/c of the size of the tables. Note to self: in the future avoid adding new columns to tables. Make a new table instead.)
-  
+
+  * wrote insert.sh script to do the inserts of .sql files automatically. This will take a very long time.
+
+=== Hardware ===
+
+  * met with TLT @Elon about hardware and research infrastructure, admins.
+
 === Publicity ===
 
-  * megan worked on presentations for OSS 2010 next week.
+  * worked on presentations for OSS 2010 next week.
+
+== May 26, 2010 ==
+=== Teragrid backup ===
+
+  * continued working on the teragrid backup (finished changes to database setup started yesterday - those took a long time b/c of the size of the tables. Note to self: in the future avoid adding new columns to tables. Make a new table instead.)
+
 ----
 == May 25, 2010 ==
 
