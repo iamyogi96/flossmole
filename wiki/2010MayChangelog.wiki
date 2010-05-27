@@ -9,7 +9,7 @@ This is a reverse-chronological log of things we've done on this project for the
 == May 27, 2010 ==
 === Collectors ===
   * carter is working on launchpad.
-  * megan is running Savannah and Github.
+  * megan is running Savannah (ds 224) and Github (ds 223).
 
 === Teragrid backup ===
 
