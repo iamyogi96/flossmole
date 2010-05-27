@@ -7,6 +7,10 @@ This is a reverse-chronological log of things we've done on this project for the
 = Details =
 
 == May 27, 2010 ==
+=== Collectors ===
+  * carter is working on launchpad.
+  * megan is running Savannah and Github.
+
 === Teragrid backup ===
 
   * wrote insert.sh script to do the inserts of .sql files automatically. This will take a very long time.
