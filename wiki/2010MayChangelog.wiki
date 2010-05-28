@@ -5,11 +5,19 @@
 This is a reverse-chronological log of things we've done on this project for the month of May 2010. Think of it as a journal of changes and features. An attempt at non-email-based institutional memory.
 
 = Details =
+== May 28, 2010 ==
+=== Collectors ===
+  * carter is working on launchpad.
+  * megan released Savannah data (ds 224)& posted to web site.
 
+=== Database Changes ===
+{{{ALTER TABLE  `gh_jobs` CHANGE  `status`  `status` ENUM(  'In_Progress',  'XMLgathering',  'Parsing',  'Completed',  'error', 'Clean_Up' ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+ALTER TABLE  `gh_jobs` ADD  `previous_stage` ENUM(  'XMLgathering',  'Parsing',  'Clean_Up' ) NOT NULL AFTER  `status`;}}}
+----
 == May 27, 2010 ==
 === Collectors ===
   * carter is working on launchpad.
-  * megan is running Savannah (ds 224) and Github (ds 223).
+  * megan is running Savannah (ds 224) and Github (ds 223) and Tigris (ds 225)/
 
 === Teragrid backup ===
 
@@ -24,7 +32,9 @@ This is a reverse-chronological log of things we've done on this project for the
   * worked on presentations for OSS 2010 next week.
 
 === Database changes ===
-{{{ALTER TABLE  `sv_jobs` ADD  `previous_stage` ENUM(  'indexHTML',  'skillsHTML',  'indexparsing',  'error',  'completed' ) NOT NULL AFTER  `status` ;
+{{{
+SAVANNAH
+ALTER TABLE  `sv_jobs` ADD  `previous_stage` ENUM(  'indexHTML',  'skillsHTML',  'indexparsing',  'error',  'completed' ) NOT NULL AFTER  `status` ;
 
 ALTER TABLE  `sv_jobs` CHANGE  `status`  `status` ENUM(  'indexHTML',  'skillsHTML',  'indexparsing',  'error',  'completed' ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
 
