@@ -9,6 +9,11 @@ This is a reverse-chronological log of things we've done on this project for the
 === Collectors ===
   * carter is working on launchpad.
   * megan released Savannah data (ds 224)& posted to web site.
+  * Tigris is in message gathering phase
+  * github jobs are made, database alters are done - starting collector now (221,971 projects to do)
+
+=== Teragrid backup ===
+  * this is taking about 24 hours per 10 datasources. I have 30 left to go to get through DS222
 
 === Database Changes ===
 {{{
