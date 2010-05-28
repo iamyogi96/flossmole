@@ -65,7 +65,8 @@ ALTER TABLE  `sv_jobs` CHANGE  `status`  `status` ENUM(  'indexHTML',  'skillsHT
 ALTER TABLE  `sv_jobs` CHANGE  `status`  `status` ENUM(  'indexHTML',  'skillsHTML',  'indexparsing',  'skillsparsing',  'error', 'completed',  'In_Progress' ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL ,
 CHANGE  `previous_stage`  `previous_stage` ENUM(  'indexHTML',  'skillsHTML',  'indexparsing',  'skillsparsing',  'error', 'completed',  'Clean_Up' ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
 
-ALTER TABLE  `sv_jobs` CHANGE  `status`  `status` ENUM(  'indexHTML',  'skillsHTML',  'indexparsing',  'skillsparsing',  'error', 'completed',  'In_Progress',  'Clean_Up' ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL}}}
+ALTER TABLE  `sv_jobs` CHANGE  `status`  `status` ENUM(  'indexHTML',  'skillsHTML',  'indexparsing',  'skillsparsing',  'error', 'completed',  'In_Progress',  'Clean_Up' ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+}}}
 ----
 == May 26, 2010 ==
 === Teragrid backup ===
