@@ -17,12 +17,14 @@ This is a reverse-chronological log of things we've done on this project for the
 
 === Database Changes ===
 {{{
+GITHUB
 ALTER TABLE  `gh_jobs` CHANGE  `status`  `status` ENUM(  'In_Progress',  'XMLgathering',  'Parsing',  'Completed',  'error', 'Clean_Up' ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
 ALTER TABLE  `gh_jobs` ADD  `previous_stage` ENUM(  'XMLgathering',  'Parsing',  'Clean_Up' ) NOT NULL AFTER  `status`;
 }}}
 
 NOTE: still need to do SF changes before running SF next time. Here is the list of changes and they are copied in email from SN dated 05/21/2010 subj: "Hey Update"
 {{{
+SOURCEFORGE
 ALTER TABLE  `sf_jobs` Change  `status`  `status` ENUM(  'gather_index',  'gather_development',  'gather_memberlist', 'gather_resumes',  'gather_donors',  'gather_mailinglists',  'gather_mailinglistsspecific',  'gather_messages',  'gather_60day', 'gather_year',  'error_60day',  'error_year',  'error',  'completed',  'In_Progress' ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL ,
 ADD  `previous_stage` ENUM(  'gather_index',  'gather_development',  'gather_memberlist', 'gather_resumes',  'gather_donors',  'gather_mailinglists',  'gather_mailinglistsspecific',  'gather_messages',  'gather_60day', 'gather_year',  'error_60day',  'error_year',  'error',  'completed',  'Clean_Up',  'In_Progress' ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
 ADD  `modified_by` VARCHAR( 255 ) NOT NULL; 
@@ -92,7 +94,10 @@ ALTER TABLE  `sv_jobs` CHANGE  `status`  `status` ENUM(  'indexHTML',  'skillsHT
 
   * megan ran the following database commands to get teragrid database to match grid0:
 {{{
+FRESHMEAT
 ALTER TABLE `ossmole_merged`.`fm_projects` ADD COLUMN `calc_dev_count` INT(11) NULL  AFTER `projectname_short_fixed` ;
+
+FREE SOFTWARE FNDTN
 ALTER TABLE `ossmole_merged`.`fsf_developer_projects` ADD COLUMN `web_page` VARCHAR(255) NULL DEFAULT NULL  AFTER `email` ;
 ALTER TABLE `ossmole_merged`.`fsf_projects` ADD COLUMN `calc_dev_count` INT(11) NULL DEFAULT NULL  AFTER `datasource_id` , ADD COLUMN `user_level` VARCHAR(50) NULL DEFAULT NULL  AFTER `desc_long` ;
 CREATE TABLE IF NOT EXISTS `fsf_project_licenses` (
@@ -117,12 +122,16 @@ CREATE TABLE IF NOT EXISTS `fsf_project_requirements` (
   `datasource_id` int(11) NOT NULL,
   PRIMARY KEY  (`proj_num`,`requirement`,`datasource_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+GOOGLE CODE
 CREATE TABLE IF NOT EXISTS `gc_projects` (
   `proj_name` varchar(100) NOT NULL,
   `datasource_id` int(11) NOT NULL,
   `last_updated` datetime NOT NULL,
   PRIMARY KEY  (`proj_name`,`datasource_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='this holds basic info about google code projects';
+
+GITHUB
 CREATE TABLE IF NOT EXISTS `gh_projects` (
   `project_name` varchar(80) collate utf8_swedish_ci NOT NULL,
   `developer_name` varchar(50) collate utf8_swedish_ci NOT NULL,
@@ -139,6 +148,8 @@ CREATE TABLE IF NOT EXISTS `gh_projects` (
   `last_modified` datetime NOT NULL,
   PRIMARY KEY  (`project_name`,`developer_name`,`datasource_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci COMMENT='Github, from xml API';
+
+SOURCEFORGE
 ALTER TABLE `ossmole_merged`.`developers` RENAME TO  `ossmole_merged`.`sf_developers` ;
 ALTER TABLE `ossmole_merged`.`sf_developers` ADD COLUMN `member_since` DATETIME NULL DEFAULT NULL  AFTER `email` , ADD COLUMN `user_id` INT(11) NULL DEFAULT NULL  AFTER `member_since` ;
 CREATE TABLE IF NOT EXISTS `sf_developer_indexes` (
@@ -186,6 +197,8 @@ CREATE TABLE IF NOT EXISTS `sf_project_translations` (
   KEY `datasource_id_index42` (`datasource_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 ALTER TABLE `ossmole_merged`.`project_user_interface` RENAME TO  `ossmole_merged`.`sf_project_user_interface` ;
+
+SAVANNAH
 CREATE TABLE IF NOT EXISTS `sv_developers` (
   `datasource_id` int(11) NOT NULL,
   `dev_loginname` varchar(30) NOT NULL,
@@ -246,6 +259,8 @@ CREATE TABLE IF NOT EXISTS `sv_project_indexes` (
   `date_collected` datetime NOT NULL,
   PRIMARY KEY  (`project_name`,`datasource_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='this holds the index & member (dev) html pages for Savannah';
+
+TIGRIS
 CREATE TABLE IF NOT EXISTS `tg_discussions_indexes` (
   `unixname` varchar(255) NOT NULL,
   `discussion_id` int(11) NOT NULL,
