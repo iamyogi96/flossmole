@@ -10,17 +10,18 @@ This is a reverse-chronological log of things we've done on this project for the
   * carter is working on launchpad.
   * megan released Savannah data (ds 224)& posted to web site.
   * Tigris is in message gathering phase
-  * github jobs are made, database alters are done - starting collector now (221,971 projects to do)
+  * github jobs are made, database alters are done - collector is running(221,971 projects to do)
 
 === Teragrid backup ===
-  * this is taking about 24 hours per 10 datasources. I have 30 left to go to get through DS222
+  * currently running - this is taking about 24 hours per 10 datasources. I have 30 left to go to get through DS222
 
 === Database Changes ===
 {{{
 ALTER TABLE  `gh_jobs` CHANGE  `status`  `status` ENUM(  'In_Progress',  'XMLgathering',  'Parsing',  'Completed',  'error', 'Clean_Up' ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
 ALTER TABLE  `gh_jobs` ADD  `previous_stage` ENUM(  'XMLgathering',  'Parsing',  'Clean_Up' ) NOT NULL AFTER  `status`;
 }}}
- NOTE: still need to do SF changes before running SF next time. Here is the list of changes and they are copied in email from SN dated 05/21/2010 subj: "Hey Update"
+
+NOTE: still need to do SF changes before running SF next time. Here is the list of changes and they are copied in email from SN dated 05/21/2010 subj: "Hey Update"
 {{{
 ALTER TABLE  `sf_jobs` Change  `status`  `status` ENUM(  'gather_index',  'gather_development',  'gather_memberlist', 'gather_resumes',  'gather_donors',  'gather_mailinglists',  'gather_mailinglistsspecific',  'gather_messages',  'gather_60day', 'gather_year',  'error_60day',  'error_year',  'error',  'completed',  'In_Progress' ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL ,
 ADD  `previous_stage` ENUM(  'gather_index',  'gather_development',  'gather_memberlist', 'gather_resumes',  'gather_donors',  'gather_mailinglists',  'gather_mailinglistsspecific',  'gather_messages',  'gather_60day', 'gather_year',  'error_60day',  'error_year',  'error',  'completed',  'Clean_Up',  'In_Progress' ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -31,8 +32,6 @@ ALTER TABLE  `sf_developer_indexes` CHANGE  `skills_html`  `skills_html` MEDIUMT
 ALTER TABLE  `sf_project_indexes` ADD  `donors_html` MEDIUMTEXT NULL DEFAULT NULL AFTER  `indexhtml` ;
 
 ALTER TABLE  `sf_jobs` CHANGE  `status`  `status` ENUM(  'gather_index',  'gather_development',  'gather_memberlist', 'gather_resumes',  'gather_donors',  'gather_mailinglists',  'gather_mailinglistsspecific',  'gather_messages',  'gather_60day', 'gather_year',  'error_60day',  'error_year',  'error',  'completed',  'In_Progress',  'Clean_Up' ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-
-
 }}}
 ----
 == May 27, 2010 ==
