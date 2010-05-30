@@ -5,6 +5,14 @@
 This is a reverse-chronological log of things we've done on this project for the month of May 2010. Think of it as a journal of changes and features. An attempt at non-email-based institutional memory.
 
 = Details =
+== May 30, 2010 ==
+=== Teragrid backup ===
+  * backup is finished running. Notified mailing list & web site.
+=== Collectors ===
+  * Github is on 'g' 
+  * Tigris died at 4am on Friday and I didn't notice. :( Restarted today and is on 'a'. This is collecting all mailing list messages so is going to be quite long.
+
+----
 == May 28, 2010 ==
 === Collectors ===
   * carter is working on launchpad.
