@@ -5,6 +5,13 @@
 This is a reverse-chronological log of things we've done on this project for the month of May 2010. Think of it as a journal of changes and features. An attempt at non-email-based institutional memory.
 
 = Details =
+== May 31, 2010 ==
+  * MySQL command for finding the size of the ossmole_merged database:
+{{{
+select table_schema "Name of DB", sum(data_length + index_length)/1024/1024/1024 "Database Size in GB" FROM information_schema.TABLES GROUP BY table_schema;
+}}}
+  * Updated the web site links to download files
+  * Updated the web site "direct download" link with correct server information
 == May 30, 2010 ==
 === Teragrid backup ===
   * backup is finished running. Notified mailing list & web site.
