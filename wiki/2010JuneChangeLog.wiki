@@ -20,5 +20,5 @@ This is a reverse-chronological log of things we've done on this project for the
 == June 2, 2010 ==
 === Collectors ===
   * Grid0 crashed yesterday, but being out of town Megan did not notice it right away, so the run was interrupted. Got it back up and running. Github is producing errors now about mysql index files needing to be repaired. Tigris is back up and running.
-  * Carter is working on Launchpad. We've decided to abandon collection of "all developers" since there is not a short way to get a list of all devs on a project other than by looking in the code commits. Instead, we will grab 'person' records from the RDF and declare this good enough.
+  * Carter is working on Launchpad. We've decided to abandon collection of "all developers" since there is not a short way to get a list of all devs on a project other than by looking in the code commits. Instead, we will grab 'person' records from the RDF and declare this good enough, also some projects list "top 5 committers".
 ----
