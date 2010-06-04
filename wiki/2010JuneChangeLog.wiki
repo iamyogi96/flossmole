@@ -5,6 +5,10 @@
 This is a reverse-chronological log of things we've done on this project for the month of June 2010. Think of it as a journal of changes and features. An attempt at non-email-based institutional memory.
 
 = Details =
+== June 4, 2010 ==
+=== Web Site ===
+  * megan still working on db schema.
+----
 == June 3, 2010 ==
 === Collectors ===
   * Carter has run launchpad and is working on parsers now
