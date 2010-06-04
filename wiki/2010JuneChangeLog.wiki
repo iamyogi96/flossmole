@@ -7,7 +7,8 @@ This is a reverse-chronological log of things we've done on this project for the
 = Details =
 == June 4, 2010 ==
 === Web Site ===
-  * megan still working on db schema.
+  * megan finished database schema and posted on flossmole.org
+  * tigris and github still collecting
 ----
 == June 3, 2010 ==
 === Collectors ===
