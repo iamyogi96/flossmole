@@ -5,6 +5,9 @@
 This is a reverse-chronological log of things we've done on this project for the month of June 2010. Think of it as a journal of changes and features. An attempt at non-email-based institutional memory.
 
 = Details =
+== June 6, 2010 ==
+  * released github data
+----
 == June 4, 2010 ==
 === Web Site ===
   * megan finished database schema and posted on flossmole.org
