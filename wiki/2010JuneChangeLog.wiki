@@ -13,6 +13,17 @@ This is a reverse-chronological log of things we've done on this project for the
 === Database ===
   * ran the following on ossmole_merged to get GC running:
 {{{
+CREATE TABLE IF NOT EXISTS `gc_jobs` (
+  `unixname` varchar(200) NOT NULL,
+  `datasource_id` int(11) NOT NULL,
+  `status` enum('gather_home','gather_updates','gather_people','gather_downloads','gather_issues','gather_wiki','gather_people_specific','gather_issues_specific','completed','In_Progress','error','Clean_Up') NOT NULL,
+  `previous_stage` enum('gather_home','gather_updates','gather_people','gather_downloads','gather_issues','gather_wiki','gather_people_specific','gather_issues_specific','completed','Clean_Up') default NULL,
+  `last_modified` datetime NOT NULL,
+  `modified_by` varchar(200) NOT NULL,
+  `error_msg` text,
+  PRIMARY KEY  (`unixname`,`datasource_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 CREATE TABLE IF NOT EXISTS `gc_developer_indexes` (
   `dev_name` varchar(250) NOT NULL,
   `datasource_id` int(11) NOT NULL,
