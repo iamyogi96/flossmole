@@ -7,8 +7,9 @@ This is a reverse-chronological log of things we've done on this project for the
 = Details =
 == June 8, 2010 ==
 === Collectors ===
-  * Google code is on 'bb-'
+  * Google code is on 'b-'
   * Tigris is on subversion and has been for a while. Lots of mail there.
+  * carter's lp code is running and parsing now. Should be a release shortly.
 ----
 == June 7, 2010 ==
 === Collectors ===
