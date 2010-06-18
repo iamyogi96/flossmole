@@ -5,6 +5,123 @@
 This is a reverse-chronological log of things we've done on this project for the month of June 2010. Think of it as a journal of changes and features. An attempt at non-email-based institutional memory.
 
 = Details =
+==June 18, 2010 ==
+=== Database Admin ===
+  * megan created new tables on ossmole_merged to hold LP data, as follows:
+{{{
+show tables from test like 'lp%';
+
+CREATE TABLE `lp_developer_indexes` (
+  `dev_loginname` varchar(100) NOT NULL default '',
+  `datasource_id` int(11) NOT NULL default '0',
+  `html` mediumtext,
+  `last_updated` datetime default NULL,
+  PRIMARY KEY  (`dev_loginname`,`datasource_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ;
+
+CREATE TABLE `lp_developer_irc` (
+  `dev_loginname` varchar(100) NOT NULL default '',
+  `datasource_id` int(11) NOT NULL default '0',
+  `username` varchar(100) NOT NULL default '',
+  `server` varchar(100) NOT NULL default '',
+  `last_updated` datetime default NULL,
+  PRIMARY KEY  (`dev_loginname`,`datasource_id`,`username`,`server`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `lp_developer_languages` (
+  `dev_loginname` varchar(100) NOT NULL default '',
+  `datasource_id` int(11) NOT NULL default '0',
+  `language` varchar(100) NOT NULL default '',
+  `last_updated` datetime default NULL,
+  PRIMARY KEY  (`dev_loginname`,`datasource_id`,`language`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `lp_developer_projects` (
+  `dev_loginname` varchar(100) NOT NULL default '',
+  `datasource_id` int(11) NOT NULL default '0',
+  `project_name` varchar(50) NOT NULL default '',
+  `last_updated` datetime default NULL,
+  PRIMARY KEY  (`dev_loginname`,`datasource_id`,`project_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `lp_groups` (
+  `group_loginname` varchar(100) NOT NULL default '',
+  `group_owner` varchar(100) default NULL,
+  `datasource_id` int(11) NOT NULL default '0',
+  `realname` varchar(255) default NULL,
+  `create_date` datetime default NULL,
+  `last_updated` datetime default NULL,
+  `description` mediumtext,
+  `subscription` varchar(255) default NULL,
+  `active_count` int(11) default NULL,
+  PRIMARY KEY  (`group_loginname`,`datasource_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `lp_jobs` (
+  `datasource_id` int(11) NOT NULL default '0',
+  `jobName` varchar(50) NOT NULL default '',
+  `startTime` datetime default NULL,
+  `endTime` datetime default NULL,
+  PRIMARY KEY  (`datasource_id`,`jobName`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `lp_project_indexes` (
+  `datasource_id` int(11) NOT NULL default '0',
+  `project_name` varchar(50) NOT NULL default '',
+  `last_updated` datetime NOT NULL default '0000-00-00 00:00:00',
+  `html` mediumtext,
+  `rdf` mediumtext,
+  `contrib_html` mediumtext,
+  PRIMARY KEY  (`datasource_id`,`project_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `lp_project_languages` (
+  `project_name` varchar(50) NOT NULL default '',
+  `datasource_id` int(11) NOT NULL default '0',
+  `language` varchar(100) NOT NULL default '',
+  `last_updated` datetime default NULL,
+  PRIMARY KEY  (`project_name`,`datasource_id`,`language`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `lp_project_licenses` (
+  `project_name` varchar(50) NOT NULL default '',
+  `datasource_id` int(11) NOT NULL default '0',
+  `license` varchar(255) NOT NULL default '',
+  `last_updated` datetime default NULL,
+  PRIMARY KEY  (`project_name`,`datasource_id`,`license`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `lp_project_uses` (
+  `project_name` varchar(50) NOT NULL default '',
+  `datasource_id` int(11) NOT NULL default '0',
+  `uses` varchar(50) NOT NULL default '',
+  `last_updated` datetime default NULL,
+  PRIMARY KEY  (`project_name`,`datasource_id`,`uses`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `lp_projects` (
+  `datasource_id` int(11) NOT NULL,
+  `project_name` varchar(50) NOT NULL default '',
+  `last_updated` datetime NOT NULL,
+  `display_name` varchar(255) default NULL,
+  `project_title` varchar(255) default NULL,
+  `short_description` mediumtext,
+  `description` mediumtext,
+  `created` date default NULL,
+  `project_status` varchar(100) default NULL,
+  `wiki` varchar(255) default NULL,
+  `screenshot` varchar(255) default NULL,
+  `homepage` varchar(255) default NULL,
+  `focus` varchar(100) default NULL,
+  PRIMARY KEY  (`datasource_id`,`project_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='this holds basic info about launchpad projects' ;
+}}}
+  * megan dumped data from `test` lp-% tables and ran mysql>source lp.sql to import these into the `ossmole_merged` schema
+=== Collectors ===
+  * Tigris is finished. Working on parser.
+  * GC is running (still). Is currently on 'r-'.
+
+----
 == June 8, 2010 ==
 === Collectors ===
   * Google code is on 'b-'
