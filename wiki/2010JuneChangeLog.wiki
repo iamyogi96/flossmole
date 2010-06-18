@@ -116,10 +116,51 @@ CREATE TABLE `lp_projects` (
   PRIMARY KEY  (`datasource_id`,`project_name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='this holds basic info about launchpad projects' ;
 }}}
+  * megan created new datasource on `ossmole_merged` as 227.
+{{{
+insert into datasources values (227, 14, '2010-Jun LP', '2010-06-18', 'msquire@___.___', '2010-Jun Launchpad run', '2010-06-10', '2010-06-18');
+}}}
   * megan dumped data from `test` lp-% tables and ran mysql>source lp.sql to import these into the `ossmole_merged` schema
+  * unfortunately the datasource numbers are off, so I ran this:
+{{{
+delete from lp_developer_indexes where datasource_id=215;
+delete from lp_developer_indexes where datasource_id=216;
+delete from lp_developer_irc where datasource_id=215;
+delete from lp_developer_irc where datasource_id=216;
+delete from lp_developer_languages where datasource_id=215;
+delete from lp_developer_languages where datasource_id=216;
+delete from lp_developer_projects where datasource_id=215;
+delete from lp_developer_projects where datasource_id=216;
+delete from lp_groups where datasource_id=215;
+delete from lp_groups where datasource_id=216;
+delete from lp_jobs where datasource_id=215;
+delete from lp_jobs where datasource_id=216;
+delete from lp_project_indexes where datasource_id=215;
+delete from lp_project_indexes where datasource_id=216;
+delete from lp_project_languages where datasource_id=215;
+delete from lp_project_languages where datasource_id=216;
+delete from lp_project_licenses where datasource_id=215;
+delete from lp_project_licenses where datasource_id=216;
+delete from lp_project_uses where datasource_id=215;
+delete from lp_project_uses where datasource_id=216;
+delete from lp_projects where datasource_id=215;
+delete from lp_projects where datasource_id=216;
+
+update lp_developer_indexes set datasource_id=227 where datasource_id=217;
+update lp_developer_irc set datasource_id=227 where datasource_id=217;
+update lp_developer_languages set datasource_id=227 where datasource_id=217;
+update lp_developer_projects set datasource_id=227 where datasource_id=217;
+update lp_groups set datasource_id=227 where datasource_id=217;
+update lp_jobs set datasource_id=227 where datasource_id=217;
+update lp_project_indexes set datasource_id=227 where datasource_id=217;
+update lp_project_languages set datasource_id=227 where datasource_id=217;
+update lp_project_licenses set datasource_id=227 where datasource_id=217;
+update lp_project_uses set datasource_id=227 where datasource_id=217;
+update lp_projects set datasource_id=227 where datasource_id=217;
+}}}
 === Collectors ===
-  * Tigris is finished. Working on parser.
-  * GC is running (still). Is currently on 'r-'.
+  * Tigris is finished. Working on parser. Accidentally left code on work machine (forgot to check in) and have no car to go get it. Sigh.
+  * GC is running (still). Is currently on 'sc-'.
 
 ----
 == June 8, 2010 ==
