@@ -5,6 +5,22 @@
 This is a reverse-chronological log of things we've done on this project for the month of June 2010. Think of it as a journal of changes and features. An attempt at non-email-based institutional memory.
 
 = Details =
+== June 19, 2010 ==
+=== Collectors ===
+  * Google Code is on 'sv-'
+=== Teragrid ===
+  * ran the following
+{{{
+mysql> repair table sf_project_statistics_60;
++-----------------------------------------+--------+----------+--------------------------------------------+
+| Table                                   | Op     | Msg_type | Msg_text                                   |
++-----------------------------------------+--------+----------+--------------------------------------------+
+| ossmole_merged.sf_project_statistics_60 | repair | warning  | Number of rows changed from 0 to 165798359 | 
+| ossmole_merged.sf_project_statistics_60 | repair | status   | OK                                         | 
++-----------------------------------------+--------+----------+--------------------------------------------+
+2 rows in set (27 min 20.27 sec)
+}}}
+----
 ==June 18, 2010 ==
 === Database Admin ===
   * megan created new tables on ossmole_merged to hold LP data, as follows:
