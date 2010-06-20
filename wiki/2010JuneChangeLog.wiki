@@ -7,9 +7,50 @@ This is a reverse-chronological log of things we've done on this project for the
 = Details =
 == June 19, 2010 ==
 === Collectors ===
-  * Google Code is on 'sv-'
+  * Google Code is on 'tr-'
+  * wrote Tigris parser
+=== Database Admin ===
+  * Created Tigris tables for parsed data (ALTERed `tg_projects` on `ossmole_merged` and `test` and CREATEd the other 3 tables on both:
+{{{
+CREATE TABLE `tg_projects` (
+  `unixname` varchar(255) NOT NULL,
+  `datasource_id` int(11) NOT NULL,
+  `last_updated` datetime default NULL,
+  `url` varchar(255) default NULL,
+  `summary` text,
+  `description` text,
+  PRIMARY KEY  (`unixname`,`datasource_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1
+
+CREATE TABLE `tg_project_categories` (
+  `unixname` varchar(255) NOT NULL,
+  `datasource_id` int(11) NOT NULL,
+  `category_name` varchar(255) NOT NULL,
+  `category_url` varchar(255) NOT NULL,
+  `last_updated` datetime NOT NULL,
+  PRIMARY KEY  (`unixname`,`datasource_id`,`category_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='this holds the category info for tigris projects';
+
+CREATE TABLE `tg_project_licenses` (
+  `unixname` varchar(255) NOT NULL,
+  `datasource_id` int(11) NOT NULL,
+  `license_name` varchar(255) NOT NULL,
+  `license_url` varchar(255) NOT NULL,
+  `last_updated` datetime NOT NULL,
+  PRIMARY KEY  (`unixname`,`datasource_id`,`license_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='this holds the license info for tigris projects';
+
+CREATE TABLE `tg_project_owners` (
+  `unixname` varchar(255) NOT NULL,
+  `datasource_id` int(11) NOT NULL,
+  `owner_email` varchar(255) NOT NULL,
+  `owner_name` varchar(255) NOT NULL,
+  `last_updated` datetime NOT NULL,
+  PRIMARY KEY  (`unixname`,`datasource_id`,`owner_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='this holds the owner info for tigris projects';
+}}}
 === Teragrid ===
-  * ran the following
+  * ran the following based on email sent to mailing list
 {{{
 mysql> repair table sf_project_statistics_60;
 +-----------------------------------------+--------+----------+--------------------------------------------+
