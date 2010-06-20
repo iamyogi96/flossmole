@@ -5,10 +5,17 @@
 This is a reverse-chronological log of things we've done on this project for the month of June 2010. Think of it as a journal of changes and features. An attempt at non-email-based institutional memory.
 
 = Details =
+== June 20, 2010 == 
+=== Collectors ===
+  * Released Tigris metadata. Included are: project info, project categories, project owners, project licenses. 
+  * Mailing list data is too large to release. I will copy to Teragrid.
+=== Teragrid ===
+  * cannot start teragrid backup until Google Code is finished. (close, I hope?)
+
 == June 19, 2010 ==
 === Collectors ===
   * Google Code is on 'tr-'
-  * wrote Tigris parser
+  * wrote Tigris parser & ran it
 === Database Admin ===
   * Created Tigris tables for parsed data (ALTERed `tg_projects` on `ossmole_merged` and `test` and CREATEd the other 3 tables on both:
 {{{
