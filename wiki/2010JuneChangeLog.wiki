@@ -5,11 +5,16 @@
 This is a reverse-chronological log of things we've done on this project for the month of June 2010. Think of it as a journal of changes and features. An attempt at non-email-based institutional memory.
 
 = Details =
+== June 22, 2010 == 
+=== Collectors ===
+  * still running Google Code. There are 4 machines running on it right now (grid0-3). At the moment it is on "l" on step 3 of 8. This means not quite halfway finished. At this rate, and with questionable stops and starts of the machines, it should be done by mid-July.
+  * I need to run a Teragrid backup before GC finishes. So. The question is, how to best do this without sending the db into a fit. Should I stop the GC process and run Teragrid backup or should I attempt to work around the GC collection?
+----
 == June 21, 2010 ==
 === Collectors ===
   * Somehow missed some Launchpad tables when moving from test into production. Added these tables. Updated datasource_id to 227. Released code. lp_group_devs has no data. Did not release code into Datamart for June. Will catch this again in July.
 
-
+----
 == June 20, 2010 == 
 === Collectors ===
   * Released Tigris metadata. Included are: project info, project categories, project owners, project licenses. 
