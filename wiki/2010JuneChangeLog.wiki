@@ -5,6 +5,11 @@
 This is a reverse-chronological log of things we've done on this project for the month of June 2010. Think of it as a journal of changes and features. An attempt at non-email-based institutional memory.
 
 = Details =
+== June 21, 2010 ==
+=== Collectors ===
+  * Somehow missed some Launchpad tables when moving from test into production. Added these tables. Updated datasource_id to 227. Released code. lp_group_devs has no data. Did not release code into Datamart for June. Will catch this again in July.
+
+
 == June 20, 2010 == 
 === Collectors ===
   * Released Tigris metadata. Included are: project info, project categories, project owners, project licenses. 
