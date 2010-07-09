@@ -5,11 +5,16 @@
 This is a reverse-chronological log of things we've done on this project for the month of July 2010. Think of it as a journal of changes and features. An attempt at non-email-based institutional memory.
 
 = Details =
+== July 10, 2010 ==
+----
 == July 9, 2010 == 
 === Collectors ===
   * google code still running
   * carter getting errors with launchpad API
   * carter making a plan for linux gentoo metric collection
+
+=== Teragrid===
+  * I need to run a Teragrid backup - still waiting for GC to finish
 
 === Administrative ===
   * thinking about grants
