@@ -1,13 +1,15 @@
-#summary 2010 July Changelog
+#summary July 2010 Changelog
 
 = Introduction =
 
-Add your content here.
-
+This is a reverse-chronological log of things we've done on this project for the month of July 2010. Think of it as a journal of changes and features. An attempt at non-email-based institutional memory.
 
 = Details =
+== July 9, 2010 == 
+=== Collectors ===
+  * google code still running
+  * carter getting errors with launchpad API
+  * carter making a plan for linux gentoo metric collection
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+=== Administrative ===
+  * thinking about grants
