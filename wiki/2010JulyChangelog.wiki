@@ -5,7 +5,9 @@
 This is a reverse-chronological log of things we've done on this project for the month of July 2010. Think of it as a journal of changes and features. An attempt at non-email-based institutional memory.
 
 = Details =
-== July 10, 2010 ==
+== July 14, 2010 ==
+=== Collectors ===
+  * google code still chugging along 58K projects completed; 108K to go. Ecstatic!!
 ----
 == July 9, 2010 == 
 === Collectors ===
