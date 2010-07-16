@@ -8,16 +8,27 @@ This is a reverse-chronological log of things we've done on this project for the
 == July 15, 2010 ==
 === Collectors ===
   * google code is done. Miracle! Now to parse it. Sigh.
-  * parsing requires pulling the following from main page and put into projects table:
-    * code license
-    * content license (opt)
-    * activity level 
+  * parsing requires pulling the following from main page and put into table:
+    * code license - new column in projects table
+    * content license (opt) - new column in projects table
+    * activity level - new column in projects table
+    * content from main page (paragraph description area) - new column in projects table
+    * summary from main page (tag line) - new column in projects table
+    * label(s) from main page - needs new table
+    * link(s) from main page - needs new table
+    * blog(s) from main page - needs new table
+  * pull people from people and roles html page and add to new table gc_project_people (each person should have only one role so this is a single table)
+  * not really sure what to do with updates, wiki, downloads, or issues html yet. We have this raw html but what to parse out?? Maybe count of downloadable items? Count of issues? Count of 
 
 === Database Administration ===
+ran on test and prod:
 {{{
- ALTER TABLE `gc_projects` ADD `code_license` VARCHAR( 100 ) NULL COMMENT 'code license chosen',
+ALTER TABLE `gc_projects` ADD `code_license` VARCHAR( 100 ) NULL COMMENT 'code license chosen',
 ADD `activity_level` VARCHAR( 50 ) NULL COMMENT 'the word describing the activity level',
 ADD `content_license` VARCHAR( 100 ) NULL COMMENT 'content license (optional)';
+
+ALTER TABLE `gc_projects` ADD `project_summary` VARCHAR(255) NULL COMMENT 'short tag line',
+ADD `project_description` text NULL COMMENT 'the longer description of the project';
 }}}
 ----
 == July 14, 2010 ==
