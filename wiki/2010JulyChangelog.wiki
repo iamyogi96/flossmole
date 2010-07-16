@@ -8,6 +8,17 @@ This is a reverse-chronological log of things we've done on this project for the
 == July 15, 2010 ==
 === Collectors ===
   * google code is done. Miracle! Now to parse it. Sigh.
+  * parsing requires pulling the following from main page and put into projects table:
+    * code license
+    * content license (opt)
+    * activity level 
+
+=== Database Administration ===
+{{{
+ ALTER TABLE `gc_projects` ADD `code_license` VARCHAR( 100 ) NULL COMMENT 'code license chosen',
+ADD `activity_level` VARCHAR( 50 ) NULL COMMENT 'the word describing the activity level',
+ADD `content_license` VARCHAR( 100 ) NULL COMMENT 'content license (optional)';
+}}}
 ----
 == July 14, 2010 ==
 === Collectors ===
