@@ -5,20 +5,64 @@
 This is a reverse-chronological log of things we've done on this project for the month of July 2010. Think of it as a journal of changes and features. An attempt at non-email-based institutional memory.
 
 = Details =
+== July 21, 2010 ==
+=== Parsers ===
+  * parsing Google Code requires pulling the following from main page and put into table:
+    * code license - new column in projects table (done)
+    * activity level - new column in projects table (done)
+    * content license (opt) - new column in projects table (done)
+    * content from main page (paragraph description area) - new column in projects table (done)
+    * summary from main page (tag line) - new column in projects table (done)
+    * label(s) from main page - needs new table (done)
+{{{
+ CREATE TABLE `ossmole_merged`.`gc_project_labels` (
+`proj_name` VARCHAR( 255 ) NOT NULL ,
+`datasource_id` INT NOT NULL ,
+`label` VARCHAR( 255 ) NOT NULL ,
+`last_updated` DATETIME NOT NULL ,
+PRIMARY KEY ( `proj_name` , `datasource_id` , `label` )
+) ENGINE = MYISAM COMMENT = 'this holds the optional labels for a project' 
+}}}
+    * link(s) from main page - needs new table (done)
+{{{
+ CREATE TABLE `ossmole_merged`.`gc_project_links` (
+`proj_name` VARCHAR( 255 ) NOT NULL ,
+`datasource_id` INT NOT NULL ,
+`link_title` VARCHAR( 255 ) NOT NULL,
+`link` VARCHAR( 255 ) NOT NULL ,
+`last_updated` DATETIME NOT NULL ,
+PRIMARY KEY ( `proj_name` , `datasource_id` , `link` )
+) ENGINE = MYISAM COMMENT = 'this holds the optional external links listed for a project' 
+}}}
+    * blog(s) from main page - needs new table (done)
+{{{
+ CREATE TABLE `ossmole_merged`.`gc_project_blogs` (
+`proj_name` VARCHAR( 255 ) NOT NULL ,
+`datasource_id` INT NOT NULL ,
+`blog_title` VARCHAR( 255 ) NOT NULL ,
+`blog_link` VARCHAR( 255 ) NOT NULL,
+`last_updated` DATETIME NOT NULL ,
+PRIMARY KEY ( `proj_name` , `datasource_id` , `blog_link` )
+) ENGINE = MYISAM COMMENT = 'this holds the optional external blog title/link listed for a project' 
+}}}
+  * pull people from 'people' and 'roles' html pages and add to new table gc_project_people (each person should have only one role so this is a single table) (done)
+{{{
+ CREATE TABLE `ossmole_merged`.`gc_project_people` (
+`proj_name` VARCHAR( 255 ) NOT NULL ,
+`datasource_id` INT NOT NULL ,
+`person_name` VARCHAR( 255 ) NOT NULL ,
+`role` VARCHAR( 255 ) NOT NULL ,
+`duties` VARCHAR( 255 ) NOT NULL ,
+`notes` VARCHAR( 255 ) NOT NULL ,
+`last_updated` DATETIME NOT NULL ,
+PRIMARY KEY ( `proj_name` , `datasource_id` , `person_name` )
+) ENGINE = MYISAM 
+}}}
+  * not really sure what to do with updates, wiki, downloads, or issues html yet. We have this raw html but what to parse out?? Maybe count of downloadable items? Count of issues? Other?
+
 == July 15, 2010 ==
 === Collectors ===
   * google code is done. Miracle! Now to parse it. Sigh.
-  * parsing requires pulling the following from main page and put into table:
-    * code license - new column in projects table
-    * content license (opt) - new column in projects table
-    * activity level - new column in projects table
-    * content from main page (paragraph description area) - new column in projects table
-    * summary from main page (tag line) - new column in projects table
-    * label(s) from main page - needs new table
-    * link(s) from main page - needs new table
-    * blog(s) from main page - needs new table
-  * pull people from people and roles html page and add to new table gc_project_people (each person should have only one role so this is a single table)
-  * not really sure what to do with updates, wiki, downloads, or issues html yet. We have this raw html but what to parse out?? Maybe count of downloadable items? Count of issues? Count of 
 
 === Database Administration ===
 ran on test and prod:
