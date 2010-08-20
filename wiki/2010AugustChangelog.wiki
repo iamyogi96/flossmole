@@ -13,3 +13,9 @@ Turned in NSF collaborative grant proposal with Greg Madey of SRDA.
 ==August 11, 2010==
 Working on Google Code parser.
 ----
+==August 12, 2010==
+Parsed Google Code data.
+Released Google Code data.
+----
+==August 20, 2010==
+Backups to Teragrid begun.
