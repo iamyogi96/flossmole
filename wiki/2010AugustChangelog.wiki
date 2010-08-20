@@ -8,14 +8,15 @@ This is a reverse-chronological log of things we've done on this FLOSSmole proje
 = Details =
 
 ==August 4, 2010==
-Turned in NSF collaborative grant proposal with Greg Madey of SRDA.
+  * Turned in NSF collaborative grant proposal with Greg Madey of SRDA.
 ----
 ==August 11, 2010==
-Working on Google Code parser.
+  * Working on Google Code parser.
 ----
 ==August 12, 2010==
-Parsed Google Code data.
-Released Google Code data.
+  * Changed Google tables on production side to have UTF-8 collation.
+  * Parsed Google Code data.
+  * Released Google Code data.
 ----
 ==August 20, 2010==
-Backups to Teragrid begun.
+  * Backups to Teragrid begun.
