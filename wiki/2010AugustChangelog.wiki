@@ -20,3 +20,6 @@ This is a reverse-chronological log of things we've done on this FLOSSmole proje
 ----
 ==August 20, 2010==
   * Backups to Teragrid begun.
+----
+==August 27, 2010==
+  * Github ds=223 was backed up successfully to Teragrid.
