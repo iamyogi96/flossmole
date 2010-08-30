@@ -262,4 +262,58 @@ CREATE TABLE `lp_projects` (
   `focus` varchar(100) default NULL,
   PRIMARY KEY  (`datasource_id`,`project_name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='this holds basic info about launchpad projects' ;
+
+
+
+CREATE TABLE IF NOT EXISTS `lp_developers` (
+  `dev_loginname` varchar(100) NOT NULL default '',
+  `datasource_id` int(11) NOT NULL default '0',
+  `realname` varchar(100) default NULL,
+  `karma` int(11) default NULL,
+  `timezone` varchar(50) default NULL,
+  `join_date` date default NULL,
+  `last_updated` datetime default NULL,
+  `coc_signer` varchar(50) default NULL,
+  `description` mediumtext,
+  PRIMARY KEY  (`dev_loginname`,`datasource_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS `lp_developer_wiki` (
+  `dev_loginname` varchar(100) NOT NULL default '',
+  `datasource_id` int(11) NOT NULL default '0',
+  `wiki` varchar(100) NOT NULL default '',
+  `last_updated` datetime default NULL,
+  PRIMARY KEY  (`dev_loginname`,`datasource_id`,`wiki`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS `lp_group_devs` (
+  `group_loginname` varchar(100) NOT NULL default '',
+  `dev_loginname` varchar(100) NOT NULL default '',
+  `datasource_id` int(11) NOT NULL default '0',
+  `last_updated` datetime default NULL,
+  PRIMARY KEY  (`group_loginname`,`dev_loginname`,`datasource_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS `lp_group_projects` (
+  `group_loginname` varchar(100) NOT NULL default '',
+  `datasource_id` int(11) NOT NULL default '0',
+  `project_name` varchar(50) NOT NULL default '',
+  `last_updated` datetime default NULL,
+  PRIMARY KEY  (`group_loginname`,`datasource_id`,`project_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS `tg_project_categories` (
+  `unixname` varchar(255) NOT NULL,
+  `datasource_id` int(11) NOT NULL,
+  `category_name` varchar(255) NOT NULL,
+  `category_url` varchar(255) NOT NULL,
+  `last_updated` datetime NOT NULL,
+  PRIMARY KEY  (`unixname`,`datasource_id`,`category_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='this holds the category info for tigris projects';
+
+
 }}}
