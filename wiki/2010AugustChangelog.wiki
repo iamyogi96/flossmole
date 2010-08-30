@@ -316,4 +316,8 @@ CREATE TABLE IF NOT EXISTS `tg_project_categories` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='this holds the category info for tigris projects';
 
 
+ALTER TABLE  `gc_projects` ADD  `code_url` VARCHAR(255) NULL DEFAULT NULL AFTER  `code_license` ;
+ALTER TABLE  `gc_projects` ADD  `content_url` VARCHAR(255) NULL DEFAULT NULL AFTER  `content_license` ;
+
+
 }}}
