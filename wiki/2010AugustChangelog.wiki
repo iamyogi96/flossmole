@@ -318,6 +318,10 @@ CREATE TABLE IF NOT EXISTS `tg_project_categories` (
 
 ALTER TABLE  `gc_projects` ADD  `code_url` VARCHAR(255) NULL DEFAULT NULL AFTER  `code_license` ;
 ALTER TABLE  `gc_projects` ADD  `content_url` VARCHAR(255) NULL DEFAULT NULL AFTER  `content_license` ;
-
-
 }}}
+
+==August 31, 2010==
+===Teragrid Backup===
+  * Having some issues getting the two versions of the database to match. I guess my recordkeeping of changes was somewhat slack. Need to improve that. I was 98% accurate, but tracking down that 2% has taken the better part of two days.
+  * re-importing Tigris, Launchpad, and Google Code now.
+  
