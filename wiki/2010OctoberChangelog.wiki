@@ -1,4 +1,4 @@
-#summary October 2010 Log of Changes
+#summary Changelog for the month of October 2010
 
 = Introduction =
 
