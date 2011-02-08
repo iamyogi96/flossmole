@@ -8,6 +8,8 @@ Reverse-Chronological list of changes made February 2011
 ==February 8, 2011==
   * add bugs to google
   * create new feature list
+  * some notes on federated search and data integration
+
 ==February 7, 2011==
   * Google crawler still running; noticed developer collector is broken (only returning a hash of dev info if not logged in)
 ==February 6, 2011==
