@@ -1,0 +1,18 @@
+#summary List of changes for February 2011
+
+= Introduction =
+Reverse-Chronological list of changes made February 2011
+
+
+= Details =
+==February 8, 2011==
+  * add bugs to google
+  * create new feature list
+==February 7, 2011==
+  * Google crawler still running; noticed developer collector is broken (only returning a hash of dev info if not logged in)
+==February 6, 2011==
+  * github collector broken; bug submitted to snorris
+==February 4, 2011==
+  * make list of Debian items to fix with ckozak
+==January 31, 2011==
+  * submit paper to conference
