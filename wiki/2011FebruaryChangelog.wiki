@@ -5,6 +5,9 @@ Reverse-Chronological list of changes made February 2011
 
 
 = Details =
+==February 9, 2011==
+  * working on new tables to hold information about releases. This will be used to generate DOI information.
+
 ==February 8, 2011==
   * add bugs to google
   * create new feature list
