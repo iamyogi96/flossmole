@@ -5,6 +5,10 @@ Reverse-Chronological list of changes made February 2011
 
 
 = Details =
+==February 10, 2011==
+  * As part of the DOI project I decided to finally get all the file releases into one location and to write a db-driven script system for doing file releases. 
+  * This means that the SF site will basically just hold our mailing list for now. At some point I'll move that too.
+
 ==February 9, 2011==
   * working on new tables to hold information about releases. This will be used to generate DOI information.
 
