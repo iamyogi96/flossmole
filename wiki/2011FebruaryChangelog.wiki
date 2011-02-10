@@ -8,6 +8,15 @@ Reverse-Chronological list of changes made February 2011
 ==February 10, 2011==
   * As part of the DOI project I decided to finally get all the file releases into one location and to write a db-driven script system for doing file releases. 
   * This means that the SF site will basically just hold our mailing list for now. At some point I'll move that too.
+  # Copy all files from grid0 to local
+  # copy all files from SF to local
+  # this should give me a complete set
+  # move any files from this set NOT already on Google Code up there
+  # fill new DB tables with DOI info
+  # write a script to generate new DOI records
+  # update release scripts to take into account new tables
+  # generate new DOI records and send to company
+  # test new release system with January data
 
 ==February 9, 2011==
   * working on new tables to hold information about releases. This will be used to generate DOI information.
