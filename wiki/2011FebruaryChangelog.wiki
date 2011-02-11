@@ -5,6 +5,15 @@ Reverse-Chronological list of changes made February 2011
 
 
 = Details =
+==February 11, 2011==
+  * moved many older legacy data files from SF to GC, but blocked on this task since the uploader quit working - I suspect we are out of disk space? Here is the error:
+{{{
+flossmole$ python googlecode_upload.py --summary="Sourceforge Project Descriptions: 2007-Aug" --project=flossmole --user=megansquire --password=password sfProjectDesc2007-Aug.txt.bz2
+Please enter your googlecode.com username: 
+}}}
+
+No matter what I enter, it just asks for the password, then fails. (It should not even get this far since the username is given on the commandline. This just suddenly stopped working today after I had uploaded about 700 files between yesterday and today using this identical method.) In the past I have gotten this error when two things were wrong (1) ran out of disk space (2) badly formed .bz2 file. (I tested the bzipping in this case, and it was fine.)
+
 ==February 10, 2011==
   * Running Launchpad
   * Google Code still running (it's on developers)
