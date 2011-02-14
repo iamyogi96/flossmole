@@ -5,6 +5,11 @@ Reverse-Chronological list of changes made February 2011
 
 
 = Details =
+==February 14, 2011==
+  * Google increased our disk storage. File uploads continue.
+  * Google Code parser needs to be re-written; am getting errors on labels, activity levels, etc.
+  * Carter added column to Debian release data; I can now release the Debian metrics as soon as I get the data moved from dev into production.
+
 ==February 11, 2011==
   * moved many older legacy data files from SF to GC, but blocked on this task since the uploader quit working - I suspect we are out of disk space? Here is the error:
 {{{
