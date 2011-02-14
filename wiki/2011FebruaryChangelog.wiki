@@ -5,9 +5,15 @@ Reverse-Chronological list of changes made February 2011
 
 
 = Details =
+==February 15, 2011==
+TODO
+  * Release all January data
+  * Pick up DOI where we left off
+  * Launchpad is still chugging along
+  * github is still broken
 ==February 14, 2011==
-  * Google increased our disk storage. File uploads continue.
-  * Google Code parser needs to be re-written; am getting errors on labels, activity levels, etc.
+  * Google increased our disk storage. File uploads are now finished.
+  * Google Code parser has been re-written as of this afternoon; was getting errors on labels, activity levels, etc. Added functionality for groups.
   * Carter added column to Debian release data; I can now release the Debian metrics as soon as I get the data moved from dev into production.
 
 ==February 11, 2011==
