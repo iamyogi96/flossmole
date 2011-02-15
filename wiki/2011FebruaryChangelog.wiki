@@ -14,6 +14,16 @@ Reverse-Chronological list of changes made February 2011
 ==February 14, 2011==
   * Google increased our disk storage. File uploads are now finished.
   * Google Code parser has been re-written as of this afternoon; was getting errors on labels, activity levels, etc. Added functionality for groups.
+{{{
+CREATE TABLE IF NOT EXISTS `gc_project_groups` (
+  `proj_name` varchar(100) NOT NULL,
+  `datasource_id` int(11) NOT NULL,
+  `group_name` varchar(100) NOT NULL,
+  `group_url` varchar(255) character set latin1 NOT NULL,
+  `last_updated` datetime NOT NULL,
+  PRIMARY KEY  (`proj_name`,`datasource_id`,`group_url`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='this holds the optional groups listed for a project';
+}}}
   * Carter added column to Debian release data; I can now release the Debian metrics as soon as I get the data moved from dev into production.
 
 ==February 11, 2011==
