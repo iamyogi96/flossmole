@@ -6,9 +6,9 @@ Reverse-Chronological list of changes made February 2011
 
 = Details =
 ==February 15, 2011==
-TODO
-  * Release all January data
-  * Pick up DOI where we left off
+  * Released January data (fm, rf, ow, fsf, sv, gc, tg)
+  * TODO: Pick up DOI where we left off
+  * TODO: Debian data
   * Launchpad is still chugging along
   * github is still broken
 ==February 14, 2011==
