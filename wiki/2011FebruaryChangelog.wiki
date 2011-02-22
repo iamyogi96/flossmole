@@ -5,6 +5,10 @@ Reverse-Chronological list of changes made February 2011
 
 
 = Details =
+==February 22, 2011==
+  * Google fixed the downloads page issue. yay
+  * launchpad fixed and pages parsed
+  * Working on teragrid backup now
 ==February 17, 2011==
   * federated search review of lit
   * mailing lists and natural language review of lit
