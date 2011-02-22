@@ -7,8 +7,9 @@ Reverse-Chronological list of changes made February 2011
 = Details =
 ==February 22, 2011==
   * Google fixed the downloads page issue. yay
-  * launchpad fixed and pages parsed
-  * Working on teragrid backup now
+  * launchpad fixed and pages parsed, but still a few errors on filling in columns; probably a regex issue. Defect opened in Google Code.
+  * Teragrid is blocked on Launchpad.
+  * Working on DOI in the meantime.
 ==February 17, 2011==
   * federated search review of lit
   * mailing lists and natural language review of lit
