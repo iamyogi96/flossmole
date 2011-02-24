@@ -5,6 +5,12 @@ Reverse-Chronological list of changes made February 2011
 
 
 = Details =
+==February 24, 2011==
+  * One DOI fix this morning; ready to go for March release
+  * Google SOC application begun; all questions answered. Waiting on application to be released.
+==February 23, 2011==
+  * DOI generator scripts written
+  * DOI for 62 data sources submitted to Germany
 ==February 22, 2011==
   * Google fixed the downloads page issue. yay
   * launchpad fixed and pages parsed, but still a few errors on filling in columns; probably a regex issue. Defect opened in Google Code.
