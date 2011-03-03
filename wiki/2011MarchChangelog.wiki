@@ -1,0 +1,21 @@
+#summary Changelog for the month of March 2011
+
+= Introduction =
+
+This is a reverse-chronological list of changes and work we've done on this project in March.
+
+
+= Details =
+
+==March 3, 2011==
+
+  * GSOC app is blocked on waiting for 2 people to vouch for us as an org, and for backup admin to create a username.
+  * Worked on releasing Feb data to Teragrid
+  * New March run
+
+==March 2, 2011==
+  * Finished text for Google Summer of Code application.
+  * Finished Carter's SURE application.
+  * Interesting patent cases for us to consider when building a source code search engine.
+  * Carter is working on LP issues (see tracker for details)
+  * Github is still broken; have not heard back from snorris
