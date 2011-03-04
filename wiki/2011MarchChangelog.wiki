@@ -6,6 +6,10 @@ This is a reverse-chronological list of changes and work we've done on this proj
 
 
 = Details =
+==March 4, 2011==
+  * released data to google code for all forges except GC and the ones that are broken
+  * created DOI files for all these
+  * released all that data to Teragrid
 
 ==March 3, 2011==
 
