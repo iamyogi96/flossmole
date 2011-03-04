@@ -10,7 +10,7 @@ This is a reverse-chronological list of changes and work we've done on this proj
 ==March 3, 2011==
 
   * GSOC app is finished and completed. We have 2 folks to vouch for us. We have a short list of mentors and a backup administrator. 
-  * Worked on releasing Feb data to Teragrid
+  * Finished Jan/Feb data release to Teragrid
   * Started New March run
 
 ==March 2, 2011==
