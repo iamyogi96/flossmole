@@ -6,9 +6,13 @@ This is a reverse-chronological list of changes and work we've done on this proj
 
 
 = Details =
+==March 8, 2011==
+  * review old research; figure out way to build fast replication engine
+
 ==March 7, 2011==
   * review "what we know" paper
   * get handle on current research around mailing list conversations
+  * found bug in Tigris collector; report that to snorris
 
 ==March 6, 2011==
   * submitted talk proposal to oscon data
