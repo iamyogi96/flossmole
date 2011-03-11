@@ -6,8 +6,13 @@ This is a reverse-chronological list of changes and work we've done on this proj
 
 
 = Details =
+==March 11, 2011==
+  * Linked data
+  * Meeting with Carter
+
 ==March 10, 2011==
   * Linked data
+  * visualizations in html 5 canvas
 
 ==March 9, 2011==
   * Conf call - linked data
