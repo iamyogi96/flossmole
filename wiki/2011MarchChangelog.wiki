@@ -2,10 +2,27 @@
 
 = Introduction =
 
-This is a reverse-chronological list of changes and work we've done on this project in March.
-
+This is a reverse-chronological list of changes and work we've done on this project in March 2011.
 
 = Details =
+==March 30, 2011==
+  * March Google code release, and TG update
+  * Replication papers (7 total, 4 done)
+  * consider how to do a state-of-the-data paper
+
+==March 12-29, 2011==
+  * linked data
+  * think about replication infrastructure
+  * con call regarding CRI
+  * read CCC report
+  * think about new Debian data
+  * think about size of Debian
+  * wondering how to integrate UDD when it's in postgres and i'm in mysql
+  * GSOC was unsuccessful
+  * Carter is presenting at SURF
+  * still waiting on oscon
+  * prepping 2 papers for reser
+
 ==March 11, 2011==
   * Linked data
   * Meeting with Carter
