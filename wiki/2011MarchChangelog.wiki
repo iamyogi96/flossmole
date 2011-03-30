@@ -7,8 +7,7 @@ This is a reverse-chronological list of changes and work we've done on this proj
 = Details =
 ==March 30, 2011==
   * March Google code release, and TG update
-  * Replication papers (7 total, 4 done)
-  * consider how to do a state-of-the-data paper
+  * Review papers for replication & consider data (7 total, 4 done)
 
 ==March 12-29, 2011==
   * linked data
