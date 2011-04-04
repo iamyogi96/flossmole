@@ -1,0 +1,27 @@
+#summary Change Log for April 2011
+
+= Introduction =
+
+This is a reverse-chronological list of changes & projects made in April 2011
+
+
+= Details =
+
+==April 4, 2011==
+  * collected and released ObjectWeb data = 257
+  * started rubyforge
+  * started freshmeat
+  * started FSF
+  * started Savannah
+  * moved Deb Metrics (Jan) to production ds = 254
+
+{{{list of datasources is as follows:
+254 7 Deb Metrics
+255 2 FM
+256 3 RF
+257 4 OW
+258 5 FSF
+259 10 SV
+260 13 TG}}}
+
+  * created SRDA doi file; it's in the queue to send to Germany
