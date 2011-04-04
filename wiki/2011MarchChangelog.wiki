@@ -5,8 +5,9 @@
 This is a reverse-chronological list of changes and work we've done on this project in March 2011.
 
 = Details =
+
 ==March 30, 2011==
-  * March Google code release, and TG update
+  * March Google code release, and teragrid file update
   * Review papers for replication & consider data (7 total, 4 done)
 
 ==March 12-29, 2011==
