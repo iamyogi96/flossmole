@@ -7,13 +7,19 @@ This is a reverse-chronological list of changes & projects made in April 2011
 
 = Details =
 
+==April 5, 2011==
+  * finished rubyforge 256
+  * finished freshmeat 255
+  * finished Savannah 259
+  * Teragrid backup
+
 ==April 4, 2011==
   * collected and released ObjectWeb data = 257
   * started rubyforge
   * started freshmeat
-  * started FSF
   * started Savannah
   * moved Deb Metrics (Jan) to production ds = 254
+  * finished FSF = datasource 258
 
 {{{list of datasources is as follows:
 254 7 Deb Metrics
