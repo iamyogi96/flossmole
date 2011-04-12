@@ -6,6 +6,12 @@ This is a reverse-chronological list of changes & projects made in April 2011
 
 
 = Details =
+==April 6-12, 2011==
+  * working with Carter on uploading UDD code
+  * new Debian provenance table - needs to be filled before sending 3 Debian datasources to upload
+  * worked on master list of papers for replication study
+  * asked for and got flosshub admin to work on papers there (upload msr paper list)
+  * need msr papers from 2009 and 2010 (IEEE only)
 
 ==April 5, 2011==
   * finished rubyforge 256
