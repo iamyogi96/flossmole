@@ -10,6 +10,7 @@ This is a reverse-chronological list of changes & projects made in April 2011
   * entered 2009 msr papers into flosshub (took 43 minutes to add all papers using DOI and enter keywords and abstracts)
   * entered 2010 msr papers into flosshub
   * DID NOT ENTER non-floss papers!
+  * con call on CCC report
 ==April 6-12, 2011==
   * working with Carter on uploading UDD code
   * new Debian provenance table - needs to be filled before sending 3 Debian datasources to upload
