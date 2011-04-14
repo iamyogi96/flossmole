@@ -7,7 +7,7 @@ This is a reverse-chronological list of changes & projects made in April 2011
 
 = Details =
 ==April 14, 2011==
-  * entered 2007 msr papers into flosshub
+  * entered 2007, 2006, 2004, and half of 2005 msr papers into flosshub
   * talked to carter about funding
   * send out email to one other student about summer work
 ==April 13, 2011==
