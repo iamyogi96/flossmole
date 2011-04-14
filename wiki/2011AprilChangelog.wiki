@@ -6,6 +6,10 @@ This is a reverse-chronological list of changes & projects made in April 2011
 
 
 = Details =
+==April 14, 2011==
+  * entered 2007 msr papers into flosshub
+  * talked to carter about funding
+  * send out email to one other student about summer work
 ==April 13, 2011==
   * entered 2009 msr papers into flosshub (took 43 minutes to add all papers using DOI and enter keywords and abstracts)
   * entered 2010 msr papers into flosshub
