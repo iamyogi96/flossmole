@@ -6,6 +6,9 @@ This is a reverse-chronological list of changes & projects made in April 2011
 
 
 = Details =
+==April 20-22, 2011==
+  * entered rest of msr papers, annotated
+  * entered papers from "What we know" into flosshub; all those having to do with repositories or non-survey data; nearly 400 papers now
 ==April 15, 2011==
   * meet with David Williams about summer research assistantship
   * meet with Carter, weekly meeting
