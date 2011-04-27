@@ -6,6 +6,43 @@ This is a reverse-chronological list of changes & projects made in April 2011
 
 
 = Details =
+==April 27, 2011==
+  * moving grid0 to grid6
+
+==April 26, 2011==
+  * worked on UDD tables; added indexes (below) uploaded to teragrid
+{{{
+ALTER TABLE `udd_archived_bugs` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_archived_bugs_blockedby` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_archived_bugs_blocks` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_archived_bugs_fixed_in` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_archived_bugs_found_in` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_archived_bugs_merged_with` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_archived_bugs_packages` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_archived_bugs_tags` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_bugs` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_bugs_blockedby` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_bugs_blocks` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_bugs_fixed_in` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_bugs_found_in` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_bugs_merged_with` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_bugs_packages` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_bugs_tags` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_bugs_usertags` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_carnivore_emails` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_carnivore_keys` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_carnivore_login` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_carnivore_names` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_package_removal` ADD INDEX ( `datasource_id` , `batch_id` ) ;
+ALTER TABLE `udd_package_removal_batch` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_timestamps` ADD INDEX ( `datasource_id` , `id` ) ;
+ALTER TABLE `udd_ubuntu_bugs` ADD INDEX ( `datasource_id` , `bug` ) ;
+ALTER TABLE `udd_ubuntu_bugs_duplicates` ADD INDEX ( `datasource_id` , `bug` ) ;
+ALTER TABLE `udd_ubuntu_bugs_subscribers` ADD INDEX ( `datasource_id` , `bug` ) ;
+ALTER TABLE `udd_ubuntu_bugs_tags` ADD INDEX ( `datasource_id` , `bug` ) ;
+ALTER TABLE `udd_ubuntu_bugs_tasks` ADD INDEX ( `datasource_id` , `bug` ) ;
+ALTER TABLE `udd_upload_history_closes` ADD INDEX ( `datasource_id` , `bug` ) ;
+}}}
 ==April 20-22, 2011==
   * entered rest of msr papers, annotated
   * entered papers from "What we know" into flosshub; all those having to do with repositories or non-survey data; nearly 400 papers now
