@@ -9,7 +9,13 @@ This is a reverse-chronological list of changes & projects made in April 2011
 ==April 28, 2011==
   * moving grid0 to grid6
 ==April 27, 2011==
-  * SELECT max(length(package)) FROM `udd_bibref`
+  * Use the following to see how long the varchar needs to be:
+{{{
+SELECT max(length(package)) FROM `udd_bibref`
+}}}
+
+  * Then run these to alter the table to fit
+  * Note that their are still a metric ton of columns that are marked text and probably should be varchar. Argh.
 {{{
 #udd_bibref
 ALTER TABLE `udd_bibref` CHANGE `package` `package` VARCHAR(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
