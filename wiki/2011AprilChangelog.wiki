@@ -6,8 +6,12 @@ This is a reverse-chronological list of changes & projects made in April 2011
 
 
 = Details =
+==April 29, 2011==
+  * indexes
 ==April 28, 2011==
-  * moving grid0 to grid6
+  * in prep for moving grid0 to grid6
+  * work on indexes
+  * work on paper
 ==April 27, 2011==
   * Use the following to see how long the varchar needs to be:
 {{{
