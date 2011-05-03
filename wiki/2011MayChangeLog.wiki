@@ -1,0 +1,22 @@
+#summary List of changes and work items for May 2011
+
+= Introduction =
+
+This is a reverse-chronological list of changes for May 2011
+
+
+= Details =
+
+==May 3, 2011==
+  * worked on May release
+===datasources===
+  * 263 = Freshmeat
+  * 264 = UDD bugfix (moved from test to prod)
+  * 265 = UDD may (moved from test to prod)
+  * 266 = Rubyforge 
+
+==May 2, 2011==
+  * con call about grant
+  * worked on Debian queries
+  * looked at paper on software release history
+  * paper deadline extended until Saturday
