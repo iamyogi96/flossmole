@@ -5,6 +5,11 @@
 This is a reverse-chronological list of changes for May 2011
 
 = Details =
+==May 4, 2011==
+  * release rest of May data; backup to Teragrid all datasources > 262
+  * work on paper
+  * work on student summer schedule & budget
+
 ----
 ==May 3, 2011==
   * worked on May release
