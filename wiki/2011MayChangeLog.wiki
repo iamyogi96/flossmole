@@ -5,10 +5,17 @@
 This is a reverse-chronological list of changes for May 2011
 
 = Details =
+==May 6, 2011==
+  * Google still running
+  * outline F paper
+  * meeting with carter and david
+  * con call with grant team
+
 ==Cinco de Mayo==
   * Google still running
   * signup for github learning thingie
   * go over to-do list
+  * start F paper
 ----
 ==May 4, 2011==
   * release rest of May data; backup to Teragrid all datasources > 262
