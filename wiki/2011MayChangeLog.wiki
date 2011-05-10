@@ -5,12 +5,21 @@
 This is a reverse-chronological list of changes for May 2011
 
 = Details =
+=May 10, 2011==
+  * git training
+  * working on forges tables
+----
+==May 9, 2011==
+  * git training
+  * working on forges tables
+  * google code still running
+----
 ==May 6, 2011==
   * Google still running
   * outline F paper
   * meeting with carter and david
   * con call with grant team
-
+----
 ==Cinco de Mayo==
   * Google still running
   * signup for github learning thingie
