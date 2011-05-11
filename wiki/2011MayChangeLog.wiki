@@ -5,7 +5,11 @@
 This is a reverse-chronological list of changes for May 2011
 
 = Details =
-=May 10, 2011==
+==May 11, 2011==
+  * worked on filling forges tables
+  * done: SF (1), GC (12), FM (2)
+----
+==May 10, 2011==
   * git training
   * working on forges tables
 ----
