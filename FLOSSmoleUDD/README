@@ -1,0 +1,8 @@
+download.sh script fetches the latest udd.sql.gz database dump, and saves it as udd-timestamp.sql (uncompressed)
+
+config file (udd.conf) takes a username, password, and database path
+
+to pull this data into the database, you have to run "python udd.py DATASOURCE SQL_FILE"
+for example "python udd.py 300 udd-latest.sql"
+
+it will print the name of each table as it adds the data.
