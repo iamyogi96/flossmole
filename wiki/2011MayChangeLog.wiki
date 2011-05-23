@@ -5,6 +5,11 @@
 This is a reverse-chronological list of changes for May 2011
 
 = Details =
+==May 23, 2011==
+  * student team meeting
+  * worked on last 5 forges
+  * google code still running
+
 ==May 14-19, 2011==
   * collected stats on various forges for forge_stats table
   * started forge project stats and forge developer stats
