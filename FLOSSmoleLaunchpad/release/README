@@ -1,0 +1,3 @@
+to run:
+download all files, set datasource and database information in the config file lp.conf
+run lp.py
