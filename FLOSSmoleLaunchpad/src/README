@@ -1,8 +1,0 @@
- 
-To configure lp and lp-parse, edit their .conf files, and copy those to the same directory as the program.
-
-The db_address includes both the databases adress, and the database name.  
-ex: localhost/example
-for the "example" database, on system "localhost"
-
-Run the program normally (python lp.py)
