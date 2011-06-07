@@ -5,6 +5,10 @@
 This is a reverse-chronological list of changes for May 2011
 
 = Details =
+==May 23-27, 2011==
+  * David: working on visualizations for "examples" page on flossmole.org
+  * Carter: working on fixing up Debian code for release & instructions, starting Launchpad
+
 ==May 23, 2011==
   * student team meeting
   * worked on last 5 forges
