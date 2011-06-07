@@ -1,0 +1,19 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+This is a list of stuff we've done in June 2011
+
+
+= Details =
+
+==week of June 6 - 10==
+  * Megan conf call on June 7
+  * David working on forges table
+  * Megan finishing up forges paper; formatting
+  * Carter releases Launchpad collector to Google Code
+  * Google code finished; megan releases data
+  * Carter begins work on grid0 move to grid6 
+==week of May 30 - June 3== 
+  * Carter working on Launchpad API-based collector
+  * David finishing up visualiztations for Examples and 'forges' paper
