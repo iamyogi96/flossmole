@@ -1,0 +1,19 @@
+RUN INSTRUCTIONS
+Run from command line using this format
+[Interpreter] GitHubJobs.py [DatasourceID] [Test mode True/False]
+[Interpreter] GitHubSpider.py [DatasourceID] [Test mode True/False]
+
+The use of test mode must be marker by 'True' with exact capitalization and spelling, as the argument is based off of a string variable.
+
+A text file will need to be created. The name of this file must be dbInfo.txt and have the following lines:
+server
+port
+username
+password
+database
+
+When using test mode a text file with the same lines must be created as dbInfoTest.txt
+
+After the spider run, run
+[Interpreter] GitHubCleanUp.py [DatasourceID] [Test mode True/False]
+Then rerun the spider as mentioned. This will clean up any projects left in the In_Progress state due to machine error.
