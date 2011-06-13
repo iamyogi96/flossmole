@@ -118,7 +118,10 @@ def main(argv):
             if test=="True":
               total_pages = 1
             else:
-              total_pages = int(re.search('>(\d+)</a>\n',current_html).group(1))
+              try:
+                total_pages = int(re.search('>(\d+)</a>\n',current_html).group(1))
+              except:
+                pass
             page += 1
             repos = re.findall(r'<a href="/(\w+)/(\w+)">\1 / \2</a>',current_html)
             for repo in repos:
