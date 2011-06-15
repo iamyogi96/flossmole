@@ -32,7 +32,7 @@ def run(utils,datasource_id):
             #inserts index page and gets new job
             if(index):
                 print("Inserting Into Database")
-                insert1="""INSERT INTO tg_projects (unixname,datasource_id,last_modified,url)
+                insert1="""INSERT INTO tg_projects (unixname,datasource_id,last_updated,url)
                 VALUES(%s,%s,NOW(),%s)"""
                 utils.db_insert(insert1,unixname,datasource_id,"http://"+unixname+".tigris.org")
                 insert2="""INSERT INTO tg_project_indexes (unixname,indexhtml,last_modified,datasource_id)

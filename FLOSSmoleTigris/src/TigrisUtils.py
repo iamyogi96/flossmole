@@ -100,6 +100,18 @@ class TigrisUtils:
             print('!!!!WARNING!!!! Error '+message+'could not be posted for'+unixname+' at '+datasource_id+'.')
             self.error=True
     
+    #Gets the last_modified date for a message_id
+    def get_message_date(self,unixname,discussion_id,message_id):
+        try:
+            select="""SELECT last_modified FROM tg_messages_indexes 
+            WHERE unixname=%s AND discussion_id=%s AND message_id=%s"""
+            self.cursor.execute(select,(unixname,discussion_id,message_id))
+            date=self.cursor.fetchone()
+            return date
+        except:
+            print("!!!!WARNING!!!! Gathering date failed.")
+            print(traceback.format_exc())
+    
     #Gathers the discussions page for the named project
     def get_discussions(self,datasource_id,unixname):
         try:

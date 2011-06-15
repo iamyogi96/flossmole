@@ -15,14 +15,47 @@ import re
 def messagesSpider(page):
 
     try:
-        find=re.compile("<a href='(viewMessage\.do.+?)'>.+?(\d\d\d\d-\d\d-\d\d).+?</span>",re.DOTALL)
+        find=re.compile("<a href='(viewMessage\.do.+?)'>.+?<td>.+?(\d).+?</td>.+?(\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d).+?</span>",re.DOTALL)
+        linksNeedReplace=find.findall(page)
+        if(linksNeedReplace):
+            links=[]
+            for link in linksNeedReplace:
+                numMessages=link[1]
+                date=link[2]
+                linkReplaced=link[0].replace("&amp;","&")
+                date=date.split("-");
+                date=''.join(date);
+                date=date.split(":");
+                date=''.join(date);
+                date=date.split();
+                date=''.join(date);
+                links.append((date,linkReplaced,numMessages))
+            links=sorted(links);
+            return links
+        else:
+            return None
+    except:
+        return None
+    
+#Spiders the links and dates for the messages when multiple messages are present
+def messages2Spider(page):
+
+    try:
+        find=re.compile("<tr class=.+?<a href='(viewMessage\.do.+?)'>.+?(\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d).+?</tr>",re.DOTALL)
         linksNeedReplace=find.findall(page)
         if(linksNeedReplace):
             links=[]
             for link in linksNeedReplace:
                 date=link[1]
                 linkReplaced=link[0].replace("&amp;","&")
+                date=date.split("-");
+                date=''.join(date);
+                date=date.split(":");
+                date=''.join(date);
+                date=date.split();
+                date=''.join(date);
                 links.append((date,linkReplaced))
+            links=sorted(links);
             return links
         else:
             return None
@@ -59,7 +92,7 @@ def nextSpider(page):
         return link
     except:
         return None
-
+    
 #runs the main spidering for the mailing lists
 def run(utils,datasource_id):
     
@@ -96,29 +129,85 @@ def run(utils,datasource_id):
                         
                         #inserts messages into database
                         if(messages):
-                            for link in messages:
+                            for messageLink in messages:
                                 time.sleep(3)
-                                date=link[0]
-                                link=link[1]
-                                date=date.split("-")
+                                link=messageLink[1]
+                                date=messageLink[0]
+                                numMessagesStr=messageLink[2]
+                                numMessages=float(numMessagesStr)
                                 
-                                #checks for current month and year on message
-                                if(date[0]==time.strftime("%Y") and date[1]==time.strftime("%m")):
+                                #if multiple messages exist, collect for those messages
+                                if(numMessages > 1):
+                                    print("\t\t\tGathering main message page for "+numMessagesStr+" responses.")
+                                    print("\t\t\tUsing link "+link)
+                                    message2=utils.get_page("http://"+unixname+".tigris.org/ds/"+link)
+                                    print("\t\t\t\tGathering messages")
+                                    messages2=messages2Spider(message2)
+                                    
+                                    #inserts messages into database
+                                    if(messages2):
+                                        #append first page, oldest message, to end of list
+                                        messages2.append((date,link))
+                                        messages2.reverse();
+                                        for messageLink2 in messages2:
+                                            time.sleep(3)
+                                            link=messageLink2[1]
+                                            date=messageLink2[0]
+                                            print date;
+                                            mId=messageIdSpider(link)
+                                            dId=discussionIdSpider(link)
+                                            
+                                            #Gather last date message was modified
+                                            last_date=utils.get_message_date(unixname,dId,mId)
+                                            
+                                            #checks for current month and year on message
+                                            if not last_date:
+                                                print "\t\t\t\t\tGathering page for message id "+mId+" at discussion id "+dId+" for project "+unixname
+                                                print "\t\t\t\t\tUsing link "+link
+                                                message=utils.get_page("http://"+unixname+".tigris.org/ds/"+link)
+                                                print "\t\t\t\t\tInserting into database."
+                                                insert="""INSERT INTO tg_messages_indexes (unixname,datasource_id,discussion_id,message_id,html,last_modified)
+                                                VALUES(%s,%s,%s,%s,%s,NOW())"""
+                                                utils.db_insert(insert,unixname,datasource_id,dId,mId,message)
+                                                
+                                            #breaks loop and sets condition to stop outer loop as well
+                                            else:
+                                                next=False
+                                                break
+                                    else:
+                                        print "\t\t\t!! Messages were not found or did not exist for page "+str(page_num) 
+                                        next_link=nextSpider(page);
+                                        if(next_link):
+                                            page=utils.get_page("http://"+unixname+".tigris.org/ds/"+next_link)
+                                            page_num=page_num+1
+                                        else:
+                                            next=False;
+                                    
+                                #if multiple messages do not exist, collect the page
+                                else:         
                                     mId=messageIdSpider(link)
                                     dId=discussionIdSpider(link)
-                                    print "\t\t\tGathering page for message id "+mId+" at discussion id "+dId+" for project "+unixname
-                                    print "\t\t\tUsing link "+link
-                                    message=utils.get_page("http://"+unixname+".tigris.org/ds/"+link)
-                                    print "\t\t\tInserting into database."
-                                    insert="""INSERT INTO tg_messages_indexes (unixname,datasource_id,discussion_id,message_id,html,last_modified)
-                                    VALUES(%s,%s,%s,%s,%s,NOW())"""
-                                    utils.db_insert(insert,unixname,datasource_id,dId,mId,message)
+                                    print date;
                                     
-                                #breaks loop and sets condition to stop outer loop as well
-                                else:
-                                    next=False
-                                    break
-                                
+                                    #Gather last date message was modified
+                                    last_date=utils.get_message_date(unixname,dId,mId)
+                                    
+                                    #checks for current month and year on message
+                                    if not last_date:
+                                        print "\t\t\tGathering page for message id "+mId+" at discussion id "+dId+" for project "+unixname
+                                        print "\t\t\tUsing link "+link
+                                        message=utils.get_page("http://"+unixname+".tigris.org/ds/"+link)
+                                        print "\t\t\tInserting into database."
+                                        insert="""INSERT INTO tg_messages_indexes (unixname,datasource_id,discussion_id,message_id,html,last_modified)
+                                        VALUES(%s,%s,%s,%s,%s,NOW())"""
+                                        utils.db_insert(insert,unixname,datasource_id,dId,mId,message)
+                                        
+                                    #breaks loop and sets condition to stop outer loop as well
+                                    else:
+                                        next=False
+                                        break
+                                    
+                            
                             #check for next page and collect accordingly
                             next_link=nextSpider(page);
                             if(next_link):
@@ -126,6 +215,7 @@ def run(utils,datasource_id):
                                 page_num=page_num+1
                             else:
                                 next=False;
+                                
                                 
                         #If messages do not exist, print warning and continue loop
                         else:
@@ -136,6 +226,7 @@ def run(utils,datasource_id):
                                 page_num=page_num+1
                             else:
                                 next=False;
+                                
                 
                 #changes status, gets new job, and checks for errors
                 utils.change_status('completed','gather_messages',datasource_id,unixname)
