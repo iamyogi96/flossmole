@@ -9,6 +9,7 @@ This is a list of stuff we've done in June 2011
 
 ==June 20, 2011==
   * release LP data - this requires all new LP header files, dump commands in release files
+  * post forge web pages on flossmole.org for the forge study
   * mv all old tables for Launchpad prefix lp_ to old_lp_
   * get Carter started on new mailing list project
   * get David started on new Debian counting project
