@@ -8,6 +8,7 @@ This is a list of stuff we've done in June 2011
 = Details =
 ==June 21, 2011==
   * update datasource for UDD on test (ds=510 to 276)
+INSERT INTO `datasources` (`datasource_id`, `forge_id`, `friendly_name`, `date_donated`, `contact_person`, `comments`, `start_date`, `end_date`) VALUES ('276', '15', 'UDD 2011-Jun', '2011-06-17 07:18:17', 'ckozak@elon.edu', 'UDD collection June 2011', '2011-06-17', '2011-06-17'), ('277', '7', 'Debian 2011-Jun', '2011-06-17 00:00:00', 'ckozak@elon.edu', 'Debian collection June 2011', '2011-06-17', NULL);
 
   * mv all old tables for Launchpad prefix lp_ to old_lp_ (test, prod, TG)
 {{{
