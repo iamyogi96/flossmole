@@ -7,9 +7,85 @@ This is a list of stuff we've done in June 2011
 
 = Details =
 ==June 21, 2011==
-  * update datasource for UDD on test (ds=510 to 276)
+  * add datasource for UDD on test/prod/TG 
+{{{
 INSERT INTO `datasources` (`datasource_id`, `forge_id`, `friendly_name`, `date_donated`, `contact_person`, `comments`, `start_date`, `end_date`) VALUES ('276', '15', 'UDD 2011-Jun', '2011-06-17 07:18:17', 'ckozak@elon.edu', 'UDD collection June 2011', '2011-06-17', '2011-06-17'), ('277', '7', 'Debian 2011-Jun', '2011-06-17 00:00:00', 'ckozak@elon.edu', 'Debian collection June 2011', '2011-06-17', NULL);
+}}}
 
+  * update test to show new datasource NOT 510
+{{{
+UPDATE udd_archived_bugs SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_archived_bugs_blockedby SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_archived_bugs_blocks SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_archived_bugs_fixed_in SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_archived_bugs_found_in SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_archived_bugs_merged_with SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_archived_bugs_packages SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_archived_bugs_tags SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_bibref SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_bugs SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_bugs_blockedby SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_bugs_blocks SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_bugs_fixed_in SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_bugs_found_in SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_bugs_merged_with SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_bugs_packages SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_bugs_tags SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_bugs_usertags SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_carnivore_emails SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_carnivore_keys SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_carnivore_login SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_carnivore_names SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_ddtp SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_debtags SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_deferred SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_deferred_architecture SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_deferred_binary SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_deferred_closes SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_dehs SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_derivatives_packages SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_derivatives_packages_distrelcomparch SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_derivatives_packages_summary SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_derivatives_sources SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_derivatives_uploaders SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_hints SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_lintian SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_migrations SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_new_packages SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_new_sources SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_orphaned_packages SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_package_removal SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_package_removal_batch SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_packages SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_packages_distrelcomparch SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_packages_summary SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_popcon SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_popcon_src SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_popcon_src_average SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_releases SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_screenshots SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_sources SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_sources_count SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_timestamps SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_ubuntu_bugs SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_ubuntu_bugs_duplicates SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_ubuntu_bugs_subscribers SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_ubuntu_bugs_tags SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_ubuntu_bugs_tasks SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_ubuntu_packages SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_ubuntu_packages_distrelcomparch SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_ubuntu_packages_summary SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_ubuntu_popcon SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_ubuntu_popcon_src SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_ubuntu_popcon_src_average SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_ubuntu_sources SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_ubuntu_uploaders SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_upload_history SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_upload_history_architecture SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_upload_history_closes SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_uploaders SET datasource_id=276 WHERE datasource_id=510;
+UPDATE udd_wannabuild SET datasource_id=276 WHERE datasource_id=510;
+}}}
   * mv all old tables for Launchpad prefix lp_ to old_lp_ (test, prod, TG)
 {{{
 RENAME TABLE `test`.`lp_developers` TO `test`.`old_lp_developers` ;
