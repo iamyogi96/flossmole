@@ -11,7 +11,10 @@ This is a list of stuff we've done in June 2011
 {{{
 INSERT INTO `datasources` (`datasource_id`, `forge_id`, `friendly_name`, `date_donated`, `contact_person`, `comments`, `start_date`, `end_date`) VALUES ('276', '15', 'UDD 2011-Jun', '2011-06-17 07:18:17', 'ckozak@elon.edu', 'UDD collection June 2011', '2011-06-17', '2011-06-17'), ('277', '7', 'Debian 2011-Jun', '2011-06-17 00:00:00', 'ckozak@elon.edu', 'Debian collection June 2011', '2011-06-17', NULL);
 }}}
-
+  * get list of UDD tables
+{{{
+SHOW tables LIKE 'udd%';
+}}}
   * update test to show new datasource NOT 510
 {{{
 UPDATE udd_archived_bugs SET datasource_id=276 WHERE datasource_id=510;
