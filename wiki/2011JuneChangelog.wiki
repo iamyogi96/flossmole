@@ -8,6 +8,60 @@ This is a list of stuff we've done in June 2011
 = Details =
 ==June 21, 2011==
   * mv all old tables for Launchpad prefix lp_ to old_lp_ (test, prod, TG)
+{{{
+RENAME TABLE `test`.`lp_developers` TO `test`.`old_lp_developers` ;
+RENAME TABLE `test`.`lp_developer_indexes` TO `test`.`old_lp_developer_indexes` ;
+RENAME TABLE `test`.`lp_developer_irc` TO `test`.`old_lp_developer_irc` ;
+RENAME TABLE `test`.`lp_developer_languages` TO `test`.`old_lp_developer_languages` ;
+RENAME TABLE `test`.`lp_developer_projects` TO `test`.`old_lp_developer_projects` ;
+RENAME TABLE `test`.`lp_developer_wiki` TO `test`.`old_lp_developer_wiki` ;
+RENAME TABLE `test`.`lp_groups` TO `test`.`old_lp_groups` ;
+RENAME TABLE `test`.`lp_group_devs` TO `test`.`old_lp_group_devs` ;
+RENAME TABLE `test`.`lp_group_indexes` TO `test`.`old_lp_group_indexes` ;
+RENAME TABLE `test`.`lp_group_projects` TO `test`.`old_lp_group_projects` ;
+RENAME TABLE `test`.`lp_jobs` TO `test`.`old_lp_jobs` ;
+RENAME TABLE `test`.`lp_projects` TO `test`.`old_lp_projects` ;
+RENAME TABLE `test`.`lp_project_indexes` TO `test`.`old_lp_project_indexes` ;
+RENAME TABLE `test`.`lp_project_languages` TO `test`.`old_lp_project_languages` ;
+RENAME TABLE `test`.`lp_project_licenses` TO `test`.`old_lp_project_licenses` ;
+RENAME TABLE `test`.`lp_project_uses` TO `test`.`old_lp_project_uses` ;
+RENAME TABLE `test`.`lp_temp` TO `test`.`old_lp_temp` ;
+RENAME TABLE `ossmole_merged`.`lp_developers` TO `ossmole_merged`.`old_lp_developers` ;
+RENAME TABLE `ossmole_merged`.`lp_developer_indexes` TO `ossmole_merged`.`old_lp_developer_indexes` ;
+RENAME TABLE `ossmole_merged`.`lp_developer_irc` TO `ossmole_merged`.`old_lp_developer_irc` ;
+RENAME TABLE `ossmole_merged`.`lp_developer_languages` TO `ossmole_merged`.`old_lp_developer_languages` ;
+RENAME TABLE `ossmole_merged`.`lp_developer_projects` TO `ossmole_merged`.`old_lp_developer_projects` ;
+RENAME TABLE `ossmole_merged`.`lp_developer_wiki` TO `ossmole_merged`.`old_lp_developer_wiki` ;
+RENAME TABLE `ossmole_merged`.`lp_groups` TO `ossmole_merged`.`old_lp_groups` ;
+RENAME TABLE `ossmole_merged`.`lp_group_devs` TO `ossmole_merged`.`old_lp_group_devs` ;
+RENAME TABLE `ossmole_merged`.`lp_group_indexes` TO `ossmole_merged`.`old_lp_group_indexes` ;
+RENAME TABLE `ossmole_merged`.`lp_group_projects` TO `ossmole_merged`.`old_lp_group_projects` ;
+RENAME TABLE `ossmole_merged`.`lp_jobs` TO `ossmole_merged`.`old_lp_jobs` ;
+RENAME TABLE `ossmole_merged`.`lp_projects` TO `ossmole_merged`.`old_lp_projects` ;
+RENAME TABLE `ossmole_merged`.`lp_project_indexes` TO `ossmole_merged`.`old_lp_project_indexes` ;
+RENAME TABLE `ossmole_merged`.`lp_project_languages` TO `ossmole_merged`.`old_lp_project_languages` ;
+RENAME TABLE `ossmole_merged`.`lp_project_licenses` TO `ossmole_merged`.`old_lp_project_licenses` ;
+RENAME TABLE `ossmole_merged`.`lp_project_uses` TO `ossmole_merged`.`old_lp_project_uses` ;
+RENAME TABLE `test`.`calculated_statistics` TO `test`.`old_calculated_statistics` ;
+RENAME TABLE `ossmole_merged`.`calculated_statistics` TO `ossmole_merged`.`old_calculated_statistics` ;
+RENAME TABLE `test`.`debian_copyright_urls` TO `test`.`old_debian_copyright_urls` ;
+RENAME TABLE `test`.`debian_jobs` TO `test`.`old_debian_jobs`;
+RENAME TABLE `test`.`debian_projects` TO `test`.`old_debian_projects`;
+RENAME TABLE `test`.`debian_project_developers` TO `test`.`old_debian_project_developers`;
+RENAME TABLE `test`.`debian_project_indexes_stable` TO `test`.`old_debian_project_indexes_stable`;
+RENAME TABLE `test`.`debian_project_indexes_testing` TO `test`.`old_debian_project_indexes_testing`;
+RENAME TABLE `test`.`debian_project_indexes_unstable` TO `test`.`old_debian_project_indexes_unstable`;
+RENAME TABLE `ossmole_merged`.`debian_copyright_urls` TO `ossmole_merged`.`old_debian_copyright_urls` ;
+RENAME TABLE `ossmole_merged`.`debian_jobs` TO `ossmole_merged`.`old_debian_jobs`;
+RENAME TABLE `ossmole_merged`.`debian_projects` TO `ossmole_merged`.`old_debian_projects`;
+RENAME TABLE `ossmole_merged`.`debian_project_developers` TO `ossmole_merged`.`old_debian_project_developers`;
+RENAME TABLE `ossmole_merged`.`debian_project_indexes_stable` TO `ossmole_merged`.`old_debian_project_indexes_stable`;
+RENAME TABLE `ossmole_merged`.`debian_project_indexes_testing` TO `ossmole_merged`.`old_debian_project_indexes_testing`;
+RENAME TABLE `ossmole_merged`.`debian_project_indexes_unstable` TO `ossmole_merged`.`old_debian_project_indexes_unstable`;
+RENAME TABLE `test`.`entity_match_scores` TO `test`.`old_entity_match_scores` ;
+RENAME TABLE `ossmole_merged`.`entity_match_scores` TO `ossmole_merged`.`old_entity_match_scores` ;
+RENAME TABLE `ossmole_merged`.`list_posts` TO `ossmole_merged`.`old_list_posts` 
+}}}
   * mv data from forges table on test into forges tables on prod
   * david new user on grid6
   * carter working on alioth
