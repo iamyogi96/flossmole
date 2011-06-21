@@ -64,11 +64,15 @@ RENAME TABLE `ossmole_merged`.`list_posts` TO `ossmole_merged`.`old_list_posts`
 }}}
   * mv data from forges table on test into forges tables on prod
 {{{
-UPDATE `forge_trove_defs` SET datasource_id =274 WHERE datasource_id =272;
-UPDATE `forge_trove` SET datasource_id =275 WHERE datasource_id =273
-UPDATE `forge_stats` SET datasource_id =275 WHERE datasource_id =273
+--on test:
+UPDATE test.`forge_trove_defs` SET datasource_id =274 WHERE datasource_id =272;
+UPDATE test.`forge_trove` SET datasource_id =275 WHERE datasource_id =273test.
+UPDATE test.`forge_stats` SET datasource_id =275 WHERE datasource_id =273
+
+-- on ossmole_merged:
 INSERT INTO `datasources` ( `datasource_id` , `forge_id` , `friendly_name` , `date_donated` , `contact_person` , `comments` , `start_date` , `end_date` )
-VALUES ( 274, 0, 'Forge Trove Definitions - Initial List', '2011-05-09 14:01:37', 'msquire@elon.edu', 'This is the initial list of features that a forge can have.', '2011-05-09', '2011-05-09' ) , ( 275, 0, '2011-May Forge Trove List', '2011-05-09 00:00:00', 'msquire@elon.edu', 'This is the initial attempt to make a list of features available at each forge.', '2011-05-09', '2011-05-10' )
+VALUES ( 274, 0, 'Forge Trove Definitions - Initial List', '2011-05-09 14:01:37', 'msquire@elon.edu', 'This is the initial list of features that a forge can have.', '2011-05-09', '2011-05-09' ) , ( 275, 0, '2011-May Forge Trove List', '2011-05-09 00:00:00', 'msquire@elon.edu', 'This is the initial attempt to make a list of features available at each forge.', '2011-05-09', '2011-05-10' );
+
 CREATE TABLE IF NOT EXISTS `forge_stats` (
   `forge_id` int(11) NOT NULL,
   `datasource_id` int(11) NOT NULL,
@@ -77,7 +81,8 @@ CREATE TABLE IF NOT EXISTS `forge_stats` (
   `poweredBy` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`forge_id`,`datasource_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='snapshot forge stats as reported by the forges themselves';
-INSERT IGNORE INTO `forge_stats` (`forge_id`, `datasource_id`, `numUsers`, `numProjects`, `poweredBy`) VALUES
+
+INSERT INTO `forge_stats` (`forge_id`, `datasource_id`, `numUsers`, `numProjects`, `poweredBy`) VALUES
 (1, 275, 2700000, 291600, NULL),
 (3, 275, 88985, 9206, 'gforge'),
 (4, 275, 19813, 191, 'gforge'),
@@ -102,12 +107,15 @@ INSERT IGNORE INTO `forge_stats` (`forge_id`, `datasource_id`, `numUsers`, `numP
 (30, 275, NULL, 288, NULL),
 (12, 275, NULL, 208664, NULL),
 (20, 275, NULL, NULL, 'trac');
+
+
 CREATE TABLE IF NOT EXISTS `forge_trove` (
   `forge_id` int(11) NOT NULL,
   `datasource_id` int(11) NOT NULL DEFAULT '273',
   `trove_tag` varchar(50) NOT NULL,
   PRIMARY KEY (`forge_id`,`datasource_id`,`trove_tag`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='holds tags for features available at forge';
+
 INSERT INTO `forge_trove` (`forge_id`, `datasource_id`, `trove_tag`) VALUES
 (1, 275, 'administratorlist'),
 (1, 275, 'api'),
@@ -752,6 +760,7 @@ INSERT INTO `forge_trove` (`forge_id`, `datasource_id`, `trove_tag`) VALUES
 (31, 275, 'wiki'),
 (31, 275, 'wikihistory'),
 (31, 275, 'wikipages');
+
 CREATE TABLE IF NOT EXISTS `forge_trove_defs` (
   `trove_tag` varchar(50) NOT NULL,
   `tag_category` varchar(50) DEFAULT NULL,
@@ -760,6 +769,7 @@ CREATE TABLE IF NOT EXISTS `forge_trove_defs` (
   `last_updated` datetime NOT NULL,
   PRIMARY KEY (`trove_tag`,`datasource_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='this holds the description of each trove tag';
+
 INSERT INTO `forge_trove_defs` (`trove_tag`, `tag_category`, `datasource_id`, `tag_description`, `last_updated`) VALUES
 ('wiki', 'feature', 274, 'forge provides a wiki for development team', '2011-05-09 00:00:00'),
 ('shell', 'forge policy', 274, 'forge provides shell access into the forge for teams', '2011-05-09 14:04:51'),
@@ -821,8 +831,10 @@ INSERT INTO `forge_trove_defs` (`trove_tag`, `tag_category`, `datasource_id`, `t
 ('documentation', 'feature', 274, 'forge provides a designated spot for documentation', '2011-05-25 12:02:39'),
 ('reviews', 'artifact', 274, 'project reviews are publicly available', '2011-05-25 12:07:40'),
 ('forumarchive', 'artifact', 274, 'forum archives are publicly available', '2011-05-25 12:08:08');
-drop table forges;
-CREATE TABLE IF NOT EXISTS `forges` (
+
+drop table ossmole_merged.forges;
+
+CREATE TABLE IF NOT EXISTS ossmole_merged.`forges` (
   `forge_id` int(5) NOT NULL,
   `forge_abbr` varchar(3) CHARACTER SET utf8 NOT NULL,
   `forge_long_name` varchar(50) DEFAULT NULL,
@@ -835,9 +847,7 @@ CREATE TABLE IF NOT EXISTS `forges` (
   PRIMARY KEY (`forge_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `forges`
---
+
 
 INSERT INTO `forges` (`forge_id`, `forge_abbr`, `forge_long_name`, `forge_home_page`, `is_forge`, `is_directory`, `is_other`, `established`, `organization`) VALUES
 (14, 'LP', 'Launchpad', 'http://www.launchpad.net', 1, 0, 0, '2004', 'Canonical, Ltd.'),
@@ -873,6 +883,7 @@ INSERT INTO `forges` (`forge_id`, `forge_abbr`, `forge_long_name`, `forge_home_p
 (30, 'CH', 'CodeHaus', 'http://codehaus.org/', 1, 0, 0, '2003-2-26', NULL),
 (31, 'AS', 'Assembla', 'http://assembla.com', 1, 0, 0, '2006', 'Assembla, LLC');
 }}}
+
   * david new user on grid6
   * carter working on alioth
   * david working on debian
