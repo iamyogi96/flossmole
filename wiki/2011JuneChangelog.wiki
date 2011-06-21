@@ -6,15 +6,20 @@ This is a list of stuff we've done in June 2011
 
 
 = Details =
-
+==June 21, 2011==
+  * mv all old tables for Launchpad prefix lp_ to old_lp_ (test, prod, TG)
+  * david new user on grid6
+  * carter working on alioth
+  * david working on debian
 ==June 20, 2011==
   * release LP data - this requires all new LP header files, dump commands in release files
   * post forge web pages on flossmole.org for the forge study
-  * mv all old tables for Launchpad prefix lp_ to old_lp_
   * get Carter started on new mailing list project
   * get David started on new Debian counting project
 ==week of June 13-17==
   * Google Code finished; files released
+  * david working on forges site & css, etc.
+  * carter moves all data from grid0 to grid6 (yay)
 ==week of June 6 - 10==
   * Megan conf call on June 7
   * David working on forges table
