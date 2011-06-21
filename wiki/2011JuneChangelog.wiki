@@ -8,6 +8,7 @@ This is a list of stuff we've done in June 2011
 = Details =
 ==June 21, 2011==
   * mv all old tables for Launchpad prefix lp_ to old_lp_ (test, prod, TG)
+  * mv data from forges table on test into forges tables on prod
   * david new user on grid6
   * carter working on alioth
   * david working on debian
