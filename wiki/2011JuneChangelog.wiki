@@ -1,5 +1,4 @@
-#summary One-sentence summary of this page.
-
+#summary List of changes for June 2011
 = Introduction =
 
 This is a list of stuff we've done in June 2011
@@ -88,6 +87,15 @@ UPDATE udd_upload_history_architecture SET datasource_id=276 WHERE datasource_id
 UPDATE udd_upload_history_closes SET datasource_id=276 WHERE datasource_id=510;
 UPDATE udd_uploaders SET datasource_id=276 WHERE datasource_id=510;
 UPDATE udd_wannabuild SET datasource_id=276 WHERE datasource_id=510;
+}}}
+  * move data from test into prod
+{{{
+mysqldump --where='datasource_id=276' -umegan -p<password> -hgrid6.cs.elon.edu --hex-blob --result-file=276.sql --compact test udd_archived_bugs udd_archived_bugs_blockedby udd_archived_bugs_blocks udd_archived_bugs_fixed_in udd_archived_bugs_found_in udd_archived_bugs_merged_with udd_archived_bugs_packages udd_archived_bugs_tags udd_bibref udd_bugs udd_bugs_blockedby udd_bugs_blocks udd_bugs_fixed_in udd_bugs_found_in udd_bugs_merged_with udd_bugs_packages udd_bugs_tags udd_bugs_usertags udd_carnivore_emails udd_carnivore_keys udd_carnivore_login udd_carnivore_names udd_ddtp udd_debtags udd_deferred udd_deferred_architecture udd_deferred_binary udd_deferred_closes udd_dehs udd_derivatives_packages udd_derivatives_packages_distrelcomparch udd_derivatives_packages_summary udd_derivatives_sources udd_derivatives_uploaders udd_hints udd_lintian udd_migrations udd_new_packages udd_new_sources udd_orphaned_packages udd_package_removal udd_package_removal_batch udd_packages udd_packages_distrelcomparch udd_packages_summary udd_popcon udd_popcon_src udd_popcon_src_average udd_releases udd_screenshots udd_sources udd_sources_count udd_timestamps udd_ubuntu_bugs udd_ubuntu_bugs_duplicates udd_ubuntu_bugs_subscribers udd_ubuntu_bugs_tags udd_ubuntu_bugs_tasks udd_ubuntu_packages udd_ubuntu_packages_distrelcomparch udd_ubuntu_packages_summary udd_ubuntu_popcon udd_ubuntu_popcon_src udd_ubuntu_popcon_src_average udd_ubuntu_sources udd_ubuntu_uploaders udd_upload_history udd_upload_history_architecture udd_upload_history_closes udd_uploaders udd_wannabuild 
+
+mysql -hlocalhost -umegan -p
+use ossmole_merged;
+source 276.sql
+
 }}}
   * mv all old tables for Launchpad prefix lp_ to old_lp_ (test, prod, TG)
 {{{
