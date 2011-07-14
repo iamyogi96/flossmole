@@ -1,0 +1,6 @@
+Requires dateutil and sqlalchemy python libraries
+
+edit al.conf with proper database, datasource, username and password
+
+run alioth.py (with no arguments)
+after this completes, run alParser.py (also with no args, it uses the same config file)
