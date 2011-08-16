@@ -1,0 +1,10 @@
+Configure tg.conf, it already has default values.
+The same config file is used for all three parts of the program
+
+##Note, this program requires the dateutil library to parse datetimes
+
+run the collector 'python tg.py'
+
+run the parser 'python tgParse.py'
+
+run the mailing list fetcher 'python tgLists.py'
