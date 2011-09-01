@@ -161,8 +161,8 @@ def parseLists(name):
 def parseProjects():
   project_list = connection.execute("SELECT unixname FROM "+PROJ_INDEXES+" WHERE datasource_id = "+str(DATASOURCE)+";")
   for each in project_list:
-    #parseProject(each[0])
-    #parseDevs(each[0])
+    parseProject(each[0])
+    parseDevs(each[0])
     parseLists(each[0])
 
 parseProjects()
