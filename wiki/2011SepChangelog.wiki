@@ -1,8 +1,10 @@
-#Summary of Changes for Sept 2011
+#summary List of changes for September 2011
+= Introduction =
+
+This is a list of stuff we've done in September 2011
 
 = Details =
-
-==Sept 1, 2011==
+==September 1, 2011==
  * updated all Objectweb code (c) statements and database connection info
  * asked Joel to update perl modules on grid6 for collectors (needs XML/Parser.pm, LWP/Simple.pm), and java interpreter
  * released ObjectWeb code to Google Code
