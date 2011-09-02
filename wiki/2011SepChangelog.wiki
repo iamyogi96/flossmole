@@ -6,7 +6,9 @@ This is a list of stuff we've done in September 2011
 = Details =
 ==September 2, 2011==
  * released rubyforge
- * 
+ * released alioth
+ * created new tables at teragrid alioth
+ * need a way to upload indexes (not in datamarts) to teragrid automatically - write this!
 ==September 1, 2011==
  * updated all Objectweb code (c) statements and database connection info
  * asked Joel to update perl modules on grid6 for collectors (needs XML/Parser.pm, LWP/Simple.pm), and java interpreter
