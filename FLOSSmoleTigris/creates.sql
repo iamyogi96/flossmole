@@ -44,14 +44,6 @@ create table tig_people
   primary key (datasource_id, username)
 );
 
-create table tig_project_developers
-(
-  datasource_id int not null,
-  project varchar(255),
-  username varchar(255),
-  last_updated datetime,
-  primary key (datasource_id, project, username)
-);
 
 create table tig_project_developer_roles
 (
