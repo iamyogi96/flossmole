@@ -4,6 +4,10 @@
 This is a list of stuff we've done in September 2011
 
 = Details =
+==September 5, 2011==
+ * released tigris
+ * released github
+ * think about what to do about Teragrid index releases. Right now I am using the datamart sql files to populate Teragrid. I'll need to write scripts to upload the index files there also. This is quite large.
 ==September 2, 2011==
  * released rubyforge
  * released alioth
