@@ -1,0 +1,8 @@
+#summary Summary of changes for May 2012
+
+= 21-May-2012 =
+  * Released Objectweb
+  * Released Tigris
+  * In Progress: Rubyforge, Freecode, Savannah, Github.
+  * Changed release on Teragrid to point to new machine 'nibbler'
+  * made list of collectors that have to be re-written
