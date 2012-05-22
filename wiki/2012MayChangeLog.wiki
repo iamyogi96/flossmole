@@ -5,7 +5,7 @@
   * In progress: Github (7 machines), Launchpad
   * Teragrid database may have some corruption. Will troubleshoot this following the completion of this run (LP and GH above)
   * List of collectors that have to be re-written: GC, AL, FSF, maybe LP
-  * LAUNCHPAD is producing errors and has to be restarted frequently. Two tables are corrupt (incomplete data) from the past 3 runs and will have to be emptied (programming languages and licenses) and a retraction issued for these data sets.
+  * LAUNCHPAD is producing errors and has to be restarted frequently. Two tables are corrupt (incomplete data) from the past 3 runs and will have to be emptied (programming languages and licenses) and a retraction issued for these data sets (286, 294, 302). Current run is 312. 272 seems to be ok.
 
 = 21-May-2012 =
   * Released Objectweb
