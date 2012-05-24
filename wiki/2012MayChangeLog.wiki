@@ -1,5 +1,17 @@
 #summary Summary of changes for May 2012
 
+= 24-May-2012 = 
+  * Free Software Foundation totally re-writen from scratch and new data posted on Google Downloads page.
+  * After watching LP carefully for 3 days, it will have to be re-written.
+  * Priority Queue:
+  # finish Google run
+  # finish LP run
+  # get TG data fixed
+  # remove corrupted LP data from Nov-Jan
+  # rewrite LP
+  # re-write collector for GC names
+  # re-write Alioth
+
 = 22-May-2012 = 
   * Released Rubyforge, Freecode, Savannah
   * In progress: Github (7 machines), Launchpad
