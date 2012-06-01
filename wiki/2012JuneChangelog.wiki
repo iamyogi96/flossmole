@@ -495,4 +495,133 @@ select datasource_id, count(*) from ow_projects group by 1;
 46 rows in set (0.08 sec)
 }}}
 
-==
+==Rubyforge==
+mysqldump -umegan -p -h localhost ossmole_merged [rf tables] > rf.2012-May.sql
+
+source rf.2012-May.sql
+
+select datasource_id, count(*) from rf_projects group by 1;
+
++---------------+----------+
+| datasource_id | count(*) |
++---------------+----------+
+|            24 |     1732 |
+|            30 |     1891 |
+|            31 |     1998 |
+|            35 |     2144 |
+|            39 |     2499 |
+|            43 |     2626 |
+|            48 |     2784 |
+|            53 |     2951 |
+|            59 |     3126 |
+|            64 |     3304 |
+|            70 |     3505 |
+|            76 |     3657 |
+|            82 |     3857 |
+|            88 |     4059 |
+|            95 |     4241 |
+|           100 |     4433 |
+|           105 |     4648 |
+|           108 |     4835 |
+|           112 |     5069 |
+|           116 |     5309 |
+|           121 |     5534 |
+|           125 |     5615 |
+|           134 |     6131 |
+|           140 |     6302 |
+|           145 |     6595 |
+|           152 |     6894 |
+|           157 |     7199 |
+|           161 |     7359 |
+|           166 |     7506 |
+|           169 |     7678 |
+|           174 |     7849 |
+|           179 |     8040 |
+|           184 |     8262 |
+|           189 |     8386 |
+|           195 |     8523 |
+|           201 |     8595 |
+|           208 |     8737 |
+|           219 |     8816 |
+|           229 |     8944 |
+|           238 |     9095 |
+|           248 |     9156 |
+|           256 |     9178 |
+|           266 |     9199 |
+|           279 |     9264 |
+|           289 |     9282 |
+|           298 |     9341 |
+|           307 |     9407 |
++---------------+----------+
+47 rows in set (0.18 sec)
+}}}
+
+==Sourceforge==
+no changes.
+
+==Savannah==
+mysqldump -umegan -p -h localhost ossmole_merged sv_dev_skills sv_developer_projects sv_developers sv_project_indexes sv_projects > sv.2012-May.sql
+
+source sv.2012-May.sql
+
+select datasource_id, count(*) from sv_projects group by 1;
+
++---------------+----------+
+| datasource_id | count(*) |
++---------------+----------+
+|           177 |     2336 |
+|           182 |     2336 |
+|           192 |     2356 |
+|           198 |     2363 |
+|           204 |     2372 |
+|           211 |     2405 |
+|           224 |     2455 |
+|           232 |     2477 |
+|           241 |     2529 |
+|           251 |     2542 |
+|           259 |     2547 |
+|           269 |     2551 |
+|           282 |     2575 |
+|           291 |     2597 |
+|           300 |     2618 |
+|           309 |     2634 |
++---------------+----------+
+16 rows in set (0.13 sec)
+
+==Tig==
+mysqldump -umegan -p -h localhost ossmole_merged tig_people tig_project_categories tig_projects > tig.2012-May.sql
+
+mysqldump -umegan -p -h localhost ossmole_merged tig_project_developer_indexes > tig_dev_index.2012-May.sql
+
+mysqldump -umegan -p -h localhost ossmole_merged tig_project_developer_roles > tig_dev_roles.2012-May.sql
+
+mysqldump -umegan -p -h localhost ossmole_merged tig_messages > tig_messages.2012-May.sql
+
+mysqldump -umegan -p -h localhost ossmole_merged tig_project_discussions > tig_proj_disc.2012-May.sql
+
+mysqldump -umegan -p -h localhost ossmole_merged tig_project_discussion_indexes > tig_disc_ix.2012-May.sql
+
+mysqldump -umegan -p -h localhost ossmole_merged tig_project_indexes > tig_proj_ix.2012-May.sql
+
+mysqldump -umegan -p -h localhost ossmole_merged tig_project_list_indexes > tig_list_ix.2012-May.sql
+
+source /home/megan/flossmole/backups/2012/2012-May/tig/tig.2012-May.sql
+source /home/megan/flossmole/backups/2012/2012-May/tig/tig_dev_index.2012-May.sql
+source /home/megan/flossmole/backups/2012/2012-May/tig/tig_dev_roles.2012-May.sql
+source /home/megan/flossmole/backups/2012/2012-May/tig/tig_messages.2012-May.sql
+source /home/megan/flossmole/backups/2012/2012-May/tig/tig_disc_ix.2012-May.sql
+source /home/megan/flossmole/backups/2012/2012-May/tig/tig_proj_disc.2012-May.sql
+source /home/megan/flossmole/backups/2012/2012-May/tig/tig_proj_ix.2012-May.sql
+source /home/megan/flossmole/backups/2012/2012-May/tig/tig_list_ix.2012-May.sql
+
+select datasource_id, count(*) from tig_projects group by 1;
+
++---------------+----------+
+| datasource_id | count(*) |
++---------------+----------+
+|           284 |      691 |
+|           293 |      692 |
+|           301 |      690 |
+|           310 |      690 |
++---------------+----------+
+4 rows in set (0.08 sec)
