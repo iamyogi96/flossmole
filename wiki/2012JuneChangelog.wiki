@@ -242,3 +242,133 @@ select datasource_id, count(*) from fsf_project_indexes group by 1;
 +---------------+----------+
 31 rows in set (0.19 sec)
 }}}
+
+==GOOGLE CODE==
+{{{
+drop table gc_developer_projects;
+drop table gc_issues_indexes
+drop table gc_projects;
+drop table gc_project_blogs;
+drop table gc_project_groups;
+drop table gc_project_labels;
+drop table gc_project_links;
+drop table gc_project_people;
+drop table gc_project_indexes;            |
+
+
+
+mysql> CREATE TABLE IF NOT EXISTS `gc_developer_indexes` (
+    ->   `dev_name` varchar(250) NOT NULL,
+    ->   `datasource_id` int(11) NOT NULL,
+    ->   `devhtml` text,
+    ->   `last_modified` datetime NOT NULL,
+    ->   PRIMARY KEY (`dev_name`,`datasource_id`)
+    -> ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+Query OK, 0 rows affected (0.25 sec)
+
+mysql> CREATE TABLE IF NOT EXISTS `gc_developer_projects` (
+    ->   `datasource_id` int(11) NOT NULL,
+    ->   `unixname` varchar(100) NOT NULL,
+    ->   `dev_name` varchar(100) NOT NULL,
+    ->   `last_modified` datetime NOT NULL,
+    ->   PRIMARY KEY (`datasource_id`,`unixname`,`dev_name`)
+    -> ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+mysql> CREATE TABLE IF NOT EXISTS `gc_issues_indexes` (
+    ->   `unixname` varchar(100) NOT NULL,
+    ->   `issue_id` int(11) NOT NULL,
+    ->   `datasource_id` int(11) NOT NULL,
+    ->   `html` text NOT NULL,
+    ->   `last_modified` datetime NOT NULL,
+    ->   PRIMARY KEY (`unixname`,`issue_id`,`datasource_id`)
+    -> ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+mysql> CREATE TABLE IF NOT EXISTS `gc_projects` (
+    ->   `proj_name` varchar(100) NOT NULL,
+    ->   `datasource_id` int(11) NOT NULL,
+    ->   `last_updated` datetime NOT NULL,
+    ->   `code_license` varchar(100) DEFAULT NULL COMMENT 'code license chosen',
+    ->   `code_url` varchar(255) DEFAULT NULL COMMENT 'url for the license',
+    ->   `activity_level` varchar(50) DEFAULT NULL COMMENT 'the word describing the activity level',
+    ->   `content_license` varchar(100) DEFAULT NULL COMMENT 'content license (optional)',
+    ->   `content_url` varchar(255) DEFAULT NULL,
+    ->   `project_summary` varchar(255) DEFAULT NULL COMMENT 'short tag line',
+    ->   `project_description` text COMMENT 'the longer description of the project',
+    ->   PRIMARY KEY (`proj_name`,`datasource_id`)
+    -> ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='this holds basic info about google code projects';
+
+
+mysql> CREATE TABLE IF NOT EXISTS `gc_project_blogs` (
+    ->   `proj_name` varchar(100) NOT NULL,
+    ->   `datasource_id` int(11) NOT NULL,
+    ->   `blog_title` varchar(255) NOT NULL,
+    ->   `blog_link` varchar(255) CHARACTER SET latin1 NOT NULL,
+    ->   `last_updated` datetime NOT NULL,
+    ->   PRIMARY KEY (`proj_name`,`datasource_id`,`blog_link`)
+    -> ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='this holds the optional external blog title/link listed for ';
+
+
+mysql> CREATE TABLE IF NOT EXISTS `gc_project_groups` (
+    ->   `proj_name` varchar(100) NOT NULL,
+    ->   `datasource_id` int(11) NOT NULL,
+    ->   `group_name` varchar(100) NOT NULL,
+    ->   `group_url` varchar(255) CHARACTER SET latin1 NOT NULL,
+    ->   `last_updated` datetime NOT NULL,
+    ->   PRIMARY KEY (`proj_name`,`datasource_id`,`group_url`)
+    -> ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='this holds the optional groups listed for a project';
+
+mysql> CREATE TABLE IF NOT EXISTS `gc_project_indexes` (
+    ->   `unixname` varchar(100) CHARACTER SET utf8 NOT NULL,
+    ->   `datasource_id` int(11) NOT NULL,
+    ->   `homehtml` longtext CHARACTER SET utf8 NOT NULL,
+    ->   `updateshtml` longtext CHARACTER SET utf8 COMMENT 'deprecated 2012-May',
+    ->   `peoplehtml` longtext CHARACTER SET utf8,
+    ->   `downloadshtml` longtext CHARACTER SET utf8 COMMENT 'No longer collected 2012-May',
+    ->   `issuescsv` longtext CHARACTER SET utf8 COMMENT 'Chg to CSV 2012-May',
+    ->   `wikihtml` longtext CHARACTER SET utf8 COMMENT 'No longer collected 2012-May',
+    ->   `last_modified` datetime NOT NULL,
+    ->   PRIMARY KEY (`unixname`,`datasource_id`),
+    ->   KEY `datasource_id` (`datasource_id`)
+    -> ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+mysql> CREATE TABLE IF NOT EXISTS `gc_project_labels` (
+    ->   `proj_name` varchar(100) CHARACTER SET utf8 NOT NULL,
+    ->   `datasource_id` int(11) NOT NULL,
+    ->   `label` varchar(100) CHARACTER SET utf8 NOT NULL,
+    ->   `last_updated` datetime NOT NULL,
+    ->   PRIMARY KEY (`proj_name`,`datasource_id`,`label`)
+    -> ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='this holds the optional labels for a project';
+
+
+mysql> CREATE TABLE IF NOT EXISTS `gc_project_links` (
+    ->   `proj_name` varchar(100) NOT NULL,
+    ->   `datasource_id` int(11) NOT NULL,
+    ->   `link_title` varchar(100) NOT NULL,
+    ->   `link` varchar(255) CHARACTER SET latin1 NOT NULL,
+    ->   `last_updated` datetime NOT NULL,
+    ->   PRIMARY KEY (`proj_name`,`datasource_id`,`link`)
+    -> ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='this holds the optional external links listed for a project';
+
+
+mysql> CREATE TABLE IF NOT EXISTS `gc_project_people` (
+    ->   `proj_name` varchar(100) NOT NULL,
+    ->   `datasource_id` int(11) NOT NULL,
+    ->   `person_name` varchar(100) NOT NULL,
+    ->   `role` varchar(100) NOT NULL,
+    ->   `duties` varchar(255) NOT NULL,
+    ->   `notes` varchar(255) NOT NULL,
+    ->   `last_updated` datetime NOT NULL,
+    ->   PRIMARY KEY (`proj_name`,`datasource_id`,`person_name`)
+    -> ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+# write individual mysqldump commands for each datasource_id in GC
+# put all the mysqldump commands in a shell script
+bash dump.sh
+# put all source commands in a shell script
+bash load.sh
+
+}}}
