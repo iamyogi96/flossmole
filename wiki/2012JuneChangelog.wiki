@@ -377,3 +377,15 @@ bash load.sh
 mysqldump -umegan -p -h localhost ossmole_merged gh_projects > gh_projects.2012-May.sql
 mysql -e "source gh_projects.2012-May.sql" -u msquire -p -hnibbler.sdsc.edu -P3315 ossmole_merged
 }}}
+
+==Launchpad==
+  *There were problems with the data in the following Launchpad tables for certain datasources:
+||affected table name||datasource_id with problems||
+||lpd_licenses, lpd_milestones, lpd_official_bug_tags, lpd_programming_languages, lpd_releases, lpd_series||286, 294, 302||
+
+delete from lpd_licenses where datasource_id=x
+delete from lpd_milestones where datasource_id=x
+delete from lpd_official_bug_tags where datasource_id=x
+delete from lpd_programming_languages where datasource_id=x
+delete from lpd_releases where datasource_id=x
+delete from lpd_series where datasource_id
