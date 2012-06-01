@@ -496,6 +496,7 @@ select datasource_id, count(*) from ow_projects group by 1;
 }}}
 
 ==Rubyforge==
+{{{
 mysqldump -umegan -p -h localhost ossmole_merged [rf tables] > rf.2012-May.sql
 
 source rf.2012-May.sql
@@ -560,6 +561,8 @@ select datasource_id, count(*) from rf_projects group by 1;
 no changes.
 
 ==Savannah==
+
+{{{
 mysqldump -umegan -p -h localhost ossmole_merged sv_dev_skills sv_developer_projects sv_developers sv_project_indexes sv_projects > sv.2012-May.sql
 
 source sv.2012-May.sql
@@ -587,8 +590,11 @@ select datasource_id, count(*) from sv_projects group by 1;
 |           309 |     2634 |
 +---------------+----------+
 16 rows in set (0.13 sec)
+}}}
 
 ==Tig==
+
+{{{
 mysqldump -umegan -p -h localhost ossmole_merged tig_people tig_project_categories tig_projects > tig.2012-May.sql
 
 mysqldump -umegan -p -h localhost ossmole_merged tig_project_developer_indexes > tig_dev_index.2012-May.sql
@@ -625,3 +631,5 @@ select datasource_id, count(*) from tig_projects group by 1;
 |           310 |      690 |
 +---------------+----------+
 4 rows in set (0.08 sec)
+
+}}}
