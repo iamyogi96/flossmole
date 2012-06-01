@@ -372,3 +372,8 @@ bash dump.sh
 bash load.sh
 
 }}}
+==Github==
+{{{
+mysqldump -umegan -p -h localhost ossmole_merged gh_projects > gh_projects.2012-May.sql
+mysql -e "source gh_projects.2012-May.sql" -u msquire -p -hnibbler.sdsc.edu -P3315 ossmole_merged
+}}}
