@@ -1,0 +1,90 @@
+#summary Changes made in June 2012
+
+= June 1, 2012 =
+
+working on fixing anomalies in the Teragrid database. Here are the sql commands run today:
+
+==ALIOTH==
+{{{
+rename table al_mailing_lists to old_al_mailing_lists;
+rename table al_mailing_lists_indexes to old_al_mailing_lists_indexes;
+rename table al_messages to old_al_messages;
+rename table al_messages_indexes to old_al_messages_indexes;
+rename table al_messages_references to old_al_messages_references;
+
+
+mysqldump -umegan -p -h localhost ossmole_merged al_projects al_projects_audience al_projects_environment al_projects_language al_projects_license al_projects_os al_projects_status al_projects_tags al_projects_topic al_project_indexes al_project_members al_project_members_roles > al_all.2012-May.sql
+
+drop table al_projects; 
+drop table al_projects_audience ;
+drop table al_projects_environment ;
+drop table al_projects_language ;
+drop table al_projects_license ;
+drop table al_projects_os ;
+drop table al_projects_status ;
+drop table al_projects_topic ;
+drop table al_project_indexes;
+
+source al_all.2012-May.sql;
+
+select datasource_id, count(*) from al_projects group by 1;
++---------------+----------+
+| datasource_id | count(*) |
++---------------+----------+
+|           287 |      896 |
+|           295 |      903 |
+|           315 |      914 |
++---------------+----------+
+3 rows in set (0.08 sec)
+
+}}}
+
+Alioth notes:
+  * old tables holding messages and mailing lists have been moved to 'old_' and will be re-released when we figure out how to scrape these again
+  * indexes were not saved for 287 and 295 for an unknown reason (indexes will be collected and saved from now on)
+
+==DATASOURCES==
+drop table datasources;
+
+mysqldump -umegan -p -h localhost ossmole_merged datasources > datasources.2012-May.sql
+
+source /home/megan/flossmole/backups/2012/2012-May/datasources.sql;
+
+==DEBIAN==
+no changes
+
+==FRESHMEAT/FREECODE==
+  * Strategy: first just replicate tables to Teragrid, then worry about changing their name to 'fc' rather than fm
+
+{{{
+drop table fm_project_authors;
+drop table fm_project_dependencies;
+drop table fm_project_homepages;
+drop table fm_project_tags;
+drop table fm_project_trove;
+drop table fm_projects;
+drop table FM_TROVE_DEFS;
+
+mysqldump -umegan -p -h localhost ossmole_merged fm_projects > fm_projects.2012-May.sql
+mysqldump -umegan -p -h localhost ossmole_merged fm_project_authors> fm_project_authors.2012-May.sql
+mysqldump -umegan -p -h localhost ossmole_merged fm_project_dependencies > fm_project_dependencies.2012-May.sql
+mysqldump -umegan -p -h localhost ossmole_merged fm_project_homepages > fm_project_homepages.2012-May.sql
+mysqldump -umegan -p -h localhost ossmole_merged fm_project_tags > fm_project_tags.2012-May.sql
+mysqldump -umegan -p -h localhost ossmole_merged fm_project_trove > fm_project_trove.2012-May.sql
+mysqldump -umegan -p -h localhost ossmole_merged fm_trove_defs > fm_trove_defs.2012-May.sql
+
+source /home/megan/flossmole/backups/2012/2012-May/fm/fm_projects.2012-May.sql;
+source /home/megan/flossmole/backups/2012/2012-May/fm/fm_project_authors.2012-May.sql;
+source /home/megan/flossmole/backups/2012/2012-May/fm/fm_project_dependencies.2012-May.sql;
+source /home/megan/flossmole/backups/2012/2012-May/fm/fm_project_homepages.2012-May.sql;
+source /home/megan/flossmole/backups/2012/2012-May/fm/fm_project_tags.2012-May.sql;
+source /home/megan/flossmole/backups/2012/2012-May/fm/fm_project_trove.2012-May.sql;
+source /home/megan/flossmole/backups/2012/2012-May/fm/fm_trove_defs.2012-May.sql;
+}}}
+
+==FORGES==
+drop table forges;
+
+mysqldump -umegan -p -h localhost ossmole_merged forges > forges.2012-May.sql
+
+source /home/megan/flossmole/backups/2012/2012-May/forges.sql;
