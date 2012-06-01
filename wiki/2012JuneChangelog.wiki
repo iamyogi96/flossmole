@@ -40,15 +40,17 @@ select datasource_id, count(*) from al_projects group by 1;
 }}}
 
 Alioth notes:
-  * old tables holding messages and mailing lists have been moved to 'old_' and will be re-released when we figure out how to scrape these again
+  * old tables holding messages and mailing lists have been moved to 'old`_`' and will be re-released when we figure out how to scrape these again
   * indexes were not saved for 287 and 295 for an unknown reason (indexes will be collected and saved from now on)
 
 ==DATASOURCES==
+{{{
 drop table datasources;
 
 mysqldump -umegan -p -h localhost ossmole_merged datasources > datasources.2012-May.sql
 
 source /home/megan/flossmole/backups/2012/2012-May/datasources.sql;
+}}}
 
 ==DEBIAN==
 no changes
@@ -83,8 +85,10 @@ source /home/megan/flossmole/backups/2012/2012-May/fm/fm_trove_defs.2012-May.sql
 }}}
 
 ==FORGES==
+{{{
 drop table forges;
 
 mysqldump -umegan -p -h localhost ossmole_merged forges > forges.2012-May.sql
 
 source /home/megan/flossmole/backups/2012/2012-May/forges.sql;
+}}}
