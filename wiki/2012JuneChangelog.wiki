@@ -381,11 +381,21 @@ mysql -e "source gh_projects.2012-May.sql" -u msquire -p -hnibbler.sdsc.edu -P33
 ==Launchpad==
   *There were problems with the data in the following Launchpad tables for certain datasources:
 ||affected table name||datasource_id with problems||
-||lpd_licenses, lpd_milestones, lpd_official_bug_tags, lpd_programming_languages, lpd_releases, lpd_series||286, 294, 302||
+||lpd_licenses||286, 294, 302||
+||lpd_milestones||286, 294, 302||
+||lpd_official_bug_tags||286, 294, 302||
+||lpd_programming_languages||286, 294, 302||
+||lpd_releases||286, 294, 302||
+||lpd_series||286, 294, 302||
 
 delete from lpd_licenses where datasource_id=x
+
 delete from lpd_milestones where datasource_id=x
+
 delete from lpd_official_bug_tags where datasource_id=x
+
 delete from lpd_programming_languages where datasource_id=x
+
 delete from lpd_releases where datasource_id=x
-delete from lpd_series where datasource_id
+
+delete from lpd_series where datasource_id=x
