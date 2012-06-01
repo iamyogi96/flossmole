@@ -2,7 +2,7 @@
 
 = June 1, 2012 =
 
-working on fixing anomalies in the Teragrid database. Here are the sql commands run today:
+working on fixing anomalies in the Teragrid database. Here are the sql commands run today, in order by forge:
 
 ==ALIOTH==
 {{{
@@ -592,7 +592,7 @@ select datasource_id, count(*) from sv_projects group by 1;
 16 rows in set (0.13 sec)
 }}}
 
-==Tig==
+==Tigris==
 
 {{{
 mysqldump -umegan -p -h localhost ossmole_merged tig_people tig_project_categories tig_projects > tig.2012-May.sql
