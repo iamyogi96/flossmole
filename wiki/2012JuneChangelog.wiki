@@ -375,11 +375,31 @@ bash load.sh
 ==Github==
 {{{
 mysqldump -umegan -p -h localhost ossmole_merged gh_projects > gh_projects.2012-May.sql
+
 mysql -e "source gh_projects.2012-May.sql" -u msquire -p -hnibbler.sdsc.edu -P3315 ossmole_merged
+
+select datasource_id, count(*) from gh_projects group by 1;
+
++---------------+----------+
+| datasource_id | count(*) |
++---------------+----------+
+|           193 |    41967 |
+|           199 |   131207 |
+|           205 |   138182 |
+|           212 |   177016 |
+|           223 |   221970 |
+|           234 |   272592 |
+|           273 |   101666 |
+|           283 |   118490 |
+|           292 |   133074 |
+|           305 |   163566 |
+|           311 |   191669 |
++---------------+----------+
+11 rows in set (6.31 sec)
 }}}
 
 ==Launchpad==
-  *There were problems with the data in the following Launchpad tables for certain datasources:
+  * There were problems with the data in the following Launchpad tables for certain datasources:
 ||affected table name||datasource_id with problems||
 ||lpd_licenses||286, 294, 302||
 ||lpd_milestones||286, 294, 302||
@@ -388,14 +408,91 @@ mysql -e "source gh_projects.2012-May.sql" -u msquire -p -hnibbler.sdsc.edu -P33
 ||lpd_releases||286, 294, 302||
 ||lpd_series||286, 294, 302||
 
+  * After deleting this bad data, the tables were re-created and data was re-inserted.
+{{{
 delete from lpd_licenses where datasource_id=x
-
 delete from lpd_milestones where datasource_id=x
-
 delete from lpd_official_bug_tags where datasource_id=x
-
 delete from lpd_programming_languages where datasource_id=x
-
 delete from lpd_releases where datasource_id=x
-
 delete from lpd_series where datasource_id=x
+
+mysqldump -umegan -p -h localhost ossmole_merged lpd_language_pairs lpd_official_bug_tags lpd_programming_languages lpd_projects lpd_releases lpd_series > lp.2012-May.sql
+
+source lp.2012-May.sql
+
+select datasource_id, count(*) from lpd_projects group by 1;
+
++---------------+----------+
+| datasource_id | count(*) |
++---------------+----------+
+|           272 |    23369 |
+|           286 |    24374 |
+|           294 |    25148 |
+|           302 |    26072 |
+|           312 |    27570 |
++---------------+----------+
+5 rows in set (0.19 sec)
+}}}
+
+==Objectweb==
+{{{
+mysqldump -umegan -p -h localhost ossmole_merged ow_developer_projects ow_developers ow_project_description ow_project_environment ow_project_indexes ow_project_intended_audience ow_project_licenses ow_project_operating_system ow_project_programming_language ow_project_status ow_project_topic ow_projects > ow.2012-May.sql
+
+source ow.2012-May.sql
+
+select datasource_id, count(*) from ow_projects group by 1;
++---------------+----------+
+| datasource_id | count(*) |
++---------------+----------+
+|            27 |      125 |
+|            32 |      108 |
+|            36 |      122 |
+|            40 |      114 |
+|            44 |      114 |
+|            49 |      114 |
+|            54 |      108 |
+|            60 |      114 |
+|            65 |      114 |
+|            71 |      116 |
+|            77 |      116 |
+|            83 |      117 |
+|            89 |      118 |
+|            96 |      119 |
+|           101 |      119 |
+|           106 |      120 |
+|           109 |      120 |
+|           113 |      120 |
+|           117 |      120 |
+|           122 |      120 |
+|           126 |      120 |
+|           131 |      120 |
+|           135 |      120 |
+|           141 |      122 |
+|           146 |      123 |
+|           153 |      123 |
+|           158 |      125 |
+|           162 |      125 |
+|           167 |      125 |
+|           170 |      127 |
+|           175 |      129 |
+|           180 |      129 |
+|           185 |      130 |
+|           190 |      132 |
+|           196 |      135 |
+|           202 |      135 |
+|           220 |      140 |
+|           230 |      142 |
+|           239 |      143 |
+|           249 |      144 |
+|           257 |      143 |
+|           267 |      144 |
+|           280 |      145 |
+|           290 |      147 |
+|           299 |      147 |
+|           308 |      147 |
++---------------+----------+
+46 rows in set (0.08 sec)
+}}}
+
+==
