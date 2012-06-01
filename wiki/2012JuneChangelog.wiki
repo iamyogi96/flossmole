@@ -84,6 +84,74 @@ source /home/megan/flossmole/backups/2012/2012-May/fm/fm_project_trove.2012-May.
 source /home/megan/flossmole/backups/2012/2012-May/fm/fm_trove_defs.2012-May.sql;
 }}}
 
+Here are all the Freshmeat/Freecode datasources now listed in the database, and the number of projects for each:
+
+{{{
+select datasource_id, count(*) from fm_projects group by 1;
++---------------+----------+
+| datasource_id | count(*) |
++---------------+----------+
+|             9 |    37123 |
+|            10 |    37413 |
+|            11 |    38741 |
+|            12 |    39023 |
+|            14 |    39406 |
+|            15 |    39594 |
+|            17 |    39842 |
+|            18 |    40164 |
+|            21 |    40596 |
+|            23 |    40673 |
+|            25 |    40404 |
+|            26 |    40842 |
+|            29 |    41021 |
+|            33 |    41318 |
+|            37 |    41546 |
+|            41 |    41906 |
+|            42 |    41908 |
+|            47 |    42181 |
+|            52 |    42317 |
+|            58 |    42500 |
+|            63 |    42720 |
+|            69 |    42970 |
+|            75 |    43082 |
+|            81 |    43300 |
+|            87 |    43463 |
+|            94 |    43615 |
+|            99 |    43808 |
+|           104 |    43759 |
+|           107 |    43859 |
+|           111 |    44015 |
+|           115 |    44185 |
+|           120 |    44379 |
+|           124 |    44543 |
+|           129 |    44617 |
+|           133 |    44716 |
+|           139 |    44824 |
+|           144 |    45078 |
+|           151 |    45257 |
+|           156 |    45573 |
+|           160 |    45807 |
+|           173 |    39621 |
+|           178 |    39881 |
+|           183 |    40303 |
+|           188 |    40505 |
+|           194 |    40691 |
+|           200 |    40898 |
+|           207 |    41443 |
+|           218 |    41902 |
+|           228 |    42545 |
+|           237 |    43206 |
+|           247 |    43470 |
+|           255 |    43639 |
+|           270 |    43778 |
+|           296 |    44579 |
+|           297 |    44895 |
+|           306 |    45373 |
++---------------+----------+
+56 rows in set (2.30 sec)
+}}}
+
+
 ==FORGES==
 {{{
 drop table forges;
@@ -91,4 +159,86 @@ drop table forges;
 mysqldump -umegan -p -h localhost ossmole_merged forges > forges.2012-May.sql
 
 source /home/megan/flossmole/backups/2012/2012-May/forges.sql;
+}}}
+
+==FREE SOFTWARE FOUNDATION==
+
+{{{
+rename table fsf_project_interfaces to old_fsf_project_interfaces;
+rename table fsf_project_languages to old_fsf_project_languages;
+rename table fsf_project_related to old_fsf_project_related;
+
+drop table fsf_developer_projects;
+drop table fsf_projects;
+drop table fsf_project_licenses;
+drop table fsf_project_requirements;
+
+mysqldump -umegan -p -h localhost ossmole_merged fsf_developer_projects > fsf_developer_projects.2012-May.sql
+mysqldump -umegan -p -h localhost ossmole_merged fsf_projects > fsf_projects.2012-May.sql
+mysqldump -umegan -p -h localhost ossmole_merged fsf_project_categories > fsf_project_categories.2012-May.sql
+mysqldump -umegan -p -h localhost ossmole_merged fsf_project_licenses > fsf_project_licenses.2012-May.sql
+mysqldump -umegan -p -h localhost ossmole_merged fsf_project_related > fsf_project_related.2012-May.sql
+mysqldump -umegan -p -h localhost ossmole_merged fsf_project_requirements > fsf_project_requirements.2012-May.sql
+
+source /home/megan/flossmole/backups/2012/2012-May/fsf/fsf_developer_projects.2012-May.sql
+source /home/megan/flossmole/backups/2012/2012-May/fsf/fsf_projects.2012-May.sql
+source /home/megan/flossmole/backups/2012/2012-May/fsf/fsf_project_categories.2012-May.sql
+source /home/megan/flossmole/backups/2012/2012-May/fsf/fsf_project_licenses.2012-May.sql
+source /home/megan/flossmole/backups/2012/2012-May/fsf/fsf_project_related.2012-May.sql
+source /home/megan/flossmole/backups/2012/2012-May/fsf/fsf_project_requirements.2012-May.sql
+
+gzip *.sql
+}}}
+
+Deal with indexes separately because they are so big:
+
+{{{
+mysqldump -umegan -p -h localhost ossmole_merged fsf_project_indexes > fsf_project_indexes.2012-May.sql
+
+source /home/megan/flossmole/backups/2012/2012-May/fsf/fsf_project_indexes.2012-May.sql
+
+gzip fsf_project_indexes.2012-May.sql
+}}}
+
+Here is a list of all the datasources we have for FSF and the count of projects for each:
+
+{{{
+select datasource_id, count(*) from fsf_project_indexes group by 1;
+
++---------------+----------+
+| datasource_id | count(*) |
++---------------+----------+
+|            45 |     5226 |
+|            50 |     5265 |
+|            55 |     5298 |
+|            61 |     5328 |
+|            66 |     5355 |
+|            72 |     5364 |
+|            78 |     5386 |
+|            84 |     5381 |
+|            90 |     5397 |
+|            97 |     5366 |
+|           142 |     5513 |
+|           147 |     5513 |
+|           154 |     5584 |
+|           159 |     5674 |
+|           163 |     5720 |
+|           168 |     5760 |
+|           171 |     5820 |
+|           176 |     5870 |
+|           181 |     5918 |
+|           186 |     6027 |
+|           191 |     6067 |
+|           197 |     6130 |
+|           203 |     6162 |
+|           221 |     6438 |
+|           231 |     6679 |
+|           240 |     6683 |
+|           250 |     6671 |
+|           258 |     6671 |
+|           268 |     6671 |
+|           281 |     6671 |
+|           314 |     6849 |
++---------------+----------+
+31 rows in set (0.19 sec)
 }}}
