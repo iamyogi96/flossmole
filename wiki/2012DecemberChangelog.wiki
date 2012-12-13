@@ -4,9 +4,14 @@
 
 Began database migration to flossdata.syr.edu
 
+==udd and old structures==
+  * Created new databases for 'udd' tables and 'old' tables since these are only rarely used and there are a lot of them
+  * Will insert data last since it's not highly desired
+
 ==ossmole_merged database structure==
   * Created ossmole_merged database on flossdata.syr.edu
   * Created all tables
+
 ==ossmole_merged data==
 I will do these by groups of forges, probably alphabetically.
 ===Alioth===
@@ -26,3 +31,32 @@ mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalho
 }}}
   * Imported datasources & forges data, success
 ===deb_metrics===
+  * Exported all debian metrics data
+{{{
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged deb_metrics deb_metrics_popcon deb_metrics_provenance deb_metrics_sources deb_metrics_sources_arch deb_metrics_sources_bins deb_metrics_sources_deps > deb.all.sql
+}}}
+  * Imported
+===Freshmeat/Freecode===
+  * Exported
+{{{
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged fm_projects fm_project_authors fm_project_dependencies fm_project_homepages fm_project_tags fm_project_trove fm_trove_defs > fm.all.sql
+}}}
+  * Imported
+===FSF===
+  * Exported
+{{{
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged fsf_developer_projects fsf_projects fsf_project_categories fsf_project_indexes fsf_project_licenses fsf_project_related fsf_project_requirements > fsf.all.sql
+}}}
+  * Imported
+===Google Code===
+  * Exported
+{{{
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_developer_indexes > gc.1.sql
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_issues_indexes > gc.2.sql
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_projects > gc.3.sql
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_blogs > gc.4.sql
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_labels > gc.5.sql
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_links > gc.6.sql
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_people > gc.7.sql
+}}}
+  * Imported
