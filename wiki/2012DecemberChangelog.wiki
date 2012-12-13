@@ -1,0 +1,28 @@
+#summary Reverse chronological log of changes made in Dec 2012
+
+= December 13, 2012 =
+
+Began database migration to flossdata.syr.edu
+
+==ossmole_merged database structure==
+  * Created ossmole_merged database on flossdata.syr.edu
+  * Created all tables
+==ossmole_merged data==
+I will do these by groups of forges, probably alphabetically.
+===Alioth===
+  * Exported Alioth data - Alioth is small enough that I did all the data in one file:
+{{{
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged al_project_indexes al_project_members al_project_members_roles al_projects al_projects_audience al_projects_environment al_projects_language al_projects_license al_projects_os al_projects_status al_projects_tags al_projects_topic > alioth.all.sql
+}}}
+  * Imported Alioth data
+{{{
+source alioth.all.sql
+}}}
+===datasources & forges===
+  * Exported all datasources
+  * Exported all forges
+{{{
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged datasources forges forge_stats forge_trove forge_trove_defs > dsforges.all.sql
+}}}
+  * Imported datasources & forges data, success
+===deb_metrics===
