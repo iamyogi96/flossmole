@@ -42,12 +42,22 @@ mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalho
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged fm_projects fm_project_authors fm_project_dependencies fm_project_homepages fm_project_tags fm_project_trove fm_trove_defs > fm.all.sql
 }}}
   * Imported
+
 ===FSF===
   * Exported
 {{{
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged fsf_developer_projects fsf_projects fsf_project_categories fsf_project_indexes fsf_project_licenses fsf_project_related fsf_project_requirements > fsf.all.sql
 }}}
   * Imported
+
+===Github===
+  * Exported
+{{{
+#github
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gh_projects > gh.all.sql
+}}}
+  * Imported
+
 ===Google Code===
   * Exported
 {{{
@@ -58,5 +68,6 @@ mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalho
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_labels > gc.5.sql
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_links > gc.6.sql
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_people > gc.7.sql
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_developer_projects > gc.8.sql
 }}}
   * Imported
