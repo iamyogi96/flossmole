@@ -70,7 +70,7 @@ mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalho
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_people > gc.7.sql
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_developer_projects > gc.8.sql
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_groups > gc.9.sql
-mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_indexes > gc.10.sql
+mysqldump --where='datasource_id=226' --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_indexes > gc.10.sql
 mysqldump --where='datasource_id=235' --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_indexes > gc.11.sql
 mysqldump --where='datasource_id=243' --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_indexes > gc.12.sql
 mysqldump --where='datasource_id=252' --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_indexes > gc.13.sql
