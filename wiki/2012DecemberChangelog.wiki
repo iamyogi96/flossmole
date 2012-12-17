@@ -69,14 +69,20 @@ mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalho
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_links > gc.6.sql
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_people > gc.7.sql
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_developer_projects > gc.8.sql
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_groups > gc.9.sql
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_indexes > gc.10.sql
+mysqldump --where='datasource_id=252' --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_indexes > gc.13.sql
+mysqldump --where='datasource_id=271' --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_indexes > gc.14.sql
+mysqldump --where='datasource_id=285' --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_indexes > gc.15.sql
+mysqldump --where='datasource_id=304' --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_indexes > gc.16.sql
+mysqldump --where='datasource_id=313' --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_indexes > gc.17.sql
+mysqldump --where='datasource_id=323' --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_indexes > gc.18.sql
+mysqldump --where='datasource_id=350' --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_indexes > gc.19.sql
 }}}
   * Imported
 
 ===In Process===
 {{{
-#gc
-mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_groups > gc.9.sql
-mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_indexes > gc.10.sql
 
 #lpd
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged lpd_language_pairs lpd_licenses lpd_milestones lpd_official_bug_tags lpd_programming_languages lpd_projects lpd_releases lpd_series > lpd.all.sql
