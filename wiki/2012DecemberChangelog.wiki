@@ -1,5 +1,11 @@
 #summary Reverse chronological log of changes made in Dec 2012
 
+= December 21, 2012 = 
+
+  * Began user migration to flossdata.syr.edu
+  * Received list of users from teragrid
+  * Making a plan for how to add users
+
 = December 13, 2012 =
 
 Began database migration to flossdata.syr.edu
