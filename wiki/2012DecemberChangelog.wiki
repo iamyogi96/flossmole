@@ -5,8 +5,8 @@
 Began database migration to flossdata.syr.edu
 
 ==udd and old structures==
-  * Created new databases for 'udd' tables and 'old' tables since these are only rarely used and there are a lot of them
-  * Will insert data last since it's not highly desired
+  * Created new databases for 'udd' tables and 'old' tables and 'sf' tables since these are only rarely used and there are a lot of them
+  * Will insert data LAST since it's not highly desired
 
 ==ossmole_merged database structure==
   * Created ossmole_merged database on flossdata.syr.edu
