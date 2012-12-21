@@ -80,20 +80,35 @@ mysqldump --where='datasource_id=304' --extended-insert=TRUE --compact --no-crea
 mysqldump --where='datasource_id=313' --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_indexes > gc.17.sql
 mysqldump --where='datasource_id=323' --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_indexes > gc.18.sql
 mysqldump --where='datasource_id=350' --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged gc_project_indexes > gc.19.sql
-
+}}}
+  * Imported
+===Launchpad===
+{{{
 #lpd
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged lpd_language_pairs lpd_licenses lpd_milestones lpd_official_bug_tags lpd_programming_languages lpd_projects lpd_releases lpd_series > lpd.all.sql
+}}}
+===ObjectWeb===
+{{{
 #ow
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged ow_developer_projects ow_developers ow_project_description ow_project_environment ow_project_indexes ow_project_intended_audience ow_project_licenses ow_project_operating_system ow_project_programming_language ow_project_status ow_project_topic ow_projects > ow.all.sql
+}}}
+===Rubyforge===
+{{{
 #rf
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged rf_developer_projects rf_developers rf_project_description rf_project_environment rf_project_indexes rf_project_intended_audience rf_project_licenses rf_project_natural_language rf_project_operating_system rf_project_programming_language rf_project_status rf_project_topic rf_projects  > rf.all.sql
-
+}}}
+===Sourcekibitzer===
+{{{
 #sk
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged sk_projects > sk.all.sql
-
+}}}
+===Savannah===
+{{{
 #sv
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged sv_dev_skills sv_developer_projects sv_developers sv_project_indexes sv_projects > sv.all.sql
-
+}}}
+===Tigris===
+{{{
 #tig
 mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged tig_messages tig_people tig_project_categories tig_project_developer_indexes tig_project_developer_roles tig_project_discussion_indexes tig_project_discussions tig_project_indexes tig_project_list_indexes tig_projects > tig.all.sql
 }}}
