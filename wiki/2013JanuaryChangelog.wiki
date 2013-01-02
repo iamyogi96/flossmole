@@ -1,0 +1,29 @@
+#summary reverse chronological list of changes for January 2013
+
+= January 2, 2013 =
+  * move "old" tables to new schema called "old"
+
+==old alioth==
+{{{
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged old_al_mailing_lists old_al_mailing_lists_indexes old_al_messages old_al_messages_indexes old_al_messages_references  > old.al.sql
+}}}
+
+==old debian==
+{{{
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged old_debian_projects old_debian_project_developers old_debian_project_indexes_stable old_debian_project_indexes_testing old_debian_project_indexes_unstable > old.debian.sql
+}}}
+
+==old fsf==
+{{{
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged old_fsf_language_pairs old_fsf_project_interfaces old_fsf_project_languages > old.fsf.sql
+}}}
+
+
+==old launchpad==
+{{{
+mysqldump --extended-insert=TRUE --compact --no-create-info -umegan -p -hlocalhost ossmole_merged old_lp_developers old_lp_developer_indexes old_lp_developer_irc old_lp_developer_languages old_lp_developer_projects old_lp_developer_wiki old_lp_groups old_lp_group_indexes old_lp_group_projects old_lp_projects old_lp_project_indexes old_lp_project_languages old_lp_project_licenses old_lp_project_uses > old.lp.all
+}}}
+
+==old SF==
+{{{
+}}}
